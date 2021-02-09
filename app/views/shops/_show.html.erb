@@ -1,0 +1,85 @@
+<% @shop_name=Shop.find(id) %>
+<% @id=id %>
+<% @locationId=locationId %>
+<% @exception=each_bldg%>
+
+	<li class="hidei">
+		<div id="info_fadeout" class="info_fadeout">×</div>
+
+		<% if @exception==60 %><!--mall-->
+			<% @bldg_name=Location.find(locationId) %>
+			<div id="mall_name">
+				<%= @bldg_name.location.split()[1] %>
+			</div>
+
+			<div id="mallInfo_wrap">
+			<ul id="mallInfo">
+			<% @tenants=Shop.where(location_id: locationId).order(floor: 'DESC').each do |tenant| %>
+				<li class="tenants" style="background-image: url(<%= tenant.logo_url %>); 
+				background-size: contain; background-repeat: no-repeat; background-position-x: center;
+					<% if !@closeShops_0.find{|n|n == tenant.id} || !@closeShops_1.find{|n|n == tenant.id} then %>
+						<%= @greenAction %>
+					<% else %>
+						<%= @grayAction %>
+					<% end %>
+				">
+					<% if tenant.logo_url.blank? %>
+						<span class="shop_nameMall"><%= tenant.shop_name %></span>
+					<% end %>
+				</li>
+			<% end %>
+			</ul>
+			</div>
+
+		<% elsif @exception==61 %><!--streetInfo-->
+			<div id="mall_name">
+				<%p @streetInfo=Location.find(locationId).location %>
+				<%p @streetInfo=Street.find_by(street_name: @streetInfo)%>
+				<% if @streetInfo.blank? %>
+					<% @streetInfo=Street.find(6) %>
+					<%= @streetInfo.street_name %>
+				<% else %>
+					<%= @streetInfo.street_name %>
+				<% end %>
+
+			</div>
+
+			<div id="shop_img_grid_contaier">
+				<div id="shop_img1" style="background-image:url(<%= asset_path 'shop_img1.jpg' %>)"></div>
+				<div id="shop_img2" style="background-image:url(<%= asset_path 'shop_img5.jpg' %>)"></div>
+				<div id="shop_img3" style="background-image:url(<%= asset_path 'shop_img3.jpg' %>)"></div>
+				<div id="shop_img4" style="background-image:url(<%= asset_path 'shop_img4.jpg' %>)"></div>
+				<div id="shop_img5" style="background-image:url(<%= asset_path 'shop_img2.jpg' %>)"></div>
+			</div>
+
+			<div id="enterStreet">
+				<a>Go to <%= @streetInfo.street_name %> ?</a><br>
+				<%= form_tag("/", method: :get,:remote => true) do %> 
+				<a data-style="gotoStreet">[Yes]<%= submit_tag"#{@streetInfo.id}", data:{style:"gotoStreet"} %></a>
+				<a class="info_fadeout", data-style="gotoStreet">[No]</a>
+				<% end %>
+			</div>
+
+		<% else %><!--shopInfo-->
+			<div id="shop_name"><%= @shop_name.shop_name %></div>
+			<div id="shop_img_grid_contaier">
+				<div id="shop_img1" style="background-image:url(<%= asset_path 'shop_img1.jpg' %>)"></div>
+				<div id="shop_img2" style="background-image:url(<%= asset_path 'shop_img5.jpg' %>)"></div>
+				<div id="shop_img3" style="background-image:url(<%= asset_path 'shop_img3.jpg' %>)"></div>
+				<div id="shop_img4" style="background-image:url(<%= asset_path 'shop_img4.jpg' %>)"></div>
+				<div id="shop_img5" style="background-image:url(<%= asset_path 'shop_img2.jpg' %>)"></div>
+			</div><!--shop_img_grid_contaier-->
+			<div class="shop_category">
+				<% @shop_name.category.to_s.split("-").each do |i| %>
+					<%= "##{i}" %>
+				<% end %>
+			</div>
+			<!--<div class="shop_campaign">Campaign  >></div>-->
+			<div class="shop_floor"><%= @shop_name.floor %>F</div>
+			<div class="shop_link"><%= link_to'ShopWebSite',@shop_name.url %></div>
+
+	<% end %><!--elseのend-->
+	
+	
+
+</li>

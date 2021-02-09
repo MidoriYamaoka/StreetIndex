@@ -1,0 +1,5 @@
+class AddSideToLocations < ActiveRecord::Migration[5.2]
+  def change
+    add_column :locations, :side, :integer
+  end
+end

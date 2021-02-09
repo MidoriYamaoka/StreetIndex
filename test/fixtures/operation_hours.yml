@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_id: 1
+  day: MyText
+  open: 1
+  close: 1
+  note: MyText
+
+two:
+  shop_id: 1
+  day: MyText
+  open: 1
+  close: 1
+  note: MyText

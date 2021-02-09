@@ -1,0 +1,46 @@
+$color: green;
+$kawaii_main: rgba(140, 83, 178, 1);
+$kawaii_base: rgba(247, 218, 224, 1);
+$main_base: linear-gradient(119.09688879952796deg, rgba(247, 218, 224,1) 27.086238958623895%,rgba(246, 218, 223,1) 27.754532775453278%,rgba(217, 218, 219,1) 91.91073919107392%);
+$changed_base: linear-gradient(178.7957173731338deg, rgba(218, 129, 240,0.4) 21.70967741935484%,rgba(218, 129, 240,0.4) 22.220430107526884%,rgba(220, 146, 240,0.1) 43.36559139784946%,rgba(222, 163, 240,0.31380597014925377) 63.08064516129032%,rgba(222, 163, 240,0.3977611940298508) 70.74193548387096%,rgba(222, 163, 240,0.4) 70.74193548387096%);
+
+$kawaii_bg: rgba(171, 120, 132, 0.31);//$kawaii_bg_keep: rgba($kawaii_base, 0.2);前のshops詳細bg
+$letter: darken($kawaii_main, 10%);
+$street: rgba(159, 101, 115, 0.35);
+$pink: #c71585;
+$purple: #483d8b;
+
+//ハッキリ強調textShadow
+@mixin text_shadow{
+	text-shadow: 1px 1px 1px #ffffff, -1px -1px 2px #ffffff;
+}
+$kawaii_style: "#menu2";
+$chic_style: "#menu3";
+@mixin change_color{
+	@if $kawaii_style {
+		#menu2{
+			color: red;
+		}
+	}@else{
+		#menu3{
+			color: blue;
+		}
+	}
+}
+
+
+@mixin change_test($change){	
+	@if $kawaii_base{
+	background-color: rgba(255, 243, 230, 1);
+}@else if $chic_base{
+	background-color: rgba(232, 231, 197, 1);
+}@else if $bitgame_base{
+	background-color: rgba(255, 243, 230, 1);
+}@else{
+	background-color: rgba(247, 218, 224, 1);
+}
+}
+$chic_main: rgba(1, 10, 67, 1);
+$chic_base: rgba(211, 218, 169, 1);
+$bitgame_main: rgba(36, 5, 17, 1);
+$bitgame_base: rgba(255, 243, 230, 1);
