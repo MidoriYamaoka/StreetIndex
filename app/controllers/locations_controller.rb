@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 	end
 
 	def index
-		@today = Time.zone.now
+		#@today = Time.zone.now
 		p "hellow world again! from location action index"
 		search
 		p @street_num
@@ -18,11 +18,11 @@ class LocationsController < ApplicationController
 			@street_num=1
 		else
 			@street_num=@street_num.to_i
-			#p "今@street_numの値は#{@street_num}ですよ"
+			p "今@street_numの値は#{@street_num}ですよ"
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
-		@cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-		@cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops
 		@grayAction = "border: 6px solid gray; box-shadow: 0px 0px 36px 18px rgba(73,74,76,0.47) inset;"
@@ -41,49 +41,52 @@ class LocationsController < ApplicationController
 	
 	def closeShops##営業時間反映実験##
 			p "クロー！"
-			p @streetSide.id
+			@streetSide.id
 			@closeShops_0 = []
 			@closeShops_1 = []
-			p @today = Time.zone.now#=>Thu, 24 Dec 2020 12:15:09 JST +09:00
+			@today = Time.zone.now#=>Thu, 24 Dec 2020 12:15:09 JST +09:00
 			@hun = @today.min.to_s
 		  if @hun.length === 1#=>1桁なら0を追加
 		  	@hun = "0"+@hun
 		  end
 			p @present = @today.hour.to_s+@hun#=>"2337"
 			
-			#@cityscape = Location.where(street_id: @street_num).pluck(:id)
-			#[1, 2, 3, 4, 21, 22, 23, 24, 25, 26, 27, 28, 29]
-			#@cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-			#@cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-			
-			p @cityscape0#<=イマココ！まだこのアクションに値が入ってないっぽい。_1も同じだと思う。2/8
-			@cityscape0.each do |id|
+			#p "ここから@cityscape0"
+			@cityscape0.each do |id| #side0
 				@shopLists = Shop.where(location_id: id).pluck(:id)
-				@shopLists.each do |shop_id|
-					@operationHour = OperationHour.find_by(shop_id: 51)
+				@shopLists.each do |shopList|
+					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
+					@operationHour = OperationHour.find_by(shop_id: shopList)
 				end
 
-					if @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
-						p "営業時間中"
+					if @cross_street
+						#p "裏道です"
+					elsif @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
+						#p "営業時間中"
 					else
 						@shop_id = @operationHour.shop_id
 						@closeShops_0.push(@shop_id)
 					end
 			end
-			@cityscape1.each do |id|
+
+			#p "ここから@cityscape1"
+			@cityscape1.each do |id| #side1
 				@shopLists = Shop.where(location_id: id).pluck(:id)
-				@shopLists.each do |shop_id|
-					@operationHour = OperationHour.find_by(shop_id: 51)
+				@shopLists.each do |shopList|
+					#p "shopをshop_idで調べてるOperationHour"
+					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
+					@operationHour = OperationHour.find_by(shop_id: shopList)
 				end
 
-					if @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
-						p "営業時間中"
+					if @cross_street
+						#p "裏道です"
+					elsif @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
+						#p "営業時間中"
 					else
 						@shop_id = @operationHour.shop_id
 						@closeShops_1.push(@shop_id)
 					end
 			end
-			#p closeShops
 	end#closeShops終わり#
 	
 	def search##あいまい検索実験=>ストリート表示##
