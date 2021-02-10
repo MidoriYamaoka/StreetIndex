@@ -10,7 +10,6 @@ class LocationsController < ApplicationController
 	end
 
 	def index
-		#@today = Time.zone.now
 		p "hellow world again! from location action index"
 		search
 		p @street_num
@@ -33,10 +32,7 @@ class LocationsController < ApplicationController
 		@events = Event.all
 		@random = Random.new
 		@random = @random.rand(1..3)
-		##mall実験##
-		##表示の実験##
-		##scraping##
-		##touchmove実験##=>不要。
+		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要。
 	end
 	
 	def closeShops##営業時間反映実験##
@@ -61,11 +57,20 @@ class LocationsController < ApplicationController
 
 					if @cross_street
 						#p "裏道です"
-					elsif @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
-						#p "営業時間中"
-					else
-						@shop_id = @operationHour.shop_id
-						@closeShops_0.push(@shop_id)
+					elsif @operationHour.close1.blank?
+						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+							#p "営業時間中"
+						else
+							@shop_id = @operationHour.shop_id
+							@closeShops_0.push(@shop_id)
+						end
+					else #close1に値がある
+						if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+							p "close1に値あって営業中"
+						else
+							@shop_id = @operationHour.shop_id
+							@closeShops_0.push(@shop_id)
+						end
 					end
 			end
 
@@ -76,16 +81,25 @@ class LocationsController < ApplicationController
 					#p "shopをshop_idで調べてるOperationHour"
 					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
 					@operationHour = OperationHour.find_by(shop_id: shopList)
-				end
 
-					if @cross_street
-						#p "裏道です"
-					elsif @operationHour.open.to_i < @present.to_i && @operationHour.close.to_i > @present.to_i
-						#p "営業時間中"
+				if @cross_street
+					p "裏道です"
+				elsif @operationHour.close1.blank?
+					if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+						p "営業時間中"
 					else
 						@shop_id = @operationHour.shop_id
 						@closeShops_1.push(@shop_id)
 					end
+				else #close1に値がある
+					if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+						p "close1に値あって営業中"
+					else
+						@shop_id = @operationHour.shop_id
+						@closeShops_1.push(@shop_id)
+					end
+				end
+			end#shopList.each終わり
 			end
 	end#closeShops終わり#
 	
