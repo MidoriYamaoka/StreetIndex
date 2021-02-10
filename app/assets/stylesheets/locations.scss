@@ -1,16 +1,11 @@
 @import "kawaii";
-$color: blue;
-$chic_main: rgba(1, 10, 67, 1);
-$chic_base: rgba(211, 218, 169, 1);
-$bitgame_main: rgba(36, 5, 17, 1);
-$bitgame_base: rgba(255, 243, 230, 1);
 
 body{
 	width: 1125px;//iphoneXの画面ピクセル
 	height: 2436px;
 	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
 	font-size: 2.9rem;
-	color: $letter;//rgba(140, 83, 178, 1);
+	color: $chic_style_color;//rgba(140, 83, 178, 1);
 }
 img{
 	object-fit: cover;
@@ -40,105 +35,42 @@ a:visited{
 	white-space: nowrap;
 	height: 90vh;
 	width: 100%;
-	background: $main_base;
-	//pointer-events: none;//これでjsのshops詳細が効かなくなっちゃう//
-	//&:hover{
-	//	background: $changed_base;
-	//	@include change_color
-	//	}//($pink)
+	background: $chic_base;
 }
-
-	//@include test($chic_base);
-	//@include test($bitgame_base);
-#menu_bar{
-	border: 1px solid blue;
-	display: flex;
-	width: 28vh;
-	margin: unset;
-	padding-left: 0px;
-	text-align: center;
-	color: snow;
-}
-
-.menu{
-		border-radius: 41%;
-		border: 5px solid chocolate;
-		width: 4vh;
-		list-style: none;
-		margin: 0 auto;
-}
-#menu1{
-	background-color: $color;
-
-	&.menu.eng{
-		border-radius: 41%;
-		border: 5px solid chocolate;
-		width: 4vh;
-		list-style: none;
-		margin: 0 auto;
-		background-color: blue;
-		color: white;
-	}
-	&.menu.jnp{
-		border-radius: 41%;
-		border: 5px solid chocolate;
-		width: 4vh;
-		list-style: none;
-		margin: 0 auto;
-		background-color: snow;
-		color: red;
-	}
-}
-
-
-#menu1.toggleSwitch{
-		border-radius: 41%;
-		border: 5px solid chocolate;
-		width: 4vh;
-		list-style: none;
-		margin: 0 auto;
-	background-color: green;
-}
-
 	.streetString{
 		position: absolute;
 		top: 1vh;
-		&#nextSt{
-			left: -5vw;
-		}
-		&#exSt{
-			left: 100%;
-		}
+		left: 3vw;
+		color: $chic_accsentB;
 	}
 
 	#street{
 		position: absolute;
 		height: 6vh;
 		//left: 5vw;
-		background-color: $street;
+		background-color: $chic_accsentA;
 		top: 30vh;
-		color: ivory;
 	}
 	.shops{
 		position: absolute;
 		display: inline-block;
 		border-radius: 50%;
-		box-shadow: 0px 0px 36px 8px rgba(210,184,130,0.6) inset;
+		box-shadow: 0px 0px 28px -9px rgba(207,235,249,0.76) inset;//0px 0px 36px 8px rgba(210,184,130,0.6) inset;
 		width: 9vw;
 		height: 10vw;
 		font-size: 30px;
 		background-size: 101%;
-		background-color: #f3f1f1;
+		//background-color: #f3f1f1;
 		background-position: 50%;
 		background-repeat : no-repeat;
 	}
 span.shop_name{
-	top: 0.7vh;
-	left: 0.7vw;
+	top: 1vh;
+	left: 1vw;
 	position: absolute;
 	white-space: break-spaces;
 	font-size: 1.4rem;
-	letter-spacing: 0rem;
+	//letter-spacing: 0rem;
 	line-height: 1.6rem;
 }
 span.shop_nameMall{
@@ -154,25 +86,25 @@ span.shop_nameMall{
 		position: absolute;
 		width: 79vw;
 		height: 26vh;
-		border: 4px $letter solid;
-		border-radius: 7%;
-		background-color: $kawaii_bg;
+		border: 9px $chic_accsentA solid;
+		border-radius: 4vw;
+		background-color: rgba($chic_base, 0.9);
 		z-index: 100;
 		top: 27vh;
 		left: 20vw;
-		color: $letter;
+		color: $chic_main;
 	}
 	p#streetCon{
 		text-align: center;
 		margin-top: 1vh;
 	}
 	.streetOK{
-		color: snow;
+		color: $chic_accsentB;
 		position: absolute;
 		left: 84%;
 		font-size: 3rem;
 		width: 7vw;
-		background-color: $letter;
+		background-color: lighten($chic_accsentA, 5%);
 		border-radius: 1vh;
 	}
 
@@ -188,7 +120,7 @@ span.shop_nameMall{
 	position: relative;
 	width: 100%;
 	height: 70vh;
-	background-color: $kawaii_bg;////////////
+	background-color: darken($chic_base_ex ,20%);
 }
 
 #location_button{
@@ -196,6 +128,7 @@ span.shop_nameMall{
 	width: 100%;
 	height: 8vh;
 	display: flex;
+	
 	
 	#kensaku{
 		width: 55vh;
@@ -221,15 +154,17 @@ span.shop_nameMall{
 	input[type="submit"]{
 		font-size: 3rem;
 		color: snow;
-		background-color: $kawaii_main;
+		background-color: lighten($chic_accsentA, 5%);
 	}
 	//モバイルのみの機能
 	#gps_button{
 		position: relative;
 		top: 16px;
-		border: 1px $kawaii_bg solid;
+		border: 1px $chic_main solid;
 		width: 9vh;
 		border-radius: 76%;
+		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
+
 		
 		.fas.fa-location-arrow{
 			position: relative;
@@ -338,7 +273,7 @@ span.shop_nameMall{
 		height: 11vh;
 		text-align: center;
 		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
-		background-color: $kawaii_bg;
+		background-color: $chic_base;
 	}
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
