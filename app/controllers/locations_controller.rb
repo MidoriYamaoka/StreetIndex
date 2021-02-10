@@ -24,10 +24,10 @@ class LocationsController < ApplicationController
 		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops
-		@grayAction = "border: 6px solid gray; box-shadow: 0px 0px 36px 18px rgba(73,74,76,0.47) inset;"
-		@greenAction = "border: 6px solid yellowgreen; box-shadow: 0px 0px 36px 18px rgba(73,74,76,0.47) inset;"
+		@grayAction = "border: 6px solid gray; box-shadow: 0px 0px 36px 18px rgba(210,199,171,0.76) inset;"
+		@greenAction = "border: 6px solid yellowgreen; box-shadow: 0px 0px 36px 18px rgba(210,199,171,0.76) inset;"
 		@mallCss = "border-radius: 1vh; border: 5px solid navy;"
-		@crossingStreet = "background-color: rgba(159, 101, 115, 0.65); box-shadow:none ;border-radius: 0vh; border: 0px;"
+		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none ;border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); padding-left: 0.9vh;margin-left: 0.9vh; "
 
 		@events = Event.all
 		@random = Random.new
