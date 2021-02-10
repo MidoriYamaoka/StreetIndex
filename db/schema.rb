@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_035529) do
+ActiveRecord::Schema.define(version: 2021_02_10_040647) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "event_title"
@@ -32,11 +32,13 @@ ActiveRecord::Schema.define(version: 2021_01_27_035529) do
   create_table "operation_hours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "shop_id"
     t.text "day"
-    t.integer "open"
-    t.integer "close"
+    t.integer "open1"
+    t.integer "close2"
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "open2"
+    t.integer "close1"
   end
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
