@@ -1,0 +1,29 @@
+<% @id=id %>
+<% @shop=Shop.find(@id) %>
+<ul class="mallShopInfo">
+<li class="mallShop">
+
+<div class="hidei">
+	<div id="info_fadeout" class="info_fadeout">×</div>
+
+<div id="shop_name"><%= @shop.shop_name %></div>
+	<div id="shop_img_grid_contaier">
+		<div id="shop_img1" style="background-image:url(<%= asset_path 'shop_img1.jpg' %>)"></div>
+		<div id="shop_img2" style="background-image:url(<%= asset_path 'shop_img5.jpg' %>)"></div>
+		<div id="shop_img3" style="background-image:url(<%= asset_path 'shop_img3.jpg' %>)"></div>
+		<div id="shop_img4" style="background-image:url(<%= asset_path 'shop_img4.jpg' %>)"></div>
+		<div id="shop_img5" style="background-image:url(<%= asset_path 'shop_img2.jpg' %>)"></div>
+	</div><!--shop_img_grid_contaier-->
+
+<div class="shop_category">
+	<% @shop.category.to_s.split("-").each do |i| %>
+		<%= "##{i}" %>
+	<% end %>
+</div>
+			<!--<div class="shop_campaign">Campaign  >></div>-->
+
+<div class="shop_floor"><%= @shop.floor %>F</div>
+<div class="shop_link"><%= link_to'ShopWebSite',@shop.url %></div>
+
+</li>
+</ul>

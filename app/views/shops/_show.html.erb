@@ -23,10 +23,13 @@
 						<%= @grayAction %>
 					<% end %>
 				">
+					
 					<% if tenant.logo_url.blank? %>
 						<span class="shop_nameMall"><%= tenant.shop_name %></span>
 					<% end %>
+					<!--モール店舗詳細-->
 				</li>
+					<%= render partial: 'shops/mallShop', locals: {id: tenant.id } %>
 			<% end %>
 			</ul>
 			</div>
