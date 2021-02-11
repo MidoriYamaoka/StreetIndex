@@ -19,7 +19,8 @@ $purple: #483d8b;
 
 //ハッキリ強調textShadow
 @mixin text_shadow{
-	text-shadow: 1px 1px 1px #ffffff, -1px -1px 2px #ffffff;
+	text_shadow: 10px 10px 10px #f9f3cd, -10px -10px 20px #f9f3cd;
+	
 }
 $kawaii_style: "#menu2";
 $chic_style: "#menu3";

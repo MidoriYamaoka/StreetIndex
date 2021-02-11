@@ -32,10 +32,8 @@
 							<% if @tenant.logo_url.blank? %>
 								<span class="shop_name"><%= @tenant.shop_name %></span>
 							<% end %>
-							<li class="hidei">
 
 								<%= render partial: 'shops/show', locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-							</li>
 						</ul>
 
 					<% elsif index >= 0 && ind >=1 then %><!--隣の2階以上￥-->
@@ -51,12 +49,13 @@
 									<% end %>
 
 								">
-							<% if @tenant.logo_url.blank? %>
-								<span class="shop_name"><%= @tenant.shop_name %></span>
-							<% end %>
-							<li class="hidei">
+									<% if @tenant.shop_name=="cross_street" %>
+										<span class="shop_name"><%= "" %></span>
+									<% elsif @tenant.logo_url.blank? %>
+										<span class="shop_name"><%= @tenant.shop_name %></span>
+									<% end %>
+
 								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg  } %>
-							</li>
 						</ul>
 
 					<% elsif index >= 0 then %><!--隣の1階-->
@@ -78,12 +77,14 @@
 										<%= @crossingStreet %>
 									<% end %>
 									">
-							<% if @tenant.logo_url.blank? %>
-								<span class="shop_name"><%= @tenant.shop_name %></span>
-							<% end %>
-							<li class="hidei">
+
+										<% if @tenant.shop_name=="cross_street" %>
+											<span class="shop_name"><%= "" %></span>
+										<% elsif @tenant.logo_url.blank? %>
+											<span class="shop_name"><%= @tenant.shop_name %></span>
+										<% end %>
+
 								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-							</li>
 						</ul>
 						
 					<% elsif index == 0 then %><!--最初の建物1階-->
@@ -106,9 +107,8 @@
 							<% if @tenant.logo_url.blank? %>
 								<span class="shop_name"><%= @tenant.shop_name %></span>
 							<% end %>
-							<li class="hidei">
+
 									<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-							</li>
 						</ul>
 						
 					<% end %><!--elsifいっぱいのend-->
