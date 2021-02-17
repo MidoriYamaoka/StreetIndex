@@ -6,18 +6,23 @@ $(document).ready(function(){
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
-  $('.info_fadeout').bind('touchstart', function() {
-  	//step_info.hide();
-  	$(this).parent('.hidei').hide();
-  	return false;//消された状態をキープ
+	$('div.info_fadeout').bind('touchstart', function() {
+		//shop要素、cross_streetを消す
+		$(this).parents('li.hidei').hide();
+		return false;//消された状態をキープ
 	});
+	$('div.mallShop_fadeout').bind('touchstart', function() {
+		//mallShop要素を消す
+		$(this).parents('ul.mallShopInfo').hide();
+		return false;//消された状態をキープ
+	});
+	
 	
 	$('ul.shops').bind('touchstart', function() {
 		$(this).children('li.hidei').fadeIn().offset({ top: 300, left: 120 });
 	});
 	
 	$('li.tenants').bind('touchstart', function() {
-		console.log("こっちだお");
 		$(this).next('ul.mallShopInfo').fadeIn();
 	});
 	//logoタッチ終わり//

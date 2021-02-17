@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_040647) do
+ActiveRecord::Schema.define(version: 2021_02_16_053940) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "event_title"
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 2021_02_10_040647) do
     t.integer "location_id"
     t.string "logo_url"
     t.integer "floor"
+    t.string "s_img1"
+    t.string "s_img2"
+    t.string "s_img3"
+    t.string "s_img4"
+    t.string "s_img5"
   end
 
   create_table "streets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

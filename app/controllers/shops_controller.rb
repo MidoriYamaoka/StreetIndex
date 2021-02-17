@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
 	
 	def show#render partialでは使わない
+		#p "Shopsコントローラのshowですよ"
 	end
 	
 	def index#お問い合わせ

@@ -4,15 +4,24 @@
 <li class="mallShop">
 
 <div class="hidei">
-	<div id="info_fadeout" class="info_fadeout">×</div>
+	<div id="info_fadeout" class="mallShop_fadeout">×</div>
 
 <div id="shop_name"><%= @shop.shop_name %></div>
 	<div id="shop_img_grid_contaier">
-		<div id="shop_img1" style="background-image:url(<%= asset_path 'shop_img1.jpg' %>)"></div>
-		<div id="shop_img2" style="background-image:url(<%= asset_path 'shop_img5.jpg' %>)"></div>
-		<div id="shop_img3" style="background-image:url(<%= asset_path 'shop_img3.jpg' %>)"></div>
-		<div id="shop_img4" style="background-image:url(<%= asset_path 'shop_img4.jpg' %>)"></div>
-		<div id="shop_img5" style="background-image:url(<%= asset_path 'shop_img2.jpg' %>)"></div>
+				<% @imgSequences=[1,2,3,4,5] %>
+				<% @imgSequences.each do |imgSequence| %>
+					<% if !eval("@shop_name.s_img#{imgSequence}").blank? %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= eval("@shop.s_img#{imgSequence}" ) %>)"></div>
+					<% elsif @shop.category.to_s.split("-")[0] =="shopping" %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sh_img#{imgSequence}.png" %>)"></div>
+					<% elsif @shop.category.to_s.split("-")[0]=="salon" %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sa_img#{imgSequence}.png" %>)"></div>
+					<% elsif @shop.category.to_s.split("-")[0]=="eat&drink" %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "eat_img#{imgSequence}.png" %>)"></div>
+					<% else %><!--other-->
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path 'other.png' %>)"></div>
+					<% end %>
+				<% end %>
 	</div><!--shop_img_grid_contaier-->
 
 <div class="shop_category">
