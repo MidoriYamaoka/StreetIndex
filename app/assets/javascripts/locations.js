@@ -17,7 +17,6 @@ $(document).ready(function(){
 		return false;//消された状態をキープ
 	});
 	
-	
 	$('ul.shops').bind('touchstart', function() {
 		$(this).children('li.hidei').fadeIn().offset({ top: 300, left: 120 });
 	});
@@ -26,9 +25,6 @@ $(document).ready(function(){
 		$(this).next('ul.mallShopInfo').fadeIn();
 	});
 	//logoタッチ終わり//
-	
-	//ぢっけんsass//
-	//sass//
 	
 	//event//
 	function eventClone(){
@@ -47,17 +43,18 @@ $(document).ready(function(){
 	});
 	$('.streetOK').on('touchstart', function() {
 		let stid=$(this).data('stid');
-		console.log(stid);
+		//console.log(stid);
 	});
 	//street_search終わり//
 
 	//shop_sort//
-	$('div#sort1').on('touchstart', function() {
+
+	$('div#sort1').on('touchstart.one', function() {
 			let text = "#shopping";
 		$('.shop_category').each(function(){
 			if(this.innerText.indexOf(text)>-1){
 				let shop=$(this).parents('ul');
-				shop.css('box-shadow','0px 0px 25px 8px rgba(204,126,255,0.6) inset');
+				shop.toggleClass('changeBoxshadow');
 			}	});
 	});
 
@@ -66,7 +63,7 @@ $(document).ready(function(){
 		$('.shop_category').each(function(){
 			if(this.innerText.indexOf(text)>-1){
 				let shop=$(this).parents('ul');
-				shop.css('box-shadow','0px 0px 28px 6px rgba(91,247,92,0.6) inset');
+				shop.toggleClass('changeBoxshadow');
 			}	});
 	});
 	
@@ -75,7 +72,7 @@ $(document).ready(function(){
 		$('.shop_category').each(function(){
 			if(this.innerText.indexOf(text)>-1){
 				let shop=$(this).parents('ul');
-				shop.css('box-shadow','0px 0px 25px 8px rgba(0,222,255,0.6) inset');
+				shop.toggleClass('changeBoxshadow');
 			} });
 	});
 
@@ -84,10 +81,9 @@ $(document).ready(function(){
 		$('.shop_category').each(function(){
 			if(this.innerText.indexOf(text)>-1){
 				let shop=$(this).parents('ul');
-				shop.css('box-shadow','0px 0px 25px 8px rgba(0,222,255,0.6) inset');
+				shop.toggleClass('changeBoxshadow');
 			}	});
 	});
-	
 	//sortswitch()イマココ！関数をまとめたい。
 
 	//shop_sort終わり//

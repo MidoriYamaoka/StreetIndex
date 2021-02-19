@@ -171,7 +171,9 @@ ul.mallShopInfo{
 	list-style: none;
 	left: -5vw;
 	top: 6vh;
-
+}
+.changeBoxshadow{
+	background-color: lighten($chic_accsentA, 70%);//darken($chic_base, 25%);
 }
 /*.shop_campaign{Shopモデルでdevise入ったら復活？
 	//border: 1px dotted green;
