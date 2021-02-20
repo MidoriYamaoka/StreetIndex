@@ -20,6 +20,20 @@ a:link{
 a:visited{
 	color: azure;
 }
+h5{
+	line-height: 0rem;
+	margin: 5rem 0rem 0rem 3rem;
+	font-size: 3.5rem;
+}
+p{
+	margin: 2rem 3rem 0rem 5rem;
+	white-space: normal;
+	line-height: 3rem;
+	font-size: 2.7rem;
+}
+.mailto{
+	background-color: $chic_style_color;
+}
 
 #drowse_top{
 	position: relative;
@@ -37,6 +51,28 @@ a:visited{
 	width: 100%;
 	background: $chic_base;
 }
+	#aboutus{
+		//border: 1px solid red;
+		height: 6vh;
+		width: 6vh;
+		position: fixed;
+		top: 12vh;
+		.fas.fa-comment-dots{
+			font-size: 8rem;
+		}
+		.whatishere{
+			border: 6px solid darken($chic_accsentA ,70%);
+			height: 45vh;
+			width: 50vh;
+			position: relative;
+			left: 13vw;
+			border-radius: 3rem;
+			background-color: darken($chic_base ,10%);
+			display: none;
+		}
+	}
+
+	
 	.streetString{
 		position: absolute;
 		top: 1vh;
@@ -60,9 +96,10 @@ a:visited{
 		height: 10vw;
 		font-size: 30px;
 		background-size: 101%;
-		//background-color: #f3f1f1;
 		background-position: 50%;
 		background-repeat : no-repeat;
+		//background-color: rgba(255,255,255,0.8);
+		//background-blend-mode: lighten;
 	}
 span.shop_name{
 	top: 1vh;
@@ -119,7 +156,7 @@ span.shop_nameMall{
 #bottom_space{
 	position: relative;
 	width: 100%;
-	height: 70vh;
+	height: 33vh;
 	background-color: darken($chic_base_ex ,20%);
 }
 
@@ -128,7 +165,6 @@ span.shop_nameMall{
 	width: 100%;
 	height: 8vh;
 	display: flex;
-	
 	
 	#kensaku{
 		width: 55vh;
@@ -273,7 +309,7 @@ span.shop_nameMall{
 		height: 11vh;
 		text-align: center;
 		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
-		background-color: $chic_base;
+		//background-color: $chic_base;
 	}
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;

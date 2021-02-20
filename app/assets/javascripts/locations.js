@@ -3,6 +3,7 @@ $(document).ready(function(){
 	let step_info = $('li.hidei'),
 			mallInfo=$('.mallInfo'),
 			mallShopInfo=$('ul.mallShopInfo');
+			//$('#whatishere').hide();
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
@@ -23,6 +24,10 @@ $(document).ready(function(){
 	
 	$('li.tenants').bind('touchstart', function() {
 		$(this).next('ul.mallShopInfo').fadeIn();
+	});
+	
+	$('.fas.fa-comment-dots').on('touchstart', function() {
+		$('.whatishere').fadeToggle('slow');
 	});
 	//logoタッチ終わり//
 	
