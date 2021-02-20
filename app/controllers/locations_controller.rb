@@ -24,15 +24,15 @@ class LocationsController < ApplicationController
 		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops
-		@grayAction = "border: 6px solid gray; box-shadow: 0px 0px 36px 18px rgba(210,199,171,0.76) inset;"
-		@greenAction = "border: 6px solid yellowgreen; box-shadow: 0px 0px 36px 18px rgba(210,199,171,0.76) inset;"
+		@grayAction = "border: 6px solid gray;"
+		@greenAction = "border: 6px solid yellowgreen;"
 		@mallCss = "border-radius: 1vh; border: 5px solid navy;"
 		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none ;border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); padding-left: 0.9vh;margin-left: 0.9vh; "
 
-		@events = Event.all
+		@events = Event.all.limit(5).order('id DESC')#5件制限。降順
 		@random = Random.new
 		@random = @random.rand(1..3)
-		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要。
+		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要
 	end
 	
 	def closeShops##営業時間反映実験##

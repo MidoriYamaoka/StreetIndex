@@ -6,12 +6,27 @@
 	<div id="main_space">
 		<% @streetLength=@cityscape1.length*13 %><!--道の長さ-->
 		
+
+		
 		<div id="street" style="width:<%= @streetLength %>vw;">
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
 
 		<%= render partial: 'locations/cityscape0', locals: {street: @streetSide0, city: @cityscape0 } %>
 		<%= render partial: 'locations/cityscape1', locals: {street: @streetSide1, city: @cityscape1 } %>
+
+		<div id="aboutus">
+			<i class="fas fa-comment-dots"></i>
+			<div class="whatishere">
+				<h5>StreetIndex?</h5>
+					<p>You can check all shops on the street.<br>
+					通り沿いのお店をマルっとチェック。</p>
+				<h5>News&Update</h5>
+					<p>2021/2/**   テスト版スタート</p>
+				<h5>ContactUs</h5>
+					<p>店舗情報や掲載内容の変更・修正、イベント情報の掲載依頼、ご意見などは、<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a></p>
+			</div>
+		</div>
 
 	</div><!--#main_space終わり-->
 
@@ -67,11 +82,7 @@
 				<span class="sort_name">kids</span>
 			</div>
 		</div>
-		
-		<div id="cityscapeImgs">imgのスペース〜</div>
-		<div id="footer">
-			<%= render "shops/index" %>
-		</div>
+
 	</div><!--buttom_space終わり-->
 	</div>
 	
