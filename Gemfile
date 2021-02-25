@@ -67,3 +67,7 @@ gem "font-awesome-rails"
 gem 'jquery-turbolinks'
 gem 'mechanize'
 gem 'kaminari'
+
+group :production do
+  gem 'rails_12factor'
+end
