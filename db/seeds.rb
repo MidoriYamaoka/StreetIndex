@@ -1,6 +1,6 @@
 require "csv"
 
-streets_csv = CSV.readlines("db/streets.csv")
-streets_csv.each do |row|
-  Street.create(street_name: row[1], side0: row[2], side1: row[3])
+locations_csv = CSV.readlines("db/locations.csv")
+locations_csv.each do |row|
+  Location.create(location: row[1], street_id: row[2], side: row[3])
 end
