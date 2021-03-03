@@ -20,6 +20,7 @@ class LocationsController < ApplicationController
 			p "今@street_numの値は#{@street_num}ですよ"
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
+		p @streetSide.street_name
 		p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
@@ -58,7 +59,7 @@ class LocationsController < ApplicationController
 
 					if @cross_street
 						#p "裏道です"
-					elsif @operationHour.close1.blank?
+					elsif @operationHour.close1.blank?##この表記でエラーheroku!
 						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
 							#p "営業時間中"
 						else
@@ -120,7 +121,7 @@ class LocationsController < ApplicationController
 			 @streetNames=@streetNames.compact#nil要素を削除
 			 
 				if params[:commit].blank?
-					@street_num=3
+					@street_num=1
 					p "commit.blankに来てます"
 				else
 					p @street_num=params[:commit]
