@@ -47,10 +47,10 @@ class LocationsController < ApplicationController
 		  if @hun.length === 1#=>1桁なら0を追加
 		  	@hun = "0"+@hun
 		  end
-		  p "このtextみれますか？"
+		  p "このtextみれますか？"		
 			p @present = @today.hour.to_s+@hun#=>"2337"
 			
-			#p "ここから@cityscape0"
+			p "ここから@cityscape0"
 			@cityscape0.each do |id| #side0
 				@shopLists = Shop.where(location_id: id).pluck(:id)
 				@shopLists.each do |shopList|
