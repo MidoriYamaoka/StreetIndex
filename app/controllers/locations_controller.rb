@@ -55,16 +55,18 @@ class LocationsController < ApplicationController
 				@shopLists.each do |shopList|
 					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
 					@operationHour = OperationHour.find_by(shop_id: shopList)
+					p @cross_street.shop_id
 				end
 
 					if @cross_street
-						#p "裏道です"
+						p "裏道です"
 					elsif @operationHour.close1.blank?##この表記でエラーheroku!
 						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
-							#p "営業時間中"
+							p "営業時間中"
 						else
 							@shop_id = @operationHour.shop_id
 							@closeShops_0.push(@shop_id)
+							p "shop_id#{@shop_id}しまってます。"
 						end
 					else #close1に値がある
 						if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
