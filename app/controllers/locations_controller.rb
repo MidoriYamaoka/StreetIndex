@@ -47,6 +47,7 @@ class LocationsController < ApplicationController
 		  if @hun.length === 1#=>1桁なら0を追加
 		  	@hun = "0"+@hun
 		  end
+		  p "このtextみれますか？"
 			p @present = @today.hour.to_s+@hun#=>"2337"
 			
 			#p "ここから@cityscape0"
@@ -55,6 +56,7 @@ class LocationsController < ApplicationController
 				@shopLists.each do |shopList|
 					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
 					@operationHour = OperationHour.find_by(shop_id: shopList)
+					p "ここまでは到達。"
 					p @cross_street.shop_id
 				end
 
