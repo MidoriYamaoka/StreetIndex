@@ -58,12 +58,13 @@ class LocationsController < ApplicationController
 					@operationHour = OperationHour.find_by(shop_id: shopList)
 					#p "ここまで到達!cross_streetは#{@cross_street}です"
 					p "ここまで到達!shopListは#{shopList}です"
-
 				end
 
 					if @cross_street
-						p "裏道です"
-					elsif @operationHour.close1.blank?##この表記でエラーheroku!
+						p "Alley-裏通りです"
+					elsif @operationHour.blank?
+						p "店舗ありません"
+					elsif @operationHour.close1.blank?
 						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
 							p "営業時間中"
 						else
@@ -78,7 +79,7 @@ class LocationsController < ApplicationController
 							@shop_id = @operationHour.shop_id
 							@closeShops_0.push(@shop_id)
 						end
-					end
+					end #if @operationHour.blank?の終わり
 			end
 
 			#p "ここから@cityscape1"
@@ -90,7 +91,9 @@ class LocationsController < ApplicationController
 					@operationHour = OperationHour.find_by(shop_id: shopList)
 
 				if @cross_street
-					p "裏道です"
+					p "Alley-裏通りです"
+				elsif @operationHour.blank?
+					p "店舗ありません"
 				elsif @operationHour.close1.blank?
 					if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
 						p "営業時間中"
