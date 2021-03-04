@@ -92,17 +92,17 @@ $(document).ready(function(){
 	//sortswitch
 	
 	//最初のパスワード
-	$('#passwordinput').on('touchstart', function(){
-		let UserInput = prompt("パスワードを入力して下さい:","");
-		// 入力内容をチェック
-		if( /\W+/g.test(UserInput) ) {// 半角英数字以外エラー
-			alert("半角英数字のみを入力して下さい。");
-		}else if( UserInput != null ) {
-			let ans="stin";
-			if(UserInput==ans){
-				$('#thegate').hide();
-			}//ifの終わり
-		}//else ifの終わり
-	});
+//	$('#passwordinput').on('touchstart', function(){
+//		let UserInput = prompt("パスワードを入力して下さい:","");
+//		// 入力内容をチェック
+//		if( /\W+/g.test(UserInput) ) {// 半角英数字以外エラー
+//			alert("半角英数字のみを入力して下さい。");
+//		}else if( UserInput != null ) {
+//			let ans="stin";
+//			if(UserInput==ans){
+//				$('#thegate').hide();
+//			}//ifの終わり
+//		}//else ifの終わり
+//	});
 
 });
