@@ -53,13 +53,15 @@
 
 			<div id="shop_img_grid_contaier">
 				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(10).pluck(:id) %>
-				<% @location_ids.each do |id| %>
+				<% @location_ids.each do |id| %><!--nilClassを弾いてしまう-->
 					<% @shopImgBag=[] %>
 					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% @shopImgBag.push(@shopImg.s_img1) %>
+					<% if @shopImg.s_img1 %><!--加えてみた-->
+						<% @shopImgBag.push(@shopImg.s_img1) %>
+					<% end %><!--加えてみた-->
 				<% end %>
 
-				<% if @shopImgBag.blank? %>
+				<% if @shopImgBag.blank? %><!--herokuに反映されてない。-->
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
 					<div id="shop_img2" style="background-image:url(<%= asset_path 'sa_img2.png' %>)"></div>
 					<div id="shop_img3" style="background-image:url(<%= asset_path 'sh_img3.png' %>)"></div>
