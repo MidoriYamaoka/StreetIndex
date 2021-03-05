@@ -56,7 +56,7 @@
 				<% @shopImgBag=[] %>
 				<% @location_ids.each do |id| %><!--nilClassを弾いてしまう-->
 					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% if @shopImg.s_img1.nil? %><!--加えてみた-->
+					<% if @shopImg&.s_img1.nil? %><!--加えてみた-->
 						<% p "画像ありません" %>
 					<% else %>
 						<% @shopImgBag.push(@shopImg.s_img1) %>
