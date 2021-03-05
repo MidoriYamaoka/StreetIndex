@@ -53,10 +53,10 @@
 
 			<div id="shop_img_grid_contaier">
 				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(10).pluck(:id) %>
+				<% @shopImgBag=[] %>
 				<% @location_ids.each do |id| %><!--nilClassを弾いてしまう-->
-					<% @shopImgBag=[] %>
 					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% if s_img1.nil? %><!--加えてみた-->
+					<% if @shopImg.s_img1.nil? %><!--加えてみた-->
 						<% p "画像ありません" %>
 					<% else %>
 						<% @shopImgBag.push(@shopImg.s_img1) %>
