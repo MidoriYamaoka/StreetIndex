@@ -55,7 +55,7 @@ class LocationsController < ApplicationController
 				@shopLists = Shop.where(location_id: id).pluck(:id)
 				@shopLists.each do |shopList|
 					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
-					@operationHour = OperationHour.find_by(shop_id: shopList)
+					@operationHour = OperationHour.find_by(shop_id: shopList, day: @today.wday)
 					#p "ここまで到達!cross_streetは#{@cross_street}です"
 					p "ここまで到達!shopListは#{shopList}です"
 				end
