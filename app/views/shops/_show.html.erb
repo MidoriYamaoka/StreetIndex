@@ -42,7 +42,7 @@
 				<% p @streetInfo=Street.find_by(street_name: @locationInfo.location)%><!--streetレコード-->
 				
 				<% if @streetInfo.blank? %>
-					<% @streetInfo=Street.find(6) %>
+					<% @streetInfo=Street.find(10) %>
 					<%= @streetInfo.street_name %>
 					<% p "@streetInfoありまセーン" %>
 				<% else %>
