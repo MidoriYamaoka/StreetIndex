@@ -1,11 +1,11 @@
-
 //Chic_style;
 $chic_style_color: rgba(1, 14, 95, 1);//メインカラー
-$chic_base: rgba(239, 231, 174, 1);//rgba(235, 226, 152, 1);//ベースカラー
-$chic_base_ex: rgba(235, 226, 152, 0.5);
-$chic_accsentA: rgba(2, 15, 100, 0.86);//アクセントカラーA(street_color)
-$chic_accsentB: rgba(255, 253, 240, 1);//rgba(255, 250, 214, 1);//アクセントカラーB(color_B)
-$chic_main: rgba(1, 10, 67, 1);//文字色
+$chic_accsentB: rgba(255, 251, 224, 1);//rgba(255, 250, 214, 1);//アクセントカラーB(color_B)
+$chic_base: darken($chic_accsentB, 15%);//rgba(239, 231, 174, 1);//rgba(235, 226, 152, 1);//ベースカラー
+$chic_base_ex: darken($chic_accsentB, 50%);//rgba(235, 226, 152, 0.5);//bottom_space
+$chic_accsentA: rgba($chic_style_color, 0.86); //street_color: rgba(2, 15, 100, 0.86);
+$chic_main: darken($chic_style_color, 5%);//文字色//rgba(1, 10, 67, 1)
+$orange: rgba(198, 62, 16, 1);//rgba(255, 68, 8, 1);//#ff4408;
 
 $kawaii_main: rgba(140, 83, 178, 1);
 $kawaii_base: rgba(247, 218, 224, 1);

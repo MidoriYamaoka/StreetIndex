@@ -6,7 +6,6 @@
 
 			<% @mall=@each_bldgs.group_by().count() %>
 			<% if @mall>5 %>
-				<% p "ここで詰まっとる？？" %>
 				<% @each_bldgs=[60] %>
 			<% end %>
 			<% if !@crossing.blank? %>
