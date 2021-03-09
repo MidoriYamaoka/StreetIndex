@@ -35,7 +35,7 @@ $(document).ready(function(){
 	function eventClone(){
 		setTimeout(function(){
 			$('ul#event_carousel').clone().appendTo('div#event_area');
-		},6000);
+		},7000);
 	}
 	eventClone();
 	//event終わり//

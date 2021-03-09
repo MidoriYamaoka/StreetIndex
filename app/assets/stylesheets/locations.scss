@@ -174,7 +174,7 @@ span.shop_nameMall{
 	}
 
 	#search_button{
-	//border: 1px red solid;
+		z-index: 1;//safariのradius対策
 		width: 9vh;
 		height: 8vh;
 		left: 71%;
@@ -252,7 +252,7 @@ span.shop_nameMall{
 		color: #fff;
 		font-size  : 2rem;
 		font-weight: bold;
-		animation  : event_titleAnime3 4s linear infinite alternate;
+		animation  : event_titleAnime3 7s linear infinite alternate;
 		padding-left: 15px;
 		padding-bottom: 3px;
 	}
