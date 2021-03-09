@@ -1,6 +1,6 @@
 require "csv"
 
-operationhours_csv = CSV.readlines("db/operationhours.csv")
-operationhours_csv.each do |row|
-  OperationHour.create(shop_id: row[1], day: row[2], open1: row[3], close1: row[4], open2: row[5], close2: row[6])
+events_csv = CSV.readlines("db/events.csv")
+events_csv.each do |row|
+  Event.create(event_title: row[1], goal: row[2], event_url: row[3])
 end

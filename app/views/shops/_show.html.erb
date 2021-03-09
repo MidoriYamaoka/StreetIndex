@@ -63,7 +63,7 @@
 					<% end %><!--加えてみた-->
 				<% end %>
 
-				<% if @shopImgBag.blank? %><!--herokuに反映されてない。-->
+				<% if @shopImgBag&.blank? %><!--herokuに反映されてない。-->
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
 					<div id="shop_img2" style="background-image:url(<%= asset_path 'sa_img2.png' %>)"></div>
 					<div id="shop_img3" style="background-image:url(<%= asset_path 'sh_img3.png' %>)"></div>

@@ -317,7 +317,8 @@ span.shop_nameMall{
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
 		top: 1vw;
-		font-size: 8rem;
+		left: 0.5vw;//ハサミ縦並び対策
+		font-size: 8.2rem;
 	}
 	.fas.fa-kiwi-bird.parent{
 		position: relative;
