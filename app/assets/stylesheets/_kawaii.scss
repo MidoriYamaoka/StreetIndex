@@ -1,7 +1,7 @@
 //Chic_style;
-$chic_style_color: rgba(1, 14, 95, 1);//メインカラー
-$chic_accsentB: rgba(255, 251, 224, 1);//rgba(255, 250, 214, 1);//アクセントカラーB(color_B)
-$chic_base: darken($chic_accsentB, 15%);//rgba(239, 231, 174, 1);//rgba(235, 226, 152, 1);//ベースカラー
+$chic_style_color: rgba(1, 14, 95, 1);//navy
+$chic_accsentB: rgba(255, 251, 224, 1);//street_name
+$chic_base: darken($chic_accsentB, 15%);//main_space rgba(239, 231, 174, 1);//rgba(235, 226, 152, 1);//ベースカラー
 $chic_base_ex: darken($chic_accsentB, 50%);//rgba(235, 226, 152, 0.5);//bottom_space
 $chic_accsentA: rgba($chic_style_color, 0.86); //street_color: rgba(2, 15, 100, 0.86);
 $chic_main: darken($chic_style_color, 5%);//文字色//rgba(1, 10, 67, 1)
