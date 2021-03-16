@@ -66,7 +66,7 @@
 				<% p "@shopImgBag.lengthは、、、" %>
 				<% p @shopImgBag.length %>
 
-				<% if @shopImgBag.length<5 %>
+				<% if @shopImgBag.length<5 || @streetInfo.id == 10 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
 					<div id="shop_img2" style="background-image:url(<%= asset_path 'sa_img2.png' %>)"></div>
 					<div id="shop_img3" style="background-image:url(<%= asset_path 'sh_img3.png' %>)"></div>
