@@ -72,9 +72,9 @@
 					<div id="shop_img4" style="background-image:url(<%= asset_path 'sa_img4.png' %>)"></div>
 					<div id="shop_img5" style="background-image:url(<%= asset_path 'eat_img5.png' %>)"></div>
 
-				<% elsif @shopImgBag.length>5 %>
+				<% else %>
 					<% @shopImgBag.sample(5).each_with_index do |img, index| %>
-						<div id="shop_img<%= index %>" style="background-image:url(<%= img %>)"></div>
+						<div id="shop_img<% index+1 %>" style="background-image:url(<%= img %>)"></div>
 					<% end %>
 				<% end %>
 			</div>
