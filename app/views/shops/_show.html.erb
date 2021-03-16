@@ -64,6 +64,7 @@
 				<% end %>
 					<% p "@shopImgBag.lengthは、、、" %>
 				<% p @shopImgBag.length %>
+				<% p @shopImgBag[4] %>
 
 				<% if @shopImgBag.length<5 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
@@ -74,7 +75,7 @@
 
 				<% else %>
 					<% @shopImgBag.sample(5).each_with_index do |img, index| %>
-						<div id="shop_img<% index+1 %>" style="background-image:url(<%= img %>)"></div>
+						<div id="shop_img<%= index+1 %>" style="background-image:url(<%= img %>)"></div>
 					<% end %>
 				<% end %>
 			</div>
