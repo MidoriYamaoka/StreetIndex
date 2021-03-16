@@ -2,7 +2,7 @@
 
 body{
 	width: 1125px;//iphoneXの画面ピクセル
-	height: 2436px;
+	height: 2214px;//-222px
 	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
 	font-size: 2.9rem;
 	color: $chic_style_color;//rgba(140, 83, 178, 1);
@@ -47,7 +47,7 @@ p{
 	padding: 0;
 	overflow-x: auto;
 	white-space: nowrap;
-	height: 96vh; //90=>96
+	height: 100vh; //90=>96=>100
 	width: 100%;
 	background: $chic_base;
 }
@@ -184,7 +184,7 @@ span.shop_nameMall{
 	}
 	input[type="text"]{
 		width: 70vw;
-		height: 7.5vh;
+		height: 6.5vh;//7.5=>6.5
 		margin-top: 0.5vh;
 		margin-left: 5vh;
 		font-size: 5rem;

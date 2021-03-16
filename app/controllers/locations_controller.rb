@@ -34,7 +34,6 @@ class LocationsController < ApplicationController
 		@random = Random.new
 		@random = @random.rand(1..3)
 		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要
-
 	end
 	
 	def closeShops##営業時間反映実験##

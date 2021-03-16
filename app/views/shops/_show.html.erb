@@ -31,7 +31,7 @@
 					<!--モール店舗詳細-->
 				</li>
 					<%= render partial: 'shops/mallShop', locals: {id: tenant.id } %>
-			<% end %>
+			<% end %><!--@tenants.eachのend-->
 			</ul>
 			</div>
 
@@ -54,22 +54,25 @@
 			<div id="shop_img_grid_contaier">
 				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(10).pluck(:id) %>
 				<% @shopImgBag=[] %>
-				<% @location_ids.each do |id| %><!--nilClassを弾いてしまう-->
+				<% @location_ids.each do |id| %>
 					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% if @shopImg&.s_img1.nil? %><!--加えてみた-->
-						<% p "画像ありません" %>
+					<% if @shopImg&.s_img1.nil? %>
+						<%# p "画像ありません" %>
 					<% else %>
 						<% @shopImgBag.push(@shopImg.s_img1) %>
-					<% end %><!--加えてみた-->
+					<% end %>
 				<% end %>
+					<% p "@shopImgBag.lengthは、、、" %>
+				<% p @shopImgBag.length %>
 
-				<% if @shopImgBag&.blank? %><!--herokuに反映されてない。-->
+				<% if @shopImgBag.length<5 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
 					<div id="shop_img2" style="background-image:url(<%= asset_path 'sa_img2.png' %>)"></div>
 					<div id="shop_img3" style="background-image:url(<%= asset_path 'sh_img3.png' %>)"></div>
 					<div id="shop_img4" style="background-image:url(<%= asset_path 'sa_img4.png' %>)"></div>
 					<div id="shop_img5" style="background-image:url(<%= asset_path 'eat_img5.png' %>)"></div>
-				<% elsif @shopImgBag.length>=5 %>
+
+				<% elsif @shopImgBag.length>5 %>
 					<% @shopImgBag.sample(5).each_with_index do |img, index| %>
 						<div id="shop_img<%= index %>" style="background-image:url(<%= img %>)"></div>
 					<% end %>
@@ -80,8 +83,15 @@
 				<a>Go to <%= @streetInfo.street_name %> ?</a><br>
 				<%= form_with(url: "/", method: :get, local: true) do %>
 				<% p "Street.id#{@streetInfo.id}に変遷予定です" %>
-				<a data-style="gotoStreet">[Yes]<%= submit_tag"#{@streetInfo.id}", data:{style:"gotoStreet"} %></a>
-				<a class="info_fadeout", data-style="gotoStreet">[No]</a>
+				<a data-style="gotoStreet">[Yes]
+					<% if @streetInfo.id==10 %>
+						<% @keepout=true %>
+					<% else %>
+						<% @keepout=false %>
+					<% end %>
+					<%= submit_tag"#{@streetInfo.id}", data:{style:"gotoStreet"}, disabled: @keepout %>
+				</a>
+				<a class="info_fadeout", data-style="gotoStreet">[No]</a><!--info_fadeout動いてないjs-->
 				<% end %>
 			</div>
 
