@@ -52,19 +52,19 @@
 			</div>
 
 			<div id="shop_img_grid_contaier">
-				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(10).pluck(:id) %>
+				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(8).pluck(:id) %>
 				<% @shopImgBag=[] %>
 				<% @location_ids.each do |id| %>
 					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% if @shopImg.s_img1 %>
+					<% if @shopImg&.s_img1 %>
 						<% @shopImgBag.push(@shopImg.s_img1) %>
 					<% else %>
 						<% p "画像ありません" %>
 					<% end %>
 				<% end %>
-					<% p "@shopImgBag.lengthは、、、" %>
+				<% @shopImgBag.reject(&:blank?) %>
+				<% p "@shopImgBag.lengthは、、、" %>
 				<% p @shopImgBag.length %>
-				<% p @shopImgBag[4] %>
 
 				<% if @shopImgBag.length<5 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
