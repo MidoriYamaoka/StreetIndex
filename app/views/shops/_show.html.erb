@@ -44,9 +44,9 @@
 				<% if @streetInfo.blank? %>
 					<% @streetInfo=Street.find(10) %>
 					<%= @streetInfo.street_name %>
-					<% p "@streetInfoありまセーン" %>
+					<%# p "@streetInfoありまセーン" %>
 				<% else %>
-					<% p "@streetInfoあります" %>
+					<%# p "@streetInfoあります" %>
 					<%= @streetInfo.street_name %>
 				<% end %>
 			</div>
@@ -59,12 +59,10 @@
 					<% if @shopImg&.s_img1 %>
 						<% @shopImgBag.push(@shopImg.s_img1) %>
 					<% else %>
-						<% p "画像ありません" %>
+						<%# p "画像ありません" %>
 					<% end %>
 				<% end %>
 				<% @shopImgBag.reject(&:blank?) %>
-				<% p "@shopImgBag.lengthは、、、" %>
-				<% p @shopImgBag.length %>
 
 				<% if @shopImgBag.length<5 || @streetInfo.id == 10 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
@@ -83,7 +81,7 @@
 			<div id="enterStreet">
 				<a>Go to <%= @streetInfo.street_name %> ?</a><br>
 				<%= form_with(url: "/", method: :get, local: true) do %>
-				<% p "Street.id#{@streetInfo.id}に変遷予定です" %>
+				<%# p "Street.id#{@streetInfo.id}に変遷予定です" %>
 				<a data-style="gotoStreet">[Yes]
 					<% if @streetInfo.id==10 %>
 						<% @keepout=true %>
@@ -110,7 +108,7 @@
 					<% elsif @shop_name.category.to_s.split("-")[0]=="eat&drink" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "eat_img#{imgSequence}.png" %>)"></div>
 					<% else %><!--other-->
-						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path 'other.png' %>)"></div>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "other#{imgSequence}.png" %>)"></div>
 					<% end %>
 				<% end %>
 			</div><!--shop_img_grid_contaier-->

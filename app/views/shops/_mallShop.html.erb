@@ -19,7 +19,7 @@
 					<% elsif @shop.category.to_s.split("-")[0]=="eat&drink" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "eat_img#{imgSequence}.png" %>)"></div>
 					<% else %><!--other-->
-						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path 'other.png' %>)"></div>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "other#{imgSequence}.png" %>)"></div>
 					<% end %>
 				<% end %>
 	</div><!--shop_img_grid_contaier-->
