@@ -3,11 +3,11 @@ $(document).ready(function(){
 	let step_info = $('li.hidei'),
 			mallInfo=$('.mallInfo'),
 			mallShopInfo=$('ul.mallShopInfo');
-			//$('#whatishere').hide();
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
-	$('div.info_fadeout').bind('touchstart', function() {
+	//$('div.info_fadeout').bind('touchstart', function() {
+	$('.info_fadeout').bind('touchstart', function() {
 		//shop要素、cross_streetを消す
 		$(this).parents('li.hidei').hide();
 		return false;//消された状態をキープ
