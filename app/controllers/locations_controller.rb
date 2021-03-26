@@ -12,6 +12,7 @@ class LocationsController < ApplicationController
 	def index
 		p "hellow world again! from location action index"
 		search
+		@testsql=Street.joins(:locations).select("streets.id, locations.location").first.location
 		p @street_num
 		if @street_num.blank?
 			@street_num=1
@@ -23,6 +24,7 @@ class LocationsController < ApplicationController
 		p @streetSide.street_name
 		p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		@sss = Street.joins(:locations).select("locations.*").merge(Location.where(street_id: @street_num)).merge(Location.where(side:1)).order(:id)
 
 		closeShops
 		@grayAction = "border: 6px solid gray;"

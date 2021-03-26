@@ -6,7 +6,9 @@
 
 	<div id="main_space">
 		<% @streetLength=@cityscape1.length*13.8%><!--道の長さ13=>16=>14=>13.5=>13.8-->
-		
+		<% @sss.each do |ss| %>
+		<%= ss.id %>
+		<% end %>
 		<div id="street" style="width:<%= @streetLength %>vw;">
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
