@@ -2,7 +2,7 @@
 
 body{
 	width: 1125px;//iphoneXの画面ピクセル
-	height: 2436px;
+	height: 2214px;//-222px
 	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
 	font-size: 2.9rem;
 	color: $chic_style_color;//rgba(140, 83, 178, 1);
@@ -47,7 +47,7 @@ p{
 	padding: 0;
 	overflow-x: auto;
 	white-space: nowrap;
-	height: 90vh;
+	height: 100vh; //90=>96=>100
 	width: 100%;
 	background: $chic_base;
 }
@@ -56,9 +56,12 @@ p{
 		height: 6vh;
 		width: 6vh;
 		position: fixed;
-		top: 12vh;
+		top: 2vh;
 		.fas.fa-comment-dots{
 			font-size: 8rem;
+			&:active {//追加。
+				color: $orange;
+			}
 		}
 		.whatishere{
 			border: 6px solid darken($chic_accsentA ,70%);
@@ -151,13 +154,13 @@ span.shop_nameMall{
 	height: 33vh;
 	width: 114%;
 	overflow: scroll;
-	top: 69vh;
+	top: 67vh; //69=>67。
 }
 #bottom_space{
 	position: relative;
 	width: 100%;
 	height: 33vh;
-	background-color: darken($chic_base_ex ,20%);
+	background-color: rgba($chic_base_ex ,0.4);
 }
 
 #location_button{
@@ -171,41 +174,40 @@ span.shop_nameMall{
 	}
 
 	#search_button{
-	//border: 1px red solid;
-		width: 9vh;
-		height: 8vh;
+		width: 7.5vh;
+		height: 7.5vh;
 		left: 71%;
-		top: 0;
+		top: 0.5vh;
 		position: absolute;
-		border-radius: 3vh;
-		margin-top:	17px;
+		background-color: $chic_style_color;
+		border-radius: 63%;
 	}
 	input[type="text"]{
-		padding-top: 1.5vh;
-		width: 81vw;
-		height: 5vh;
-		margin-top: 29px;
+		width: 70vw;
+		height: 6.5vh;//7.5=>6.5
+		margin-top: 0.5vh;
+		margin-left: 5vh;
 		font-size: 5rem;
+		border-radius: 1vh;
 	}
-	input[type="submit"]{
-		font-size: 3rem;
-		color: snow;
-		background-color: lighten($chic_accsentA, 5%);
+	.fa.fa-search{
+		color: $chic_accsentB;
+		font-size: 6rem;
 	}
 	//モバイルのみの機能
 	#gps_button{
 		position: relative;
-		top: 16px;
+		top: 0.5vh;
+		left: -1vh;
 		border: 1px $chic_main solid;
-		width: 9vh;
-		border-radius: 76%;
+		width: 7.5vh;
+		border-radius: 63%;
 		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
-
 		
 		.fas.fa-location-arrow{
 			position: relative;
-			left: 2.5vw;
-			top: 1.5vh;
+			left: 1.3vw;
+			top: 1.4vh;
 			font-size: 10vw;
 		}
 	}//gps
@@ -249,7 +251,7 @@ span.shop_nameMall{
 		color: #fff;
 		font-size  : 2rem;
 		font-weight: bold;
-		animation  : event_titleAnime3 4s linear infinite alternate;
+		animation  : event_titleAnime3 7s linear infinite alternate;
 		padding-left: 15px;
 		padding-bottom: 3px;
 	}
@@ -258,10 +260,10 @@ span.shop_nameMall{
 			top: 1.6vh;
 		}//カルーセル内のイベント名
 		@keyframes event_titleAnime1{
-		   0% { text-shadow:  2px  2px 10px #fff ,
-		                     -2px  2px 10px #fff ,
-		                      2px -2px 10px #fff ,
-		                     -2px -2px 10px #fff;}
+		   0% { text-shadow:  2px  2px 10px #f7e ,
+		                     -2px  2px 10px #0fc ,
+		                      2px -2px 10px #0fc ,
+		                     -2px -2px 10px #0fc;}
 		 100% { text-shadow:  2px  2px 10px #777 ,
 		                     -2px  2px 10px #777 ,
 		                      2px -2px 10px #777 ,
@@ -272,10 +274,10 @@ span.shop_nameMall{
 		                     -2px  2px 10px #777 ,
 		                      2px -2px 10px #777 ,
 		                     -2px -2px 10px #777;} 
-		 100%{ text-shadow:  2px  2px 10px #fff ,
-		                     -2px  2px 10px #fff ,
-		                      2px -2px 10px #fff ,
-		                     -2px -2px 10px #fff;}
+		 100%{ text-shadow:  2px  2px 10px #f7e ,
+		                     -2px  2px 10px #f7e ,
+		                      2px -2px 10px #f7e ,
+		                     -2px -2px 10px #f7e;}
 		}
 		@keyframes event_titleAnime3{
 		 0% { text-shadow:  2px  2px 6px #999 ,
@@ -283,11 +285,11 @@ span.shop_nameMall{
 		                      2px -2px 6px #999 ,
 		                     -2px -2px 6px #fff;}
 		 50% { text-shadow:  2px  2px 6px #999 ,
-												 -2px  2px 6px #cf0 ,
+												 -2px  2px 6px #fb0 ,
 													2px  2px 6px #999 ,
-												 -2px  2px 6px #cf0 ;}
+												 -2px  2px 6px #fb0 ;}
 		 100% { text-shadow:  2px  2px 6px #999 ,
-		                     -2px  2px 6px #ff9 ,
+		                     -2px  2px 6px #fb0 ,
 		                      2px -2px 6px #999 ,
 		                     -2px -2px 6px #ff9;}
 		}
@@ -314,7 +316,8 @@ span.shop_nameMall{
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
 		top: 1vw;
-		font-size: 8rem;
+		left: 0.5vw;//ハサミ縦並び対策
+		font-size: 8.2rem;
 	}
 	.fas.fa-kiwi-bird.parent{
 		position: relative;

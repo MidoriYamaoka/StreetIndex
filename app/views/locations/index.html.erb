@@ -1,13 +1,11 @@
 <body>
-	<div id="drowse_top">
+	<!--<div id="drowse_top">
 		<p id="">ブラウザのurlなどが表示されるスペース</p>
-	</div>
+	</div>-->
 
 	<div id="main_space">
-		<% @streetLength=@cityscape1.length*13 %><!--道の長さ-->
-		
-
-		
+		<% @streetLength=@cityscape1.length*13.8%><!--道の長さ13=>16=>14=>13.5=>13.8-->
+		<%= @cityscape0 %>
 		<div id="street" style="width:<%= @streetLength %>vw;">
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
@@ -36,7 +34,8 @@
 			<div id="kensaku" class="">
 				<%= form_tag("/", method: :get, :remote => true) do %> 
 					<%= text_field_tag :search %>
-					<%= submit_tag "submit", id:"search_button" %>
+					<%#= submit_tag "submit", id:"search_button" %>
+					<%= button_tag sanitize('<i class="fa fa-search"></i>'), type:"submit", id:"search_button" %>
 				<% end %>
 			</div>
 				
@@ -105,19 +104,13 @@
 				<% end %><!--form_tagのend-->
 			</div>
 
+	<!---
 	<div id="drowse_bottom">
 		<p>ブラウザの戻る進むボタンなどが表示される</p>
 	</div>
+	--->
 	
-<!--<div id="thegate">-->	
-<!--	<p><input type="button" value="password" id="passwordinput"></p>-->	
-<!--	</div>-->
-
+	<div id="thegate">
+		<p><input type="button" value="password" id="passwordinput"></p>
+	</div>
 </body>
-
-<!---円状に配置したかった。
-<div class="build_circle">
-	<div class="tenants"></div>
-	<div class="tenants"></div>
-	<div class="tenants"></div>
-</div>-->

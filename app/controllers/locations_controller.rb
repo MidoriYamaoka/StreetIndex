@@ -20,9 +20,12 @@ class LocationsController < ApplicationController
 			p "今@street_numの値は#{@street_num}ですよ"
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
-		p @streetSide.street_name
-		p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-		p @cityscape1 = Location.where(street_id: @streetSide.id, side:1).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		@streetSide.street_name
+		p "次っす。"
+		#p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		p @cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+		p @cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops
 		@grayAction = "border: 6px solid gray;"
@@ -34,7 +37,6 @@ class LocationsController < ApplicationController
 		@random = Random.new
 		@random = @random.rand(1..3)
 		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要
-
 	end
 	
 	def closeShops##営業時間反映実験##
@@ -47,15 +49,15 @@ class LocationsController < ApplicationController
 		  if @hun.length === 1#=>1桁なら0を追加
 		  	@hun = "0"+@hun
 		  end
-		  p "このtextみれますか？"		
+		  #p "このtextみれますか？"		
 			p @present = @today.hour.to_s+@hun#=>"2337"
 			
-			p "ここから@cityscape0"
+			#p "ここから@cityscape0"
 			@cityscape0.each do |id| #side0
 				@shopLists = Shop.where(location_id: id).pluck(:id)
 				@shopLists.each do |shopList|
 					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
-					@operationHour = OperationHour.find_by(shop_id: shopList)
+					@operationHour = OperationHour.find_by(shop_id: shopList, day: @today.wday)
 					#p "ここまで到達!cross_streetは#{@cross_street}です"
 					p "ここまで到達!shopListは#{shopList}です"
 				end

@@ -3,11 +3,11 @@ $(document).ready(function(){
 	let step_info = $('li.hidei'),
 			mallInfo=$('.mallInfo'),
 			mallShopInfo=$('ul.mallShopInfo');
-			//$('#whatishere').hide();
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
-	$('div.info_fadeout').bind('touchstart', function() {
+	//$('div.info_fadeout').bind('touchstart', function() {
+	$('.info_fadeout').bind('touchstart', function() {
 		//shop要素、cross_streetを消す
 		$(this).parents('li.hidei').hide();
 		return false;//消された状態をキープ
@@ -35,7 +35,7 @@ $(document).ready(function(){
 	function eventClone(){
 		setTimeout(function(){
 			$('ul#event_carousel').clone().appendTo('div#event_area');
-		},6000);
+		},6000); //7000=>14000=>6000
 	}
 	eventClone();
 	//event終わり//
@@ -92,17 +92,17 @@ $(document).ready(function(){
 	//sortswitch
 	
 	//最初のパスワード
-//	$('#passwordinput').on('touchstart', function(){
-//		let UserInput = prompt("パスワードを入力して下さい:","");
-//		// 入力内容をチェック
-//		if( /\W+/g.test(UserInput) ) {// 半角英数字以外エラー
-//			alert("半角英数字のみを入力して下さい。");
-//		}else if( UserInput != null ) {
-//			let ans="stin";
-//			if(UserInput==ans){
-//				$('#thegate').hide();
-//			}//ifの終わり
-//		}//else ifの終わり
-//	});
+		$('#passwordinput').on('touchstart', function(){
+			let UserInput = prompt("パスワードを入力して下さい:","");
+			// 入力内容をチェック
+			if( /\W+/g.test(UserInput) ) {// 半角英数字以外エラー
+				alert("半角英数字のみを入力して下さい。");
+			}else if( UserInput != null ) {
+				let ans="stin";
+				if(UserInput==ans){
+					$('#thegate').hide();
+				}//ifの終わり
+			}//else ifの終わり
+		});
 
 });

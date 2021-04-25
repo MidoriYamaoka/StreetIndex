@@ -12,6 +12,9 @@ module Streetindex
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
     config.action_view.automatically_disable_submit_tag = false
+    
+    #config.assets.initialize_on_precompile = false #assetsの設定で追記=>rails5は不要
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
