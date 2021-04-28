@@ -21,10 +21,8 @@ class LocationsController < ApplicationController
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
 		@streetSide.street_name
-		p "次っす。"
 		#p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 		p @cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-
 		p @cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops

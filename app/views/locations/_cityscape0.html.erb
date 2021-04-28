@@ -62,7 +62,7 @@
 						<% @left = 13*index %><!--動的に要素のleftを変更-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:22vh; left:<%= @left %>vw; 
+							style="top:25vh; left:<%= @left %>vw; 
 								background-image: url(<%= @tenant.logo_url %>);
 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
@@ -90,7 +90,7 @@
 					<% elsif index == 0 then %><!--最初の建物1階-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:22vh; left:0vw;
+							style="top:25vh; left:0vw;
 								background-image: url(<%= @tenant.logo_url %>); 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
