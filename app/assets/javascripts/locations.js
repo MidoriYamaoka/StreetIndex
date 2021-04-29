@@ -26,9 +26,12 @@ $(document).ready(function(){
 		$(this).next('ul.mallShopInfo').fadeIn();
 	});
 	
-	$('.fas.fa-comment-dots').on('touchstart', function() {
-		$('.whatishere').fadeToggle('slow');
-	});
+		$('.fas.fa-bars').on('touchstart', function() {
+		//	$('.whatishere').fadeToggle('slow');
+		//	var point=$('.whatishere').offset();
+		//	console.log("ポイント"+point.top);=>2020
+			$('body,html').animate({scrollTop: 2300}, 1000, 'swing');
+		});
 	//logoタッチ終わり//
 	
 	//event//
