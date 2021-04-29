@@ -1,7 +1,7 @@
 @import "kawaii";
 
 body{
-	width: 1125px;//iphoneXの画面ピクセル
+	width: 1125px;//iphoneXの画面ピクセル1125>1485??でもおかしい。何かがはみ出てる。
 	height: 2214px;//-222px
 	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
 	font-size: 2.9rem;
@@ -13,6 +13,11 @@ img{
 	padding: 0;
 	width: 100%;
 	height: 100%;
+}
+a.mailto{
+	line-height: 4rem;
+	font-weight: normal;
+	font-size: 2.7rem;
 }
 a:link{
 	color: snow;
@@ -41,6 +46,7 @@ p{
 	white-space: normal;
 	line-height: 3rem;
 	font-size: 2.7rem;
+	font-weight: normal;
 }
 .mailto{
 	background-color: $chic_style_color;
@@ -62,27 +68,25 @@ p{
 	width: 100%;
 	background: $chic_base;
 }
-	#aboutus{
-		//border: 1px solid red;
-		height: 8vh;
-		width: 100vw;
-		position: fixed;
-		top: 0vh;
-		z-index: 20;
-		background-color: $chic_style_color;
-		.fas.fa-bars{
-			font-size: 5rem;
-			position: absolute;
-			top: 22%;
-			left: 85%;
-			color: $chic_accsentB;
-			&:active {//追加。
-				transform:rotateY(100deg);
-			}
+#titleandmenu{//aboutus
+	//border: 1px solid red;
+	height: 8vh;
+	width: 100%;
+	position: fixed;
+	top: 0vh;
+	z-index: 20;
+	background-color: $chic_style_color;
+	.fas.fa-bars{
+		font-size: 5rem;
+		position: absolute;
+		top: 22%;
+		left: 85%;
+		color: $chic_accsentB;
+		&:active {//追加。
+			transform:rotateY(100deg);
 		}
 	}
-
-	
+}
 	.streetString{
 		position: absolute;
 		top: 1vh;
@@ -223,7 +227,7 @@ span.shop_nameMall{
 
 .whatishere{
 	height: 100vh;
-	width: 100vh;
+	width: 100%;
 	position: relative;
 	left: 3vw;
 	top: 44vh;
@@ -374,8 +378,8 @@ span.shop_nameMall{
 }
 #thegate{
 	position: absolute;
-	width: 100%;
-	height: 116vh;
+	width: 119%;
+	height: 200%;
 	background-color: gray;
 	top: 0;
 	left: 0;
