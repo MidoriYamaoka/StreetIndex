@@ -2,10 +2,15 @@ $(document).ready(function(){
 	/*logoタッチ&shop詳細fadeIn*/
 	let step_info = $('li.hidei'),
 			mallInfo=$('.mallInfo'),
-			mallShopInfo=$('ul.mallShopInfo');
+			mallShopInfo=$('ul.mallShopInfo'),
+			renbanPrev=$('#gotoPrev');
+			renbanNext=$('#gotoNext');
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
+			renbanPrev.hide();
+			renbanNext.hide();
+			
 	//$('div.info_fadeout').bind('touchstart', function() {
 	$('.info_fadeout').bind('touchstart', function() {
 		//shop要素、cross_streetを消す
@@ -27,11 +32,28 @@ $(document).ready(function(){
 	});
 	
 		$('.fas.fa-bars').on('touchstart', function() {
-		//	$('.whatishere').fadeToggle('slow');
-		//	var point=$('.whatishere').offset();
-		//	console.log("ポイント"+point.top);=>2020
-			$('body,html').animate({scrollTop: 2300}, 1000, 'swing');
+			$('body,html').animate({scrollTop: 1990}, 1000, 'swing');
 		});
+		
+		//ストリート連番
+	var cssResultP = $('#renban_prev').css('color');
+	$('#renban_prev').on('touchstart', function() {
+		if('rgb(1, 14, 95)'==cssResultP){
+			$('#gotoPrev').fadeIn();
+		}
+	});
+
+	var cssResultN = $('#renban_next').css('color');
+	$('#renban_next').on('touchstart', function() {
+		if('rgb(1, 14, 95)'==cssResultN){
+			$('#gotoNext').fadeIn();
+		}
+	});
+
+	//[No]処理:hoverでfadeOut
+	$('a#renban_no').hover(function() {
+		$('#gotoPrev'||'#gotoNext').fadeOut();
+	});
 	//logoタッチ終わり//
 	
 	//event//

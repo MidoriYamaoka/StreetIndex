@@ -8,6 +8,12 @@ class LocationsController < ApplicationController
 	
 	def cityscape1
 	end
+	
+	def gotoprev
+	end
+	
+	def gotonext
+	end
 
 	def index
 		p "hellow world again! from location action index"
@@ -16,13 +22,29 @@ class LocationsController < ApplicationController
 		if @street_num.blank?
 			@street_num=1
 		else
-			@street_num=@street_num.to_i
-			p "今@street_numの値は#{@street_num}ですよ"
+			@street_num=@street_num.to_i	#p "@street_numは#{@street_num}"
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
-		#p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-		p @cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-		p @cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+			p @renban=@streetSide.street_name.index("(") #番号の順番。14とか。
+			p @renban_end=@streetSide.street_name.index(")") #最後のカッコ順番
+			if @renban
+				#p "連番発生してます"
+				 @renban_next=@streetSide.street_name.next #＠renban="Omotesando-表参道(3)"
+				@renban_next=Street.find_by(street_name: @renban_next)
+				if @renban_next.nil?
+					#p "ないなら、prev連番"
+					@renban_s=@renban+1
+					 @renban_prev=@streetSide.street_name[@renban_s...@renban_end].to_i-1
+					 @name_string=@streetSide.street_name[0...@renban]
+					 #ない場合の処理を考える、次回！
+					 @renban_prev=Street.find_by(street_name: "#{@name_string}(#{@renban_prev})")
+				end
+			end
+		@renbanAction="color:rgb(1,14,95);"
+
+		@cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		@cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 		closeShops
 		@grayAction = "border: 6px solid gray;"
@@ -136,8 +158,10 @@ class LocationsController < ApplicationController
 					p "commit受け取ったよー！"
 				end
 	end##検索実験終わり##
+	
+
 
 	 helper_method :search
 	 helper_method :closeShops
-	
+
 end

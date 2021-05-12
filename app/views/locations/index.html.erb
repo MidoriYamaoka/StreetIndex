@@ -1,14 +1,34 @@
 <body>
-	<!--<div id="drowse_top">
-		<p id="">ブラウザのurlなどが表示されるスペース</p>
-	</div>-->
 
-	<div id="main_space">
-		<% @streetLength=@cityscape1.length*13%><!--道の長さ13=>16=>14=>13.5=>13.8-->
-		<div id="street" style="width:<%= @streetLength %>vw;">
+	<% @streetLength=@cityscape1.length*13%><!--道の長さ13=>16=>14=>13.5=>13.8-->
+	<% @divwidth=@streetLength+11%>
+	<div id="main_space" style="width:<%= @divwidth %>vw;">
+
+		<div id="street" style="width:<%=@streetLength%>vw;">
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
 
+		<i class="fas fa-sort-up" id="renban_prev" style=
+			<% if @renban_prev %>
+				<%= @renbanAction %>
+			<% else %>
+				"color: rgba(239, 231, 174, 1);"
+			<% end %>
+		></i>
+		<%= render partial: 'locations/gotoprev', locals: {prev: @renban_prev} %>
+
+			
+
+		<i class="fas fa-sort-up" id="renban_next" style=
+			<% if @renban_next %>
+				<%= @renbanAction %>
+			<% else %>
+				"color: rgba(239, 231, 174, 1);"
+			<% end %>
+		></i>
+		<%= render partial: 'locations/gotonext', locals: {prev: @renban_next} %>
+
+		
 		<%= render partial: 'locations/cityscape0', locals: {street: @streetSide0, city: @cityscape0 } %>
 		<%= render partial: 'locations/cityscape1', locals: {street: @streetSide1, city: @cityscape1 } %>
 

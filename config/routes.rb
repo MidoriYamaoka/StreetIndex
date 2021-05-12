@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 	root "locations#index"
 	get "locations/index" => "locations#index"
 	resources :shops, only: [:show, :index, :mallShop]
-	resources :locations, only: [:index, :cityscape0, :cityscape1]
+	resources :locations, only: [:index, :cityscape0, :cityscape1, :gotoprev, :gotonext]
 end

@@ -18,6 +18,8 @@ a.mailto{
 	line-height: 4rem;
 	font-weight: normal;
 	font-size: 2.7rem;
+	position: relative;
+	left: 80%;
 }
 a:link{
 	color: snow;
@@ -67,6 +69,40 @@ p{
 	height: 100vh; //90=>96=>100
 	width: 100%;
 	background: $chic_base;
+	#renban_prev.fas.fa-sort-up{
+		position: absolute;
+		top: 32vh;
+		left: 1.1vw;
+		font-size: 9rem;
+		transform: rotate(270deg);
+	}
+	#renban_next.fas.fa-sort-up{
+		position: absolute;
+		top: 32vh;
+		right: 0;
+		font-size: 9rem;
+		transform: rotate(90deg);
+	}
+	
+	#gotoPrev, #gotoNext{
+	position: relative;
+	height: 30vh;
+	width: 95vw;
+	top: 21vh;
+	left: 6vh;
+	text-align: center;
+	color: $chic_accsentB;
+	background-color: $chic_accsentA;
+	border-radius: 53px;
+	z-index: 10;
+	[data-style="gotoStreet"]{
+		font-size: 2rem;
+		display: inline; }
+	input[type="submit"]{
+		position: relative;
+		left: -5vw;
+		opacity: 0; }
+	}
 }
 #titleandmenu{//aboutus
 	//border: 1px solid red;
@@ -171,7 +207,7 @@ span.shop_nameMall{
 	position: relative;
 	width: 100%;
 	height: 190vh;//33>160>190
-	top: -26%;
+	top: -42%;//-26>-42
 	background-color: rgba($chic_base_ex ,0.4);
 }
 

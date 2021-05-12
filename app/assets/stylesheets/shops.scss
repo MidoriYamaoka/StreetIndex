@@ -53,6 +53,7 @@
 	color: $chic_accsentB;
 	background-color: $chic_accsentA;
 	border-radius: 53px;
+	z-index: 10;
 	[data-style="gotoStreet"]{
 		font-size: 2rem;
 		display: inline;
