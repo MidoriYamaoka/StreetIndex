@@ -7,6 +7,12 @@
 		<div id="street" style="width:<%=@streetLength%>vw;">
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
+		
+		<!--gpsのpin-->
+		<span class="fa-layers fa-fw">
+			<i class="fas fa-splotch fa-spin"></i>
+			<span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-3">U</span>
+		</span>
 
 		<i class="fas fa-sort-up" id="renban_prev" style=
 			<% if @renban_prev %>
@@ -17,8 +23,6 @@
 		></i>
 		<%= render partial: 'locations/gotoprev', locals: {prev: @renban_prev} %>
 
-			
-
 		<i class="fas fa-sort-up" id="renban_next" style=
 			<% if @renban_next %>
 				<%= @renbanAction %>
@@ -28,13 +32,12 @@
 		></i>
 		<%= render partial: 'locations/gotonext', locals: {prev: @renban_next} %>
 
-		
+
 		<%= render partial: 'locations/cityscape0', locals: {street: @streetSide0, city: @cityscape0 } %>
 		<%= render partial: 'locations/cityscape1', locals: {street: @streetSide1, city: @cityscape1 } %>
 
-		<div id="titleandmenu"><!--aboutus-->
+		<div id="titleandmenu">
 			<h3>STREET INDEX</h3>
-			
 			<i class="fas fa-bars"></i>
 		</div>
 
@@ -53,7 +56,9 @@
 			</div>
 				
 			<div id="gps_button" class="">
-				<i class="fas fa-location-arrow"></i>
+
+
+				<i class="fas fa-location-arrow" onclick="javascript:getLocation()"></i>
 			</div>
 		</div>
 		

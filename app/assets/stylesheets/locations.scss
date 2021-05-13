@@ -104,6 +104,22 @@ p{
 		opacity: 0; }
 	}
 }
+.fa-layers{
+	position: absolute;
+	top: 32vh; //onTheStreet
+	font-size: 6rem;
+	z-index: 30;
+	.fas.fa-splotch{
+	color: orangered;}
+	span.fa-layers-text{
+		position: absolute;
+		top: 1.5vh;
+		left: 4vw;
+		font-size: 3rem;
+	}
+}
+
+
 #titleandmenu{//aboutus
 	//border: 1px solid red;
 	height: 8vh;
