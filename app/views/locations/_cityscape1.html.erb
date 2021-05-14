@@ -19,7 +19,7 @@
 				<% @tenant = Shop.find(each_bldg) %><!--各shop情報-->
 
 					<% if index == 0 && ind >= 1 then %><!--最初の2階以上￥-->
-						 	<% @top = 36.1+5*ind %><!--34.1=>36.1, 6=>5--><%# @top = 24.5-4.5*ind %>
+						 	<% @top = 36.1+7.6*ind %><!--34.1=>36.1, 6=>5--><%# @top = 24.5-4.5*ind %>
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 								style="top:<%= @top %>vh; left:6vw;
 									background-image: url(<%= @tenant.logo_url %>);
@@ -37,8 +37,8 @@
 						</ul>
 
 					<% elsif index >= 0 && ind >=1 then %><!--隣の2階以上￥-->
-						<% @left = 6+13*index %><!--動的に要素のtop&leftを変更-->
-						<% @top = 36.1+5*ind %><%# @top = 24.5-4.5*ind %>
+						<% @left = 6+24*index %><!--動的に要素のtop&leftを変更-->
+						<% @top = 36.1+7.6*ind %><%# @top = 24.5-4.5*ind >36.1+5>65.8+8.0%>
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 							style="top:<%= @top %>vh; left:<%= @left %>vw; 
 								background-image: url(<%= @tenant.logo_url %>);
@@ -56,7 +56,7 @@
 						</ul>
 
 					<% elsif index >= 0 then %><!--隣の1階-->
-						<% @left = 6+13*index %><!--動的に要素のleftを変更-->
+						<% @left = 6+24*index %><!--動的に要素のleftを変更-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
 							style="top:36.3vh; left:<%= @left %>vw; 
@@ -84,10 +84,10 @@
 							<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
 						</ul>
 						
-					<% elsif index == 0 then %><!--最初の建物1階-->
+					<% elsif index == 0 then %><!--最初の建物1階 top:36.3vh>54.3>72.3>65.3-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:36.3vh; left:6vw;
+							style="top:36.3vh; left:24vw;
 								background-image: url(<%= @tenant.logo_url %>); 
 									<% if !@closeShops_1.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>

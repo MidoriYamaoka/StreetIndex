@@ -50,7 +50,7 @@ class LocationsController < ApplicationController
 		@grayAction = "border: 6px solid gray;"
 		@greenAction = "border: 6px solid yellowgreen;"
 		@mallCss = "border-radius: 1vh; border: 5px solid navy;"
-		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none ;border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); padding-left: 0.9vh;margin-left: 0.9vh; "
+		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none; border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); "
 
 		@events = Event.all.limit(5).order('id DESC')#5件制限。降順
 		@random = Random.new

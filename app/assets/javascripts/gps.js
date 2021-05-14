@@ -38,6 +38,7 @@ function getLocation(){
 		getLocation();
 	});
 	
+	$('#gps_button').hide();
 	$('.fa-layers.fa-fw').hide();
-
+	
 });

@@ -3,34 +3,43 @@
 .hidei{
 	position: absolute;
 	display: inline-block;
-	line-height: 4rem;
 	border: 9px solid $chic_accsentA;//#8c53b2;
 	border-radius: 6%;
-	width: 90vw;
-	height: 100vw;//85=>100
+	width: 122vw;//90>128
+	height: 132vw;//85>100>141
 	color: $chic_style_color;
-	font-size: 2.4rem;
+	font-size: 1.8rem;//2.4
 	background-color: rgba($chic_base, 0.9);//rgba($kawaii_base, 0.4);//rgba(232, 222, 224, 0.69);//linear-gradient(140.863872010769deg, rgba(242, 226, 143,0.8) 11.073573573573574%,rgba(241, 226, 142,0.8) 11.871246246246248%,rgba(237, 245, 122,0.899578947368421) 87.65015015015015%,rgba(237, 245, 122,0.9) 87.65015015015015%);//linear-gradient(140.863872010769deg, rgba(242, 226, 143,0.6) 11.073573573573574%,rgba(241, 226, 142,0.6) 11.073573573573574%,rgba(237, 245, 122,0.7991666666666667) 87.65015015015015%,rgba(237, 245, 122,0.8) 87.65015015015015%); //linear-gradient(140.863872010769deg, rgba(242, 226, 143,1) 11.073573573573574%,rgba(241, 226, 142,1) 11.073573573573574%,rgba(237, 245, 122,1) 87.65015015015015%); 
-	z-index: 100;
+	z-index: 80;
 	white-space: normal;
 
 	#info_fadeout{
 		position: absolute;
-		left: 88vw;
-		top: -11vw;
+		left: 109vw;
+		top: -13vw;
 		height: 16vw;
 		width: 16vw;
-		font-size: 12rem;
+		font-size: 5rem;
+	}
+	#shop_name, #mall_name{
+	top: -7vh;
+	height: 11vw;
+	font-size: 2rem;
+	text-align: center;
+	padding-top: 2vh;
+	text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
+	z-index: 30;
 	}
 }
 
 //mall要素//
 #mallInfo_wrap{
-	width: 88vw;
-	height: 47vh;
+	width: 127vw;//88
+	height: 54vh;//47
 	overflow: scroll;
 	#mallInfo{
-	width: 83vw;
+	width: 112vw;//83
+	margin-left: 2vw;
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
@@ -40,8 +49,8 @@
 .tenants{
 	position: relative;
 	top: 4vh;
-	height: 9vh;
-	width: 26vw;
+	height: 10vh;//9>
+	width: 36vw;//26
 	border: 8px solid $chic_accsentA;
 	border-radius: 6vw;
 	//opacity: 0.5;
@@ -66,41 +75,27 @@
 }
 
 //shops要素//
-#shop_name, #mall_name{
-	//display: inline-block;
-	//border: 1px solid orange;
-	position: absolute;
-	top: -7vh;
-	height: 13vw;
-	width: 90vw;
-	font-size: 4rem;
-	text-align: center;
-	padding-top: 1vh;
-	//background-color: rgba(213, 164, 174, 0.61);
-	//border-radius: 4vh;
-	//@include text_shadow;
-	text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
-}
+
 
 .shop_category{
 	position: absolute;
-	top: 37vh;
-	height: 10vw;
-	width: 90vw;
-	font-size: 2.5rem;
-	line-height: 2.7rem;
+	top: 44vh;//37
+	height: 24vw;//10
+	width: 122vw;//90
+	font-size: 1.5rem;//2.5
+	line-height: 1.7rem;//2.7
 	z-index: 20;
 	color: white;
 	text-shadow: 3px 4px 2px rgba(18,11,11,0.6), -4px -1px 3px rgba(8,8,8,0.7);
-	background-color: rgba(95, 89, 53, 0.3);
+	background-color: rgba(95, 89, 53, 0.5);
 }
 #shop_img_grid_contaier{
 	display: grid;
 	position: absolute;
-	top: 2vh;
-	grid-template-rows: 19vh 8vh 12vh;
-	grid-template-columns: 25vw 33vw 32vw;
-	grid-row-gap: 8px;
+	top: 9vh;//2>6
+	grid-template-rows: 24vh 8vh 13vh;//19vh 8vh 12vh>23vh 13vh 17vh
+	grid-template-columns: 42vw 38vw 41vw;//25vw 33vw 32vw>40vw 44vw 43vw
+	grid-row-gap: 2px;
 	grid-column-gap: 2px;
 
 	#shop_img1{
@@ -148,22 +143,19 @@
 
 }
 .shop_floor{
-	//display: inline-block;
-	//border: 1px solid orange;
 	position: absolute;
-	bottom: -3%;
+	bottom: 0%;//-3%
 	left: 85%;
-	height: 10vw;
+	height: 9vw;
 	width: 9vw;
-	font-size: 4rem;
+	font-size: 2.5rem;
 }
 	.shop_link{
-		//border: 1px dotted green;
 		position: absolute;
 		bottom: 0%;
 		left: 20%;
-		height: 9vw;
-		width: 50vw;
+		height: 13vw;
+		width: 73vw;
 		text-align: center;
 		background-color: lighten($chic_accsentA, 5%);
 		border-radius: 1vh;
@@ -176,7 +168,7 @@ ul.mallShopInfo{
 }
 .changeBoxshadow{
 	//background-color: lighten($chic_accsentA, 70%);//darken($chic_base, 25%);
-	box-shadow: 0px 0px 36px 18px rgba(214, 193, 46, 0.7) inset;
+	box-shadow: -38px -34px 74px -27px rgba(251,112,17,0.6) inset;;//0px 0px 36px 18px rgba(214, 193, 46, 0.7) inset;
 }
 /*.shop_campaign{Shopモデルでdevise入ったら復活？
 	//border: 1px dotted green;

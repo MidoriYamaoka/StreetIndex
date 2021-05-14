@@ -1,10 +1,12 @@
 @import "kawaii";
 
 body{
-	width: 1125px;//iphoneXの画面ピクセル1125>1485??でもおかしい。何かがはみ出てる。
-	height: 2214px;//-222px
+	display: inline;
+	width: 375px;//1125px;//iphoneXの画面ピクセル1125>1485??でもおかしい。何かがはみ出てる。
+	height: 812px;//2214px;//-222px
 	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
-	font-size: 2.9rem;
+	font-size: 1.5rem;
+	line-height: 1.6rem;
 	color: $chic_style_color;//rgba(140, 83, 178, 1);
 }
 img{
@@ -15,9 +17,9 @@ img{
 	height: 100%;
 }
 a.mailto{
-	line-height: 4rem;
+	line-height: 1.5rem;
 	font-weight: normal;
-	font-size: 2.7rem;
+	font-size: 1.4rem;
 	position: relative;
 	left: 80%;
 }
@@ -27,27 +29,26 @@ a:link{
 a:visited{
 	color: azure;
 }
-h3{
+h3{//web title
 	line-height: 0rem;
-	margin: 5rem 0rem 0rem 3rem;
-	font-size: 4.5rem;
+	margin: 3rem 0rem 0rem 5rem;
+	font-size: 2.5rem;
 	color: $chic_accsentB;
 }
 h5{
-	line-height: 0rem;
-	margin: 5rem 0rem 0rem 3rem;
-	font-size: 3.5rem;
+	margin: 3rem 0rem 0rem 1rem;
+	font-size: 2rem;
 }
 h6{
 	line-height: 0rem;
-	margin: 5rem 0rem 0rem 4rem;
-	font-size: 3.0rem;
+	margin: 1.3rem 0rem 0rem 3rem;
+	font-size: 1.3rem;
 }
 p{
-	margin: 2rem 3rem 0rem 5rem;
+	margin: 1rem 1rem 0rem 1rem;
 	white-space: normal;
-	line-height: 3rem;
-	font-size: 2.7rem;
+	line-height: 1.5rem;
+	font-size: 1.2rem;
 	font-weight: normal;
 }
 .mailto{
@@ -60,27 +61,74 @@ p{
 	width: 100%;
 }
 
+//タイトル
+#titleandmenu{//aboutus
+	height: 11vh;//8>15>11
+	width: 100%;
+	position: fixed;
+	top: 0vh;
+	z-index: 50;
+	background-color: $chic_style_color;
+	.fas.fa-bars{
+		font-size: 2rem;
+		position: absolute;
+		top: 41%;
+		left: 83%;
+		color: $chic_accsentB;
+		&:active {//追加。
+			transform:rotateY(100deg);
+		}
+	}
+}
+.afterdiv{
+	top: 44vw;
+}
+.whatishere{
+	height: 183vh;
+	width: 133%;
+	position: absolute;
+	top: 131vh;//150
+	background-color: rgba($chic_base ,90%);
+	z-index: 30;
+}
+.whatisthere{//whatshereのanime
+	top: 12vh;
+	animation  : jumpUp 1s ease-in-out;
+		@keyframes jumpUp {
+			0% {transform: translateY(100%);
+			}100% {transform: translateY(0%); }	}
+}
+
+//メインスペース
+#main_wrap{
+	position: relative;
+	width: 133%;
+	height: 84vh;
+	overflow: scroll;
+	top: 6vh;
+}
+
 #main_space{
 	position: relative;
-	margin: 0 auto;
+	margin-left: -1vw;//margin:auto 0>left:-1
 	padding: 0;
 	overflow-x: auto;
 	white-space: nowrap;
-	height: 100vh; //90=>96=>100
+	height: 85vh; //90>96>100>155
 	width: 100%;
 	background: $chic_base;
 	#renban_prev.fas.fa-sort-up{
 		position: absolute;
-		top: 32vh;
+		top: 37.5%;//32vh>37%
 		left: 1.1vw;
-		font-size: 9rem;
+		font-size: 4rem;
 		transform: rotate(270deg);
 	}
 	#renban_next.fas.fa-sort-up{
 		position: absolute;
-		top: 32vh;
+		top: 37.5%;//32vh>37%
 		right: 0;
-		font-size: 9rem;
+		font-size: 4rem;
 		transform: rotate(90deg);
 	}
 	
@@ -110,35 +158,19 @@ p{
 	font-size: 6rem;
 	z-index: 30;
 	.fas.fa-splotch{
-	color: orangered;}
+	color: orangered; }
 	span.fa-layers-text{
 		position: absolute;
 		top: 1.5vh;
 		left: 4vw;
-		font-size: 3rem;
-	}
+		font-size: 3rem; }
 }
-
-
-#titleandmenu{//aboutus
-	//border: 1px solid red;
-	height: 8vh;
-	width: 100%;
-	position: fixed;
-	top: 0vh;
-	z-index: 20;
-	background-color: $chic_style_color;
-	.fas.fa-bars{
-		font-size: 5rem;
+	#pcsize{
+		opacity: 0;
 		position: absolute;
-		top: 22%;
-		left: 85%;
-		color: $chic_accsentB;
-		&:active {//追加。
-			transform:rotateY(100deg);
-		}
+		height: 0vh;
 	}
-}
+
 	.streetString{
 		position: absolute;
 		top: 1vh;
@@ -148,18 +180,18 @@ p{
 
 	#street{
 		position: absolute;
-		height: 6vh;
+		height: 9vh;//6>9
 		left: 6vw;
 		background-color: $chic_accsentA;
-		top: 32vh;
+		top: 37%;//32vh>37%
 	}
 	.shops{
 		position: absolute;
 		display: inline-block;
 		border-radius: 50%;
 		box-shadow: 0px 0px 28px -9px rgba(207,235,249,0.76) inset;//0px 0px 36px 8px rgba(210,184,130,0.6) inset;
-		width: 9vw;
-		height: 10vw;
+		width: 12vw;//9>20>12
+		height: 15vw;//10>18>15
 		font-size: 30px;
 		background-size: 101%;
 		background-position: 50%;
@@ -168,63 +200,65 @@ p{
 		//background-blend-mode: lighten;
 	}
 span.shop_name{
-	top: 1vh;
-	left: 1vw;
+	top: 0.8vh;
+	left: 0.4vw;
 	position: absolute;
 	white-space: break-spaces;
-	font-size: 1.4rem;
-	//letter-spacing: 0rem;
-	line-height: 1.6rem;
+	font-size: 1rem;//1.4>2.6>2.3
+	line-height: 1.1rem;//1.6>2.6
 }
 span.shop_nameMall{
 	top: 1.7vh;
 	left: 2.7vw;
 	position: absolute;
 	white-space: break-spaces;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	letter-spacing: 0rem;
-	line-height: 2rem;
+	line-height: 1.5rem;
 }
 	#streetConfirm{
 		position: absolute;
-		width: 79vw;
-		height: 26vh;
+		width: 115vw;//79
+		height: 50vh;//26
 		border: 9px $chic_accsentA solid;
-		border-radius: 4vw;
+		border-radius: 7vw;
 		background-color: rgba($chic_base, 0.9);
-		z-index: 100;
+		z-index: 50;
 		top: 27vh;
 		left: 20vw;
 		color: $chic_main;
 	}
 	p#streetCon{
-		text-align: center;
-		margin-top: 1vh;
+	margin-top: 2vh;
+	font-size: 2rem;
+	text-align: center;
+	padding-top: 2vh;
+	text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
 	}
 	.streetOK{
 		color: $chic_accsentB;
 		position: absolute;
 		left: 84%;
-		font-size: 3rem;
-		width: 7vw;
+		font-size: 1rem;
+		width: 10vw;
 		background-color: lighten($chic_accsentA, 5%);
 		border-radius: 1vh;
 	}
 
-#bottom_wrap{
-	position: absolute;
-	//border: 1px black solid;
-	height: 33vh;
-	width: 114%;
-	overflow: scroll;
-	top: 67vh; //69=>67。
-}
+//#bottom_wrap{
+//	position: absolute;
+//	//border: 1px black solid;
+//	height: 33vh;
+//	width: 114%;
+//	overflow: scroll;
+//	top: 67vh; //69=>67。 }
+
 #bottom_space{
-	position: relative;
+	position: fixed;//relative>fixed
 	width: 100%;
 	height: 190vh;//33>160>190
-	top: -42%;//-26>-42
-	background-color: rgba($chic_base_ex ,0.4);
+	top: 66%;//-26>-42>43>70
+	background-color: rgba($chic_base_ex, 80%);//darken($chic_accsentB, 50%);
 }
 
 #location_button{
@@ -240,23 +274,23 @@ span.shop_nameMall{
 	#search_button{
 		width: 7.5vh;
 		height: 7.5vh;
-		left: 71%;
-		top: 0.5vh;
+		right: 15%;
+		top: 1vh;//0.5>3
 		position: absolute;
 		background-color: $chic_style_color;
 		border-radius: 63%;
 	}
 	input[type="text"]{
-		width: 70vw;
-		height: 6.5vh;//7.5=>6.5
-		margin-top: 0.5vh;
-		margin-left: 5vh;
-		font-size: 5rem;
+		width: 76vw;//70>76
+		height: 6.5vh;//7.5>6.5>9.5
+		margin-top: 1.5vh;//0.5>2.5
+		margin-left: 14%;//5vh>30%
+		font-size: 2rem;
 		border-radius: 1vh;
 	}
 	.fa.fa-search{
 		color: $chic_accsentB;
-		font-size: 6rem;
+		font-size: 3rem;
 	}
 	//モバイルのみの機能
 	#gps_button{
@@ -277,17 +311,7 @@ span.shop_nameMall{
 	}//gps
 }//location_button
 
-.whatishere{
-	height: 100vh;
-	width: 100%;
-	position: relative;
-	left: 3vw;
-	top: 44vh;
-			//border-radius: 3rem;
-			//background-color: darken($chic_base ,10%);
-			//display: none;
-			//border: 6px solid darken($chic_accsentA ,70%);
-}
+
 
 #event_wrap{
 	top: 9vh;
@@ -373,45 +397,46 @@ span.shop_nameMall{
 
 #category_button{
 	position: absolute;
-	height: 12vh;
+	height: 17vh;//12
 	width: 100%;
-	top: 10vh;//21>10
+	top: 10vh;//21>10>15
 	text-align: center;
 
 	.shop_sort{
 		display: inline-block;
 		vertical-align: middle;
 		border: 3px darkslateblue solid;
-		border-radius: 1.6vh;
-		width: 26vw;
-		height: 11vh;
+		border-radius: 4vh;//1.6>4
+		width: 29vw;//26>34
+		height: 13vh;//11>15>16
 		text-align: center;
+		//top: 14vh;
 		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
-		//background-color: $chic_base;
+		font-size: 1.2rem;
 	}
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
-		top: 1vw;
+		top: 2vw;
 		left: 0.5vw;//ハサミ縦並び対策
-		font-size: 8.2rem;
+		font-size: 3.7rem;//8.2
 	}
 	.fas.fa-kiwi-bird.parent{
 		position: relative;
 		left: 1vw;
-		top: 1vw;
-		font-size: 8rem;
+		top: 3vw;
+		font-size: 3.6rem;
 	}
 	.fas.fa-kiwi-bird.kid1{
 		position: relative;
 		left: 0vw;
-		top: 2vw;
-		font-size: 4rem;
+		top: 3vw;
+		font-size: 1.9rem;
 	}
 	.fas.fa-kiwi-bird.kid2{
 		position: relative;
-		left: 6vw;
-		top: -5vw;
-		font-size: 2rem;
+		left: 1vw;
+		top: 2vw;
+		font-size: 1rem;
 	}
 }//category_button終わり
 
@@ -471,3 +496,17 @@ div.tenants{
 	width: 30vw;
 	height: 30vw;
 }*/
+
+@media screen and (min-width: 600px) {
+/* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+	#pcsize{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		background-color: $chic_style_color;
+		color: $chic_accsentB;
+		z-index: 1000;
+		overflow: hidden
+	}
+}

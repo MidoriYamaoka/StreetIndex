@@ -10,6 +10,8 @@ $(document).ready(function(){
 			mallShopInfo.hide();
 			renbanPrev.hide();
 			renbanNext.hide();
+			//臨時！
+			$('#thegate').hide();
 			
 	//$('div.info_fadeout').bind('touchstart', function() {
 	$('.info_fadeout').bind('touchstart', function() {
@@ -24,16 +26,18 @@ $(document).ready(function(){
 	});
 	
 	$('ul.shops').bind('touchstart', function() {
-		$(this).children('li.hidei').fadeIn().offset({ top: 300, left: 120 });
+		var sw=window.pageXOffset;
+		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 10+sw });
 	});
 	
 	$('li.tenants').bind('touchstart', function() {
 		$(this).next('ul.mallShopInfo').fadeIn();
 	});
 	
-		$('.fas.fa-bars').on('touchstart', function() {
-			$('body,html').animate({scrollTop: 1990}, 1000, 'swing');
-		});
+	//メニューバー表示。
+	$('.fas.fa-bars').on('touchstart', function() {
+		$(".whatishere").toggleClass('whatisthere');
+	});
 		
 		//ストリート連番
 	var cssResultP = $('#renban_prev').css('color');
@@ -66,11 +70,14 @@ $(document).ready(function(){
 	//event終わり//
 
 	//street_search//
-	let streetCon=$('#streetConfirm');
 	$('#streetConfirm').hide();
 	$('#search_button').on('touchstart', function() {
-		$('#streetConfirm').delay(200).fadeIn();
+		var sw=window.pageXOffset;
+		//sw=sw+130;
+		console.log("swは"+sw);
+		$('#streetConfirm').fadeIn().offset({top: 170, left: sw+10});
 	});
+	
 	$('.streetOK').on('touchstart', function() {
 		let stid=$(this).data('stid');
 		//console.log(stid);
@@ -78,8 +85,7 @@ $(document).ready(function(){
 	//street_search終わり//
 
 	//shop_sort//
-
-	$('div#sort1').on('touchstart.one', function() {
+	$('div#sort1').on('touchstart', function() {
 			let text = "#shopping";
 		$('.shop_category').each(function(){
 			if(this.innerText.indexOf(text)>-1){
