@@ -44,6 +44,7 @@ $(document).ready(function(){
 		//ストリート連番
 	var cssResultP = $('#renban_prev').css('color');
 	$('#renban_prev').on('touchstart', function() {
+		console.log("Prevたっぷ");
 		if('rgb(1, 14, 95)'==cssResultP){
 			$('#gotoPrev').fadeIn();
 		}
@@ -51,6 +52,7 @@ $(document).ready(function(){
 
 	var cssResultN = $('#renban_next').css('color');
 	$('#renban_next').on('touchstart', function() {
+		console.log("Nextたっぷ");
 		if('rgb(1, 14, 95)'==cssResultN){
 			$('#renban_next').fadeIn();
 		}

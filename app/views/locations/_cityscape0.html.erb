@@ -62,7 +62,7 @@
 						<% @left = 6+24*index %><!--動的に要素のleftを変更-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:19vh; left:<%= @left %>vw; 
+							style="top:21.5vh; left:<%= @left %>vw; 
 								background-image: url(<%= @tenant.logo_url %>);
 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
@@ -87,10 +87,10 @@
 								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
 						</ul>
 						
-					<% elsif index == 0 then %><!--最初の建物1階 top:25.5vh>50>47-->
+					<% elsif index == 0 then %><!--最初の建物1階 top:25.5>50>47>19>21.5-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:19vh; left:20vw;
+							style="top:21.5vh; left:20vw;
 								background-image: url(<%= @tenant.logo_url %>); 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
