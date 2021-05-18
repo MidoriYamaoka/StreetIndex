@@ -157,7 +157,7 @@
 						<li></li>
 					<% else %>
 						<% @streetNames.each_with_index do |streetName, index| %>
-						<li style="margin: 4vw 0vw 2vw -9vw;">
+						<li style="margin: 4vw 0vw 2vw -9vw; font-size:1.4rem;">
 							<%= streetName.street_name %>
 							<%= submit_tag"#{streetName.id}", class: "streetOK" %>
 						</li>

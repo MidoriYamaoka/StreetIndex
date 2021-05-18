@@ -75,8 +75,8 @@ p{
 //タイトル
 #titleandmenu{//aboutus
 	height: 10vh;//8>15>11
-	width: 100%;
-	position: fixed;
+	width: 133%;//100%;
+	position: absolute;//fixed;
 	top: 0vh;
 	z-index: 50;
 	background-color: $chic_style_color;
@@ -105,7 +105,7 @@ p{
 	@include webkit;
 }
 .whatisthere{//whatshereのanime
-	top: 12vh;
+	top: 10vh;
 	animation  : jumpUp 1s ease-in-out;
 		@keyframes jumpUp {
 			0% {transform: translateY(100%);
@@ -239,7 +239,7 @@ span.shop_nameMall{
 }
 	#streetConfirm{
 		position: absolute;
-		width: 115vw;//79
+		width: 121vw;//79
 		height: 50vh;//26
 		border: 9px $chic_accsentA solid;
 		border-radius: 7vw;
