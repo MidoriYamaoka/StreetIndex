@@ -22,33 +22,33 @@
 			<h5>ContactUs</h5>
 				<h6>♦︎For Harajuku Guest </h6>
 				<h6>-原宿で街歩きする方々へ-</h6>
-				<p>please let us know if shops are out of business.</p>
-				<p>お店が変わっていたら教えてください。<br>
+				<p>please let us know if shops are out of business.<br>
+				お店が変わっていたら教えてください。<br>
 				すぐに情報を反映させます。</p>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a>
+				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[ChangeShops]" class="mailto">こちら</a>
 				<h6>♦︎For Shop owner</6h>
 				<h6>-店舗・事業者さま︎-</6h>
 				<p>(1)ロゴの変更</p>
 				<p>We can edit shops logo soon.</p>
 				<p>すぐに変更・削除可能です。<br>
 				削除の場合も店舗名は表示されます。</p>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a>
+				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Logos]" class="mailto">こちら</a>
 				<p>(2)写真の掲載</p>
 				<p>It's available upload 5 imgs in shop details.</p>
 				<p>店舗詳細欄に写真5点掲載できます。<br>
 				店舗入り口、お客様に見せたい商品・<br>
 				お料理・サービスなどを送って頂ければ、<br>
 				すぐに掲載させて頂きます。</p><br>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a>
+				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Imgs]" class="mailto">こちら</a>
 				<p>(3)ハッシュタグ</p>
 				<p>Also available add/edit hash_tags in shop details.</p>
 				<p>店舗詳細欄にハッシュタグがあります。</p>
 		<p>すぐにご希望のハッシュタグにできますので、<br>
 		ご連絡くださいませ。</p><br>
-		<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a>
+		<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Hash]" class="mailto">こちら</a>
 	</div><!--whatishere終わり-->
 
-	<% @streetLength=@cityscape1.length*20%><!--道の長さ13=>16=>14=>13.5=>13.8-->
+	<% @streetLength=@many*24%><!--道の長さ13>16>14>13.5>13.8>15-->
 	<% @divwidth=@streetLength+11%>
 
 	<div id="main_wrap">
@@ -58,11 +58,11 @@
 			<a class="streetString"><%= @streetSide.street_name %></a>
 		</div>
 		
-		<!--gpsのpin-->
+		<!--gpsのpin
 		<span class="fa-layers fa-fw">
 			<i class="fas fa-splotch fa-spin"></i>
 			<span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-3">U</span>
-		</span>
+		</span>-->
 
 		<i class="fas fa-sort-up" id="renban_prev" style=
 			<% if @renban_prev %>
@@ -152,12 +152,12 @@
 			<div id="streetConfirm"><!--wrapに巻き込まれないように-->
 				<p id="streetCon">ストリート候補</p>
 				<%= form_tag("/", method: :get) do %>
-				<ul class="streetUl">
+				<ul class="streetUl" style="list-style: none">
 					<% if @streetNames.blank? %>
 						<li></li>
 					<% else %>
 						<% @streetNames.each_with_index do |streetName, index| %>
-						<li>
+						<li style="margin: 4vw 0vw 2vw -9vw;">
 							<%= streetName.street_name %>
 							<%= submit_tag"#{streetName.id}", class: "streetOK" %>
 						</li>

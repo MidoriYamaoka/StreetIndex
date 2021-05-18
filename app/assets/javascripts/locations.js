@@ -10,28 +10,29 @@ $(document).ready(function(){
 			mallShopInfo.hide();
 			renbanPrev.hide();
 			renbanNext.hide();
-			//臨時！
-			$('#thegate').hide();
+			//臨時！$('#thegate').hide();
 			
-	//$('div.info_fadeout').bind('touchstart', function() {
-	$('.info_fadeout').bind('touchstart', function() {
-		//shop要素、cross_streetを消す
+	$('div.info_fadeout').bind('touchstart', function() {
+	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
 		$(this).parents('li.hidei').hide();
 		return false;//消された状態をキープ
 	});
+
 	$('div.mallShop_fadeout').bind('touchstart', function() {
-		//mallShop要素を消す
+		//mallShop要素を消す.console.log("mallShop_fadeoutで消された");
 		$(this).parents('ul.mallShopInfo').hide();
 		return false;//消された状態をキープ
 	});
 	
+	//fadeInのアクション
 	$('ul.shops').bind('touchstart', function() {
 		var sw=window.pageXOffset;
 		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 10+sw });
 	});
 	
 	$('li.tenants').bind('touchstart', function() {
-		$(this).next('ul.mallShopInfo').fadeIn();
+		var sw=window.pageXOffset;
+		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 10+sw });
 	});
 	
 	//メニューバー表示。
@@ -50,13 +51,13 @@ $(document).ready(function(){
 	var cssResultN = $('#renban_next').css('color');
 	$('#renban_next').on('touchstart', function() {
 		if('rgb(1, 14, 95)'==cssResultN){
-			$('#gotoNext').fadeIn();
+			$('#renban_next').fadeIn();
 		}
 	});
 
 	//[No]処理:hoverでfadeOut
 	$('a#renban_no').hover(function() {
-		$('#gotoPrev'||'#gotoNext').fadeOut();
+		$('#gotoPrev, #gotoNext').fadeOut();
 	});
 	//logoタッチ終わり//
 	
@@ -72,15 +73,12 @@ $(document).ready(function(){
 	//street_search//
 	$('#streetConfirm').hide();
 	$('#search_button').on('touchstart', function() {
-		var sw=window.pageXOffset;
-		//sw=sw+130;
-		console.log("swは"+sw);
+		var sw=window.pageXOffset;//console.log("swは"+sw);
 		$('#streetConfirm').fadeIn().offset({top: 170, left: sw+10});
 	});
 	
 	$('.streetOK').on('touchstart', function() {
-		let stid=$(this).data('stid');
-		//console.log(stid);
+		let stid=$(this).data('stid');//console.log(stid);
 	});
 	//street_search終わり//
 

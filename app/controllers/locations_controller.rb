@@ -45,6 +45,8 @@ class LocationsController < ApplicationController
 
 		@cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 		@cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		@many=[@cityscape0.length, @cityscape1.length].max
+		p @many
 
 		closeShops
 		@grayAction = "border: 6px solid gray;"
