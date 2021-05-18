@@ -115,11 +115,11 @@ p{
 
 //メインスペース
 #main_wrap{
-	position: relative;
+	position: absolute;//relative;
 	width: 133%;
-	height: 84vh;
+	height: 90vh;
 	overflow: scroll;
-	top: 6vh;
+	top: 10vh;//6vh;
 	@include webkit;
 }
 
@@ -129,14 +129,14 @@ p{
 	padding: 0;
 	overflow-x: auto;
 	white-space: nowrap;
-	height: 85vh; //90>96>100>155
+	height: 90vh; //90>96>100>155>85
 	width: 100%;
 	background: $chic_base;
 	@include webkit;
 	#renban_prev.fas.fa-sort-up{
 		position: absolute;
 		top: 37.5%;//32vh>37%
-		left: 1.1vw;
+		left: 3.1vw;//1.1
 		font-size: 4rem;
 		transform: rotate(270deg);
 	}
@@ -200,7 +200,7 @@ p{
 	#street{
 		position: absolute;
 		height: 9vh;//6>9
-		left: 6vw;
+		left: 9vw;//6
 		background-color: $chic_accsentA;
 		top: 37%;//32vh>37%
 		@include webkit;
@@ -250,6 +250,13 @@ span.shop_nameMall{
 		color: $chic_main;
 		@include webkit;
 	}
+	#info_fadeout{
+		position: absolute;
+		font-size: 4rem;
+		top: -6vh;
+		left: 88%;
+		@include webkit;
+	}
 	p#streetCon{
 	margin-top: 2vh;
 	font-size: 2rem;
@@ -281,7 +288,7 @@ span.shop_nameMall{
 	position: fixed;//relative>fixed
 	width: 100%;
 	height: 190vh;//33>160>190
-	top: 70%;//-26>-42>43>70>66
+	top: 73%;//-26>-42>43>70>66>70
 	background-color: rgba($chic_base_ex, 80%);//darken($chic_accsentB, 50%);
 	@include webkit;
 }
@@ -298,8 +305,8 @@ span.shop_nameMall{
 	#search_button{
 		width: 7.5vh;
 		height: 7.5vh;
-		right: 15%;
-		top: 1vh;//0.5>3
+		right: 13%;//15%;
+		top: 1.5vh;//0.5>3
 		position: absolute;
 		background-color: $chic_style_color;
 		border-radius: 63%;
@@ -422,7 +429,7 @@ span.shop_nameMall{
 	position: absolute;
 	height: 17vh;//12
 	width: 100%;
-	top: 16vh;//21>10>15>14
+	top: 12vh;//21>10>15>14>16
 	text-align: center;
 	@include webkit;
 	.shop_sort{

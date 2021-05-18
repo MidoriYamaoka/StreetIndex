@@ -13,7 +13,7 @@
 	z-index: 80;
 	white-space: normal;
 	@include webkit;
-	#info_fadeout{
+	.info_fadeout{
 		position: absolute;
 		left: 109vw;
 		top: -13vw;

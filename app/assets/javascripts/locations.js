@@ -12,9 +12,10 @@ $(document).ready(function(){
 			renbanNext.hide();
 			//臨時！$('#thegate').hide();
 			
-	$('div.info_fadeout').bind('touchstart', function() {
+	$('div#info_fadeout').bind('touchstart', function() {
 	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
-		$(this).parents('li.hidei').hide();
+		$(this).parents('li.hidei, div#streetConfirm').hide();
+
 		return false;//消された状態をキープ
 	});
 
