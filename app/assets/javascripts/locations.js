@@ -3,7 +3,7 @@ $(document).ready(function(){
 	let step_info = $('li.hidei'),
 			mallInfo=$('.mallInfo'),
 			mallShopInfo=$('ul.mallShopInfo'),
-			renbanPrev=$('#gotoPrev');
+			renbanPrev=$('#gotoPrev'),
 			renbanNext=$('#gotoNext');
 			step_info.hide();
 			mallInfo.hide();
