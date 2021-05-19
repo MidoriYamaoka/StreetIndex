@@ -79,7 +79,8 @@
 			</div>
 
 			<div id="enterStreet">
-				<a>Go to <%= @streetInfo.street_name %> ?</a><br>
+				<a>Go to <br>
+				<%= @streetInfo.street_name %> ?</a><br>
 				<%= form_with(url: "/", method: :get, local: true) do %>
 				<%# p "Street.id#{@streetInfo.id}に変遷予定です" %>
 				<a data-style="gotoStreet">[Yes]

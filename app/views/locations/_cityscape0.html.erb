@@ -19,7 +19,7 @@
 				<% @tenant = Shop.find(each_bldg) %><!--各shop情報-->
 
 					<% if index == 0 && ind >= 1 then %><!--最初の2階以上￥-->
-						 	<% @top = 22.7-6.5*ind %>
+							<% @top = 23.2-7*ind %>
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 								style="top:<%= @top %>vh; left:6vw;
 									background-image: url(<%= @tenant.logo_url %>);
@@ -38,7 +38,7 @@
 
 					<% elsif index >= 0 && ind >=1 then %><!--隣の2階以上￥-->
 						<% @left = 6+24*index %><!--動的に要素のtop&leftを変更-->
-						<% @top = 22.7-6.5*ind %><!--24.8-4.8>43.2-5>17-5-->
+						<% @top = 23.2-7*ind %><!--24.8-4.8>43.2-5>17-5-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 							style="top:<%= @top %>vh; left:<%= @left %>vw; 
 								background-image: url(<%= @tenant.logo_url %>);
@@ -62,7 +62,7 @@
 						<% @left = 6+24*index %><!--動的に要素のleftを変更-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:23.5vh; left:<%= @left %>vw; 
+							style="top:22.5vh; left:<%= @left %>vw; 
 								background-image: url(<%= @tenant.logo_url %>);
 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
@@ -90,7 +90,7 @@
 					<% elsif index == 0 then %><!--最初の建物1階 top:25.5>50>47>19>21.5-->
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:23.5vh; left:20vw;
+							style="top:22.5vh; left:20vw;
 								background-image: url(<%= @tenant.logo_url %>); 
 									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
