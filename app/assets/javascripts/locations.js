@@ -51,8 +51,8 @@ $(document).ready(function(){
 	});
 
 	var cssResultN = $('#renban_next').css('color');
-	conosle.log("RenbanNは"+cssResultN);
 	$('#renban_next').on('touchstart', function() {
+		console.log("RenbanNは"+cssResultN);
 		console.log("Nextたっぷ");
 		if('rgb(1, 14, 95)'==cssResultN){
 			$('#renban_next').fadeIn();
