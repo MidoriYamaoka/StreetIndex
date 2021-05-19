@@ -44,18 +44,22 @@ $(document).ready(function(){
 		//ストリート連番
 	var cssResultP = $('#renban_prev').css('color');
 	$('#renban_prev').on('touchstart', function() {
-		console.log("Prevたっぷ");
+		
+		var kekka=cssResultP=='rgb(1, 14, 95)';
+		console.log("比較の結果は"+kekka);
+		console.log("RenbanPは"+cssResultP);
 		if('rgb(1, 14, 95)'==cssResultP){
-			$('#gotoPrev').fadeIn();
+			renbanPrev.fadeIn();
 		}
 	});
 
 	var cssResultN = $('#renban_next').css('color');
 	$('#renban_next').on('touchstart', function() {
+		var kekka=cssResultN=='rgb(1, 14, 95)';
+		console.log("比較の結果は"+kekka);
 		console.log("RenbanNは"+cssResultN);
-		console.log("Nextたっぷ");
 		if('rgb(1, 14, 95)'==cssResultN){
-			$('#renban_next').fadeIn();
+			renbanNext.fadeIn();
 		}
 	});
 
