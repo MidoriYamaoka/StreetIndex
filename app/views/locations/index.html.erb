@@ -65,8 +65,8 @@
 		</span>-->
 
 		<i class="fas fa-sort-up" id="renban_prev" style=
-			<% p "連番prev" %>
-			<% if p @renban_prev %>
+			<%= p "連番prev#{@renban_prev}" %>
+			<% if @renban_prev %>
 				<%= @renbanAction %>
 			<% else %>
 				"color: rgba(239, 231, 174, 1);"

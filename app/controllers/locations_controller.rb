@@ -32,7 +32,7 @@ class LocationsController < ApplicationController
 				#p "連番発生してます"
 				@renban_next=@streetSide.street_name.next #＠renban="Omotesando-表参道(3)"
 				@renban_next=Street.find_by(street_name: @renban_next)
-				if @renban_next.nil?
+				if @renban_next.nil? #あんぱ？
 					p "ないなら、prev連番"
 					@renban_s=@renban+1
 					 @renban_prev=@streetSide.street_name[@renban_s...@renban_end].to_i-1
