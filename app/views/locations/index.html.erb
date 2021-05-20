@@ -64,9 +64,10 @@
 			<span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-3">U</span>
 		</span>-->
 
-		<i class="fas fa-sort-up" id="renban_prev" style=
-			<%= p "連番prev#{@renban_prev}" %>
+		<i class="fas fa-sort-up" id="renban_prev" 
 			<% if @renban_prev %>
+				test-data="<%= "#{@renban_prev}" %>"
+				style=
 				<%= @renbanAction %>
 			<% else %>
 				"color: rgba(239, 231, 174, 1);"
