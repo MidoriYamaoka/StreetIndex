@@ -5,7 +5,8 @@ $(document).ready(function(){
 			mallShopInfo=$('ul.mallShopInfo'),
 			renbanPrev=$('#gotoPrev'),
 			renbanNext=$('#gotoNext'),
-			ww=$(window).width();
+			ww=$(window).width(),
+			main=$('#main_wrap').offset().top;
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
@@ -65,9 +66,9 @@ $(document).ready(function(){
 	
 	//バーチャルキーボードのための設定//
 	$('[name=button]').on('touchstart', function() {
-		console.log("ここに来ました"+ww);
-		if(320<ww<600){
-			$('#main_wrap, .whatishere').animate({scrollTop: 0}, 1000);
+		console.log("ここに来ました"+main);
+		if($('#main_wrap').offset().top==main){
+			$('#main_wrap').animate({'top': main}, 1000);
 			console.log("そしてここにも来ました。");
 		}
 	});
