@@ -66,8 +66,9 @@ $(document).ready(function(){
 	
 	//バーチャルキーボードのための設定//
 	$('[name=button]').on('touchstart', function() {
+		let now=$('#main_wrap').offset().top;
 		console.log("ここに来ました"+main);
-		if($('#main_wrap').offset().top==main){
+		if(now!==main){
 			$('#main_wrap').animate({'top': main}, 1000);
 			console.log("そしてここにも来ました。");
 		}
