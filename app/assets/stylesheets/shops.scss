@@ -67,12 +67,13 @@
 	z-index: 10;
 	@include webkit;
 	[data-style="gotoStreet"]{
-		font-size: 2rem;
-		display: inline;
+		font-size: 1.7rem;
+		display: inline-block;
+		position: initial;
 	}
 	input[type="submit"]{
 		position: relative;
-		left: -5vw;
+		left: -14vw;
 		opacity: 0;
 	}
 }

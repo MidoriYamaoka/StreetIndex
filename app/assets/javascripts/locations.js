@@ -4,7 +4,8 @@ $(document).ready(function(){
 			mallInfo=$('.mallInfo'),
 			mallShopInfo=$('ul.mallShopInfo'),
 			renbanPrev=$('#gotoPrev'),
-			renbanNext=$('#gotoNext');
+			renbanNext=$('#gotoNext'),
+			ww=$(window).width();
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
@@ -15,7 +16,6 @@ $(document).ready(function(){
 	$('div#info_fadeout').bind('touchstart', function() {
 	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
 		$(this).parents('li.hidei, div#streetConfirm').hide();
-
 		return false;//消された状態をキープ
 	});
 
@@ -62,6 +62,15 @@ $(document).ready(function(){
 		$('#gotoPrev, #gotoNext').fadeOut();
 	});
 	//logoタッチ終わり//
+	
+	//バーチャルキーボードのための設定//
+	$('[name=button]').on('touchstart', function() {
+		console.log("ここに来ました"+ww);
+		if(320<ww<600){
+			$('#main_wrap, .whatishere').animate({scrollTop: 0}, 1000);
+			console.log("そしてここにも来ました。");
+		}
+	});
 	
 	//event//
 	function eventClone(){
