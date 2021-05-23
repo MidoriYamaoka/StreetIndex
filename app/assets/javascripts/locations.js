@@ -74,9 +74,9 @@ $(document).ready(function(){
 		}
 	});
 	
-	//ブルーって何？！//
+	//ブルーって何？！//できぬ。
 	$('input[name=search]').on('touchstart', function(){
-		$(this).blur();
+		$('input').blur();
 		console.log("ブルーって何関数");
 	});
 	
