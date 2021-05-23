@@ -74,6 +74,12 @@ $(document).ready(function(){
 		}
 	});
 	
+	//ブルーって何？！//
+	$('input[name=search]').on('touchstart', function(){
+		$(this).blur();
+		console.log("ブルーって何関数");
+	});
+	
 	//event//
 	function eventClone(){
 		setTimeout(function(){
