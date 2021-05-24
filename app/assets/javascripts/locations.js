@@ -107,7 +107,8 @@ $(document).ready(function(){
 		//	console.log("そしてここにも来ました");
 			//$('#titleandmenu').delay(200).animate({'top': 0}, 800);
 			//$('#main_wrap').delay(200).animate({'top': main}, 800);
-			$('#main_wrap').animate({'top': 81},800);
+			//$('#main_wrap').animate({'top': 81},800);
+			$(window).scrollTop(0);
 			$('#search_button').css('background-color','red');
 			alert("あらと");
 //		}
