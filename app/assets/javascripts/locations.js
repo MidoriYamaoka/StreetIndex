@@ -104,10 +104,10 @@ $(document).ready(function(){
 		//console.log("そしてmainは"+main);
 		$('input').blur(function () { 
 //			if(now!==main){
-		//	$('#titleandmenu').delay(2000).animate({'top': 0}, 800);
-		//	$('#main_wrap').delay(2000).animate({'top': main}, 800);
 		//	console.log("そしてここにも来ました");
-		alert("あらと");
+			$('#titleandmenu').delay(200).animate({'top': 0}, 800);
+			$('#main_wrap').delay(200).animate({'top': main}, 800);
+			alert("あらと");
 //		}
 		});
 		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+5});
