@@ -82,6 +82,7 @@ $(document).ready(function(){
 	//ブルーって何？！//できぬ。
 	$('input[name=search]').on('touchstart', function(){
 		$('input').blur();
+		$('#main_wrap').animate({'top': main}, 1000);
 		console.log("ブルーって何関数");
 	});
 	
