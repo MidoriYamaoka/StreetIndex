@@ -104,8 +104,8 @@ $(document).ready(function(){
 		//console.log("そしてmainは"+main);
 		$('input').blur();
 		if(now!==main){
-			$('#titleandmenu').animate({'top': 0}, 800);
-			$('#main_wrap').animate({'top': main}, 800);
+			$('#titleandmenu').delay(2000).animate({'top': 0}, 800);
+			$('#main_wrap').delay(2000).animate({'top': main}, 800);
 			console.log("そしてここにも来ました");
 		}
 		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
