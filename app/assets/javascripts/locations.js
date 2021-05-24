@@ -75,16 +75,16 @@ $(document).ready(function(){
 	//});
 	
 	//ブルーって何から派生//
-	$('input').on('touchstart', function(){
-		$(this).focus();
-	});
+//	$('input').on('touchstart', function(){
+//		$(this).focus();
+//	});
 	
 	//ブルーって何？！//できぬ。
-	$('input[name=search]').on('touchstart', function(){
+//	$('input[name=search]').on('touchstart', function(){
 //		$('input').blur();
 //		$('#main_wrap').animate({'top': main}, 1000);
 //		console.log("ブルーって何関数");
-	});
+//	});
 	
 	//event//
 	function eventClone(){
@@ -104,8 +104,8 @@ $(document).ready(function(){
 		//console.log("そしてmainは"+main);
 		$('input').blur();
 		if(now!==main){
-			$('#titleandmenu').delay(2000).animate({'top': 0}, 800);
-			$('#main_wrap').delay(2000).animate({'top': main}, 800);
+		//	$('#titleandmenu').delay(2000).animate({'top': 0}, 800);
+		//	$('#main_wrap').delay(2000).animate({'top': main}, 800);
 			console.log("そしてここにも来ました");
 		}
 		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
