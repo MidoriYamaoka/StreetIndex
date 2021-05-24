@@ -75,9 +75,9 @@ $(document).ready(function(){
 	//});
 	
 	//ブルーって何から派生//
-//	$('input').on('touchstart', function(){
-//		$(this).focus();
-//	});
+	$('input').on('touchstart', function(){
+		$(this).focus();
+	});
 	
 	//ブルーって何？！//できぬ。
 //	$('input[name=search]').on('touchstart', function(){
@@ -100,7 +100,7 @@ $(document).ready(function(){
 	$('#search_button').on('touchstart', function() {
 		let sw=window.pageXOffset,
 				now=$('#main_wrap').offset().top;
-		//console.log("swは"+sw+"nowは"+now);
+		console.log("swは"+sw+"nowは"+now);
 		//console.log("そしてmainは"+main);
 		$('input').blur(function () { 
 			if(now!==main){
@@ -110,7 +110,7 @@ $(document).ready(function(){
 		alert("あらと");
 		}
 		});
-		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
+		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+5});
 	});
 	
 	$('.streetOK').on('touchstart', function() {
