@@ -103,7 +103,7 @@ $(document).ready(function(){
 		//console.log("swは"+sw+"nowは"+now);
 		//console.log("そしてmainは"+main);
 		$('input').blur(function () { 
-			if(now==main){
+			if(now!==main){
 		//	$('#titleandmenu').delay(2000).animate({'top': 0}, 800);
 		//	$('#main_wrap').delay(2000).animate({'top': main}, 800);
 		//	console.log("そしてここにも来ました");
