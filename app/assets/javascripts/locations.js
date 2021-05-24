@@ -65,14 +65,14 @@ $(document).ready(function(){
 	//logoタッチ終わり//
 	
 	//バーチャルキーボードのための設定//
-	$('[name=button]').on('touchstart', function() {
-		let now=$('#main_wrap').offset().top;
-		console.log("ここに来ました"+main);
-		if(now!==main){
-			$('#main_wrap').animate({'top': main}, 1000);
-			console.log("そしてここにも来ました。");
-		}
-	});
+	//$('[name=button]').on('touchstart', function() {
+	//	let now=$('#main_wrap').offset().top;
+	//	console.log("ここに来ました"+main);
+	//	if(now!==main){
+	//		$('#main_wrap').animate({'top': main}, 1000);
+	//		console.log("そしてここにも来ました。");
+	//	}
+	//});
 	
 	//ブルーって何から派生//
 	$('input').on('touchstart', function(){
@@ -81,9 +81,9 @@ $(document).ready(function(){
 	
 	//ブルーって何？！//できぬ。
 	$('input[name=search]').on('touchstart', function(){
-		$('input').blur();
-		$('#main_wrap').animate({'top': main}, 1000);
-		console.log("ブルーって何関数");
+//		$('input').blur();
+//		$('#main_wrap').animate({'top': main}, 1000);
+//		console.log("ブルーって何関数");
 	});
 	
 	//event//
@@ -98,8 +98,16 @@ $(document).ready(function(){
 	//street_search//
 	$('#streetConfirm').hide();
 	$('#search_button').on('touchstart', function() {
-		var sw=window.pageXOffset;//console.log("swは"+sw);
-		$('#streetConfirm').fadeIn().offset({top: 170, left: sw+10});
+		let sw=window.pageXOffset,
+				now=$('#main_wrap').offset().top;
+		console.log("swは"+sw+"nowは"+now);
+		$('input').blur();
+		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
+		if(now!==main){
+			$('#main_wrap').animate({'top': main}, 800);
+			console.log("そしてここにも来ました");
+		}
+
 	});
 	
 	$('.streetOK').on('touchstart', function() {
