@@ -74,6 +74,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	//ブルーって何から派生//
+	$('input').on('touchstart', function(){
+		$(this).focus();
+	});
+	
 	//ブルーって何？！//できぬ。
 	$('input[name=search]').on('touchstart', function(){
 		$('input').blur();

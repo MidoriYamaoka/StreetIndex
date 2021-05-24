@@ -64,12 +64,8 @@ p{
 	background-color: $chic_style_color;
 	@include webkit;
 }
-
-#drowse_top{
-	position: relative;
-	height: 9vh;
-	width: 100%;
-	@include webkit;
+input{
+	font-size: 16px;//autofocus止まるらしい
 }
 
 //タイトル
