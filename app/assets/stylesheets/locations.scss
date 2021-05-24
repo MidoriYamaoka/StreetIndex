@@ -66,6 +66,7 @@ p{
 }
 input{
 	font-size: 16px;//autofocus止まるらしい
+	transform: scale(0.9);
 }
 
 //タイトル
@@ -205,7 +206,7 @@ input{
 	.shops{
 		position: absolute;
 		display: inline-block;
-		border-radius: 50%;
+		border-radius: 35%;//50
 		box-shadow: 0px 0px 28px -9px rgba(207,235,249,0.76) inset;//0px 0px 36px 8px rgba(210,184,130,0.6) inset;
 		width: 12vw;//9>20>12
 		height: 15vw;//10>18>15

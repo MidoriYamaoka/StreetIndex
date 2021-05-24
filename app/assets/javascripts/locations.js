@@ -100,14 +100,15 @@ $(document).ready(function(){
 	$('#search_button').on('touchstart', function() {
 		let sw=window.pageXOffset,
 				now=$('#main_wrap').offset().top;
-		console.log("swは"+sw+"nowは"+now);
+		//console.log("swは"+sw+"nowは"+now);
+		//console.log("そしてmainは"+main);
 		$('input').blur();
-		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
 		if(now!==main){
+			$('#titleandmenu').animate({'top': 0}, 800);
 			$('#main_wrap').animate({'top': main}, 800);
 			console.log("そしてここにも来ました");
 		}
-
+		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+10});
 	});
 	
 	$('.streetOK').on('touchstart', function() {
