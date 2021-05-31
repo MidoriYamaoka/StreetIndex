@@ -24,10 +24,10 @@
 						<%= @grayAction %>
 					<% end %>
 				">
-					
-					<% if tenant.logo_url.blank? %>
+
+					<%# if tenant.logo_url.blank? %><!--承諾後-->
 						<span class="shop_nameMall"><%= tenant.shop_name %></span>
-					<% end %>
+					<%# end %>
 					<!--モール店舗詳細-->
 				</li>
 					<%= render partial: 'shops/mallShop', locals: {id: tenant.id } %>
