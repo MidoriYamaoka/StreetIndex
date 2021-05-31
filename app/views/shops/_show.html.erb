@@ -16,7 +16,7 @@
 			<div id="mallInfo_wrap">
 			<ul id="mallInfo">
 			<% @tenants=Shop.where(location_id: locationId).order(floor: 'DESC').each do |tenant| %>
-				<li class="tenants" style="background-image: url(<%= tenant.logo_url %>); 
+				<li class="tenants" style="background-image: url(<%#= tenant.logo_url %>); 
 				background-size: contain; background-repeat: no-repeat; background-position-x: center;
 					<% if !@closeShops_0.find{|n|n == tenant.id} || !@closeShops_1.find{|n|n == tenant.id} then %>
 						<%= @greenAction %>

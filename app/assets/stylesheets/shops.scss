@@ -44,6 +44,7 @@
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
+	overflow-y: scroll;
 	}
 }
 
@@ -51,7 +52,7 @@
 	position: relative;
 	top: 4vh;
 	height: 10vh;//9>
-	width: 36vw;//26
+	width: 33vw;//26
 	border: 8px solid $chic_accsentA;
 	border-radius: 6vw;
 	@include webkit;

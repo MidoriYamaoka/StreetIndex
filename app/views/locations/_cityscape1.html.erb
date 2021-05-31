@@ -22,7 +22,7 @@
 						 	<% @top = 38.1+7.8*ind %><!--34.1=>36.1, 6=>5--><%# @top = 24.5-4.5*ind %>
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 								style="top:<%= @top %>vh; left:9vw;
-									background-image: url(<%= @tenant.logo_url %>);
+									background-image: url(<%#= @tenant.logo_url %>);
 									<% if !@closeShops_1.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
 									<% else %>
@@ -30,9 +30,9 @@
 									<% end %>
 									">
 
-								<% if @tenant.logo_url.blank? %>
+								<%# if @tenant.logo_url.blank? %>
 									<span class="shop_name"><%= @tenant.shop_name %></span>
-								<% end %>
+								<%# end %>
 
 								<%= render partial: 'shops/show', locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
 						</ul>
@@ -42,16 +42,16 @@
 						<% @top = 38.1+7.8*ind %><%# @top = 24.5-4.5*ind >36.1+5>65.8+8.0%>
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
 							style="top:<%= @top %>vh; left:<%= @left %>vw; 
-								background-image: url(<%= @tenant.logo_url %>);
+								background-image: url(<%#= @tenant.logo_url %>);
 									<% if !@closeShops_1.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
 									<% else %>
 										<%= @grayAction %>
 									<% end %>
 								">
-							<% if @tenant.logo_url.blank? %>
+							<%# if @tenant.logo_url.blank? %>
 								<span class="shop_name"><%= @tenant.shop_name %></span>
-							<% end %>
+							<%# end %>
 
 								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg  } %>
 						</ul>
@@ -61,7 +61,7 @@
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
 							style="top:39.3vh; left:<%= @left %>vw; 
-								background-image: url(<%= @tenant.logo_url %>);
+								background-image: url(<%#= @tenant.logo_url %>);
 
 									<% if !@closeShops_1.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
@@ -81,7 +81,8 @@
 									<% elsif @tenant.shop_name=="mall" %>
 										<% @mall_name=Location.find(num).location.split()[1] %>
 										<span class="shop_name"><%= @mall_name %></span>
-										<% elsif @tenant.logo_url.blank? %>
+										<%# elsif @tenant.logo_url.blank? %><!--承諾後-->
+										<% else %>
 											<span class="shop_name"><%= @tenant.shop_name %></span>
 										<% end %>
 
@@ -92,7 +93,7 @@
 						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
 								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
 							style="top:39.3vh; left:24vw;
-								background-image: url(<%= @tenant.logo_url %>); 
+								background-image: url(<%#= @tenant.logo_url %>); 
 									<% if !@closeShops_1.find{|n|n == @tenant.id} then %>
 										<%= @greenAction %>
 									<% else %>
@@ -107,11 +108,11 @@
 								">
 									<% if @tenant.shop_name=="cross_street" %>
 										<span class="shop_name"><%= "" %></span>
-
 									<% elsif @tenant.shop_name=="mall" %>
 										<% @mall_name=Location.find(num).location.split()[1] %>
 										<span class="shop_name"><%= @mall_name %></span>
-									<% elsif @tenant.logo_url.blank? %>
+									<%# elsif @tenant.logo_url.blank? %><!--承諾後-->
+									<% else %>
 										<span class="shop_name"><%= @tenant.shop_name %></span>
 									<% end %>
 
