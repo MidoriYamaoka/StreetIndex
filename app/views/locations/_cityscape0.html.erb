@@ -29,6 +29,7 @@
 										<%= @grayAction %>
 									<% end %>
 									">
+
 							<% if @tenant.logo_url.blank? %>
 								<span class="shop_name"><%= @tenant.shop_name %></span>
 							<% end %>
@@ -47,11 +48,8 @@
 									<% else %>
 										<%= @grayAction %>
 									<% end %>
-
 								">
-									<% if @tenant.shop_name=="cross_street" %>
-										<span class="shop_name"><%= "" %></span>
-									<% elsif @tenant.logo_url.blank? %>
+									<% if @tenant.logo_url.blank? %>
 										<span class="shop_name"><%= @tenant.shop_name %></span>
 									<% end %>
 
@@ -80,6 +78,9 @@
 
 										<% if @tenant.shop_name=="cross_street" %>
 											<span class="shop_name"><%= "" %></span>
+										<% elsif @tenant.shop_name=="mall" %>
+											<% @mall_name=Location.find(num).location.split()[1] %>
+											<span class="shop_name"><%= @mall_name %></span>
 										<% elsif @tenant.logo_url.blank? %>
 											<span class="shop_name"><%= @tenant.shop_name %></span>
 										<% end %>
@@ -104,7 +105,12 @@
 										<%= @crossingStreet %>
 									<% end %>
 								">
-							<% if @tenant.logo_url.blank? %>
+							<% if @tenant.shop_name=="cross_street" %>
+								<span class="shop_name"><%= "" %></span>
+							<% elsif @tenant.shop_name=="mall" %>
+								<% @mall_name=Location.find(num).location.split()[1] %>
+								<span class="shop_name"><%= @mall_name %></span>
+							<% elsif @tenant.logo_url.blank? %>
 								<span class="shop_name"><%= @tenant.shop_name %></span>
 							<% end %>
 

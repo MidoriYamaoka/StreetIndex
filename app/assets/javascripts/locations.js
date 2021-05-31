@@ -64,28 +64,6 @@ $(document).ready(function(){
 	});
 	//logoタッチ終わり//
 	
-	//バーチャルキーボードのための設定//
-	//$('[name=button]').on('touchstart', function() {
-	//	let now=$('#main_wrap').offset().top;
-	//	console.log("ここに来ました"+main);
-	//	if(now!==main){
-	//		$('#main_wrap').animate({'top': main}, 1000);
-	//		console.log("そしてここにも来ました。");
-	//	}
-	//});
-	
-	//ブルーって何から派生//
-	$('input').on('touchstart', function(){
-		$(this).focus();
-	});
-	
-	//ブルーって何？！//できぬ。
-//	$('input[name=search]').on('touchstart', function(){
-//		$('input').blur();
-//		$('#main_wrap').animate({'top': main}, 1000);
-//		console.log("ブルーって何関数");
-//	});
-	
 	//event//
 	function eventClone(){
 		setTimeout(function(){
@@ -95,23 +73,19 @@ $(document).ready(function(){
 	eventClone();
 	//event終わり//
 
+	//iphoneのkeybordで必要。blur⇄focus//
+	$('input').on('touchstart', function(){
+		$(this).focus();
+	});
+
 	//street_search//
 	$('#streetConfirm').hide();
 	$('#search_button').on('touchstart', function() {
-		let sw=window.pageXOffset,
-				now=$('#main_wrap').offset().top;
-		console.log("swは"+sw+"nowは"+now);
-		//console.log("そしてmainは"+main);
-		$('input').blur(function () { 
-//			if(now!==main){
-		//	console.log("そしてここにも来ました");
-			//$('#titleandmenu').delay(200).animate({'top': 0}, 800);
-			//$('#main_wrap').delay(200).animate({'top': main}, 800);
-			//$('#main_wrap').animate({'top': 81},800);
+		let sw=window.pageXOffset;//console.log("swは"+sw+"nowは"+now);//console.log("そしてmainは"+main);
+		$('input').blur(function () { //バーチャルキーボードのための設定//
 			$(window).scrollTop(0);
-			$('#search_button').css('background-color','red');
-			alert("あらと");
-//		}
+			//$('#search_button').css('background-color','red');
+			//alert("あらと");
 		});
 		$('#streetConfirm').delay(1000).fadeIn().offset({left: sw+5});
 	});
