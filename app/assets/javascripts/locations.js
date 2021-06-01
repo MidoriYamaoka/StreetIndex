@@ -19,7 +19,7 @@ $(document).ready(function(){
 		//let kore=$(this).text();
 		let kantei=$(this).text().length;
 		if(kantei>=6){
-			$(this).css({'line-height':'0.8rem','font-size':'0.8rem','top':'0.7vh'});
+			$(this).css({'line-height':'0.8rem','font-size':'0.8rem','top':'0.7vh','z-index':'35'});
 		}
 	});
 
