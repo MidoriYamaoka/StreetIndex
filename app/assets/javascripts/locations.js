@@ -13,7 +13,16 @@ $(document).ready(function(){
 			renbanPrev.hide();
 			renbanNext.hide();
 			//臨時！$('#thegate').hide();
-			
+
+	//長い店名6文字以上で0.8remよ関数
+	$('#main_space>ul.shops>span.shop_name, li.tenants>span.shop_nameMall').each(function(i, e){
+		//let kore=$(this).text();
+		let kantei=$(this).text().length;
+		if(kantei>=6){
+			$(this).css({'line-height':'0.8rem','font-size':'0.8rem','top':'0.7vh'});
+		}
+	});
+
 	$('div#info_fadeout').bind('touchstart', function() {
 	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
 		$(this).parents('li.hidei, div#streetConfirm').hide();
