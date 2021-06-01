@@ -32,13 +32,16 @@ $(document).ready(function(){
 		}
 	});
 
-	$('div#info_fadeout').bind('touchend', function() {
+	$('.info_fadeout, .mallShop_fadeout').bind('touchend', function() {//'touchstart'
 	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
-		$(this).parents('li.hidei, div#streetConfirm').hide();
+			//let cc=$(this).attr('class');
+			//console.log('ccは'+cc);
+			//$(this).parents('li.hidei, div#streetConfirm').hide();
+		$(this).parent('li.hidei, div#streetConfirm').hide();
 		return false;//消された状態をキープ
 	});
 
-	$('div.mallShop_fadeout').bind('touchend', function() {
+	$('div.mallShop_fadeout').bind('touchend', function() {//'touchstart'
 		//mallShop要素を消す.console.log("mallShop_fadeoutで消された");
 		$(this).parents('ul.mallShopInfo').hide();
 		return false;//消された状態をキープ
