@@ -6,13 +6,22 @@ $(document).ready(function(){
 			renbanPrev=$('#gotoPrev'),
 			renbanNext=$('#gotoNext'),
 			ww=$(window).width(),
-			main=$('#main_wrap').offset().top;
+			main=$('#main_wrap').offset().top,
+			mainarea=$('#main_space');
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
 			renbanPrev.hide();
 			renbanNext.hide();
 			//臨時！$('#thegate').hide();
+
+	//touchスクロール//
+   //.addEventListener("touchmove", () => {
+  // 	mainarea.bind('touchmove', function() {
+        //event.preventDefault();  // 画面スクロールを防止
+        //displayArea1.innerHTML = getTimeStamp() + " touchmove"
+        console.log("スクロ＾る？");
+  //  });
 
 	//長い店名6文字以上で0.8remよ関数
 	$('#main_space>ul.shops>span.shop_name, li.tenants>span.shop_nameMall').each(function(i, e){
@@ -23,25 +32,25 @@ $(document).ready(function(){
 		}
 	});
 
-	$('div#info_fadeout').bind('touchstart', function() {
+	$('div#info_fadeout').bind('touchend', function() {
 	//hideのアクション主に「×」=>[No]は下部のhoverで消す. console.log("[No]で消された");
 		$(this).parents('li.hidei, div#streetConfirm').hide();
 		return false;//消された状態をキープ
 	});
 
-	$('div.mallShop_fadeout').bind('touchstart', function() {
+	$('div.mallShop_fadeout').bind('touchend', function() {
 		//mallShop要素を消す.console.log("mallShop_fadeoutで消された");
 		$(this).parents('ul.mallShopInfo').hide();
 		return false;//消された状態をキープ
 	});
 	
 	//fadeInのアクション
-	$('ul.shops').bind('touchstart', function() {
+	$('ul.shops').bind('touchend', function() {//'touchstart'
 		var sw=window.pageXOffset;
 		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 10+sw });
 	});
 	
-	$('li.tenants').bind('touchstart', function() {
+	$('li.tenants').bind('touchend', function() {//'touchstart'
 		var sw=window.pageXOffset;
 		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 10+sw });
 	});
