@@ -190,13 +190,50 @@ input{
 	}
 
 	.streetString{
-		position: absolute;
-		top: 1vh;
-		left: 3vw;
+		position: fixed;
+		top: 48vh;
+		left: 52%;
 		color: $chic_accsentB;
 		@include webkit;
 	}
-
+	.swipeMark{
+		position: fixed;
+		height: 9vh;
+		width: 52vw;
+		left: 26%;
+	}
+	.fas.fa-angle-double-left, .fas.fa-angle-double-right, .far.fa-grin-alt{
+		color: $chic_accsentB;
+		position: relative;
+		font-size: 4rem;
+	}
+	.grin-alt-base{
+    background-color: navy;
+    width: 16vw;
+    height: 16vw;
+    display: inline-block;
+    border-radius: 50%;
+	}
+	.streetAnime2{//arrow右  faa-passing-reverse animated
+		animation: streetAnime2 3s normal 3 ease-in-out forwards;//infinite>3
+	}
+	.streetAnime3{//arrow左  faa-passing-reverse animated
+		animation: streetAnime3 3s normal 3 ease-in-out forwards;//infinite>3
+	}
+	@keyframes streetAnime2 {
+  0% {left: +2vw;
+			 opacity: 1;
+  }
+  100% {left: -2vw;
+			 opacity: 0;
+  }}
+	@keyframes streetAnime3 {
+  0% {left: -2vw;
+			 opacity: 1;
+  }
+  100% {left: +2vw;
+			 opacity: 0;
+  }}
 	#street{
 		position: absolute;
 		height: 9vh;//6>9
@@ -205,6 +242,17 @@ input{
 		top: 37%;//32vh>37%
 		@include webkit;
 	}
+	.streetAnime1{
+		animation: streetAnime 3s normal 4 ease-in-out;//infinite>4
+	}
+	@keyframes streetAnime {//つくるーーー！次回！
+  0% {height: 9vh;
+			 top: 37%;
+  }
+  100% {height: 10vh;
+			 top: 36.5%;
+  }	}
+  
 	.shops{
 		position: absolute;
 		display: inline-block;

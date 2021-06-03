@@ -7,25 +7,36 @@ $(document).ready(function(){
 			renbanNext=$('#gotoNext'),
 			ww=$(window).width(),
 			main=$('#main_wrap').offset().top,
-			mainarea=$('#main_space');
+			mainarea=$('#main_space'),
+			swipe=$('.swipeMark');
 			step_info.hide();
 			mallInfo.hide();
 			mallShopInfo.hide();
 			renbanPrev.hide();
 			renbanNext.hide();
+			swipe.hide();
 			//臨時！$('#thegate').hide();
 
-	//touchスクロール//
-   //.addEventListener("touchmove", () => {
-  // 	mainarea.bind('touchmove', function() {
-        //event.preventDefault();  // 画面スクロールを防止
-        //displayArea1.innerHTML = getTimeStamp() + " touchmove"
-        console.log("スクロ＾る？");
-  //  });
+	//street要素のanimate//
+	$(function() {
+  var toLogout = function() {
+  	$('#street').toggleClass('streetAnime1');
+		swipe.delay(1000).fadeIn(2000).delay(8000).fadeOut(1000);
+		$('.fas.fa-angle-double-left').toggleClass('streetAnime2');
+		$('.fas.fa-angle-double-right').toggleClass('streetAnime3');
+    console.log("タイム合おうとー");
+  };
+  var timerMs = 4000;
+  var timerId = setTimeout(toLogout, timerMs);
+
+  $('body').on('touchend',function() {
+    clearTimeout(timerId);
+    timerId = setTimeout(toLogout, timerMs);
+  });
+});
 
 	//長い店名6文字以上で0.8remよ関数
 	$('#main_space>ul.shops>span.shop_name, li.tenants>span.shop_nameMall').each(function(i, e){
-		//let kore=$(this).text();
 		let kantei=$(this).text().length;
 		if(kantei>=6){
 			$(this).css({'line-height':'0.8rem','font-size':'0.8rem','top':'0.7vh','z-index':'35'});
