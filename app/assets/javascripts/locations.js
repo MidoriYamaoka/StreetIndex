@@ -20,10 +20,10 @@ $(document).ready(function(){
 	//street要素のanimate//
 	$(function() {
   var toLogout = function() {
-  	$('#street').toggleClass('streetAnime1');
-		swipe.delay(1000).fadeIn(2000).delay(8000).fadeOut(1000);
-		$('.fas.fa-angle-double-left').toggleClass('streetAnime2');
-		$('.fas.fa-angle-double-right').toggleClass('streetAnime3');
+  	//$('#street').toggleClass('streetAnime1');
+//		swipe.delay(1000).fadeIn(2000).delay(8000).fadeOut(1000);
+//		$('.fas.fa-angle-double-left').toggleClass('streetAnime2');
+//		$('.fas.fa-angle-double-right').toggleClass('streetAnime3');
     console.log("タイム合おうとー");
   };
   var timerMs = 4000;

@@ -124,7 +124,7 @@ input{
 }
 
 #main_space{
-	position: relative;
+	position: absolute;//relative
 	margin-left: -1vw;//margin:auto 0>left:-1
 	top: -1vh;
 	padding: 0;
@@ -204,7 +204,7 @@ input{
 		height: 9vh;
 		width: 52vw;
 		left: 32%;//26
-		top: 38%;//34
+		top: 41%;//34
 	}
 	.fas.fa-angle-double-left, .fas.fa-angle-double-right, .far.fa-grin-alt{
 		color: $chic_accsentB;
@@ -213,8 +213,8 @@ input{
 	}
 	.grin-alt-base{
     background-color: navy;
-    width: 10vw;
-    height: 10vw;
+    width: 11vw;
+    height: 11vw;
     display: inline-block;
     border-radius: 50%;
 	}
