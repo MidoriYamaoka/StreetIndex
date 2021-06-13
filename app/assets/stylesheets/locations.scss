@@ -72,7 +72,7 @@ input{
 //タイトル
 #titleandmenu{//aboutus
 	height: 10vh;//8>15>11
-	width: 170vw;//100%?133%;
+	width: 160vw;//100%?133%;
 	position: absolute;//fixed;
 	top: 0vh;
 	bottom: 0vh;//iphone
@@ -95,7 +95,7 @@ input{
 }
 .whatishere{
 	height: 183vh;
-	width: 170vw;//133%
+	width: 160vw;//133%
 	position: absolute;
 	top: 80vh;//150>131
 	background-color: rgba($chic_base ,90%);
@@ -121,7 +121,7 @@ input{
 //メインスペース
 #main_wrap{
 	position: absolute;//relative;
-	width: 170vw;//133%
+	width: 160vw;//133%
 	height: 93vh;
 	overflow-x: scroll;
 	top: 9vh;//6>10;
@@ -374,7 +374,7 @@ span.shop_nameMall{
 	position: fixed;//relative>fixed
 	width: 100%;
 	height: 190vh;//33>160>190
-	top: 76%;//-26>-42>43>70>66>70>73
+	top: 70%;//-26>-42>43>70>66>70>73
 	background-color: rgba($chic_base_ex, 80%);//darken($chic_accsentB, 50%);
 	@include webkit;
 }
