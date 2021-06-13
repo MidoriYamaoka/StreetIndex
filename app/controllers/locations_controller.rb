@@ -14,6 +14,9 @@ class LocationsController < ApplicationController
 	
 	def gotonext
 	end
+	
+	def intro
+	end
 
 	def index
 		p "hellow world again! from location action index"

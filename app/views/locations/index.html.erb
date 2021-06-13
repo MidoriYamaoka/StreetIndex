@@ -9,44 +9,8 @@
 	<div id="titleandmenu">
 		<h3>STREET INDEX</h3>
 		<i class="fas fa-bars"></i>
+		<%= render partial: 'locations/intro' %>
 	</div>
-	<div class="whatishere">
-			<h5>StreetIndex?</h5>
-				<p>You can check all shops on the each street.<br>
-				通り沿いのお店をマルっとチェック</p>
-				<br>
-			<h5>News&Update</h5>
-				<p>2021/4/   DB完成</p>
-				<p>2021/2/   デプロイ</p>
-				<br>
-			<h5>ContactUs</h5>
-				<h6>♦︎For Harajuku Guest </h6>
-				<h6>-原宿で街歩きする方々へ-</h6>
-				<p>please let us know if shops are out of business.<br>
-				お店が変わっていたら教えてください。<br>
-				すぐに情報を反映させます。</p>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[ChangeShops]" class="mailto">こちら</a>
-				<h6>♦︎For Shop owner</6h>
-				<h6>-店舗・事業者さま︎-</6h>
-				<p>(1)ロゴの変更</p>
-				<p>We can edit shops logo soon.</p>
-				<p>すぐに変更・削除可能です。<br>
-				削除の場合も店舗名は表示されます。</p>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Logos]" class="mailto">こちら</a>
-				<p>(2)写真の掲載</p>
-				<p>It's available upload 5 imgs in shop details.</p>
-				<p>店舗詳細欄に写真5点掲載できます。<br>
-				店舗入り口、お客様に見せたい商品・<br>
-				お料理・サービスなどを送って頂ければ、<br>
-				すぐに掲載させて頂きます。</p><br>
-				<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Imgs]" class="mailto">こちら</a>
-				<p>(3)ハッシュタグ</p>
-				<p>Also available add/edit hash_tags in shop details.</p>
-				<p>店舗詳細欄にハッシュタグがあります。</p>
-		<p>すぐにご希望のハッシュタグにできますので、<br>
-		ご連絡くださいませ。</p><br>
-		<a href="mailto:moshimoshi.streetindex＠gmail.com&subject=[Hash]" class="mailto">こちら</a>
-	</div><!--whatishere終わり-->
 
 	<% @streetLength=@many*24%><!--道の長さ13>16>14>13.5>13.8>15-->
 	<% @divwidth=@streetLength+16%>
