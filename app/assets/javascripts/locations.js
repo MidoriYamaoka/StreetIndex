@@ -18,22 +18,22 @@ $(document).ready(function(){
 			//臨時！$('#thegate').hide();
 
 	//street要素のanimate//
-	$(function() {
-  var toLogout = function() {
+//	$(function() {
+//  var toLogout = function() {
   	//$('#street').toggleClass('streetAnime1');
 //		swipe.delay(1000).fadeIn(2000).delay(8000).fadeOut(1000);
 //		$('.fas.fa-angle-double-left').toggleClass('streetAnime2');
 //		$('.fas.fa-angle-double-right').toggleClass('streetAnime3');
-    console.log("タイム合おうとー");
-  };
-  var timerMs = 4000;
-  var timerId = setTimeout(toLogout, timerMs);
+//    console.log("タイム合おうとー");
+//  };
+//  var timerMs = 4000;
+//  var timerId = setTimeout(toLogout, timerMs);
 
-  $('body').on('touchend',function() {
-    clearTimeout(timerId);
-    timerId = setTimeout(toLogout, timerMs);
-  });
-});
+//  $('body').on('touchend',function() {
+//    clearTimeout(timerId);
+//    timerId = setTimeout(toLogout, timerMs);
+//  });
+//});
 
 	//長い店名6文字以上で0.8remよ関数
 	$('#main_space>ul.shops>span.shop_name, li.tenants>span.shop_nameMall').each(function(i, e){
