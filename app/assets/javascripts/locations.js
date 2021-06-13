@@ -72,6 +72,7 @@ $(document).ready(function(){
 	//メニューバー表示。
 	$('.fas.fa-bars').on('touchstart', function() {
 		$(".whatishere").toggleClass('whatisthere');
+		$(".whatishere_wrap").toggleClass('wraptoggle');
 	});
 		
 		//ストリート連番
