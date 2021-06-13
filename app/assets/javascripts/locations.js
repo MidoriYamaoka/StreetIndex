@@ -106,8 +106,9 @@ $(document).ready(function(){
 	//event終わり//
 
 	//iphoneのkeybordで必要。blur⇄focus//
-	$('input').on('touchstart', function(){
+	$('input#search').on('touchstart', function(){
 		$(this).focus();
+		console.log("来てまーす");
 	});
 
 	//street_search//
