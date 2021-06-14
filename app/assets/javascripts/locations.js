@@ -92,7 +92,9 @@ $(document).ready(function(){
 	});
 
 	//[No]処理:hoverでfadeOut
-	$('a#renban_no').hover(function() {
+	//$('a#renban_no').hover(function() {
+	$('a#renban_no').on('touchend', function() {
+		//console.log("れんばん〜");
 		$('#gotoPrev, #gotoNext').fadeOut();
 	});
 	//logoタッチ終わり//
