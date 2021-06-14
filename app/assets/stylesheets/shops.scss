@@ -5,7 +5,7 @@
 	display: inline-block;
 	border: 9px solid $chic_accsentA;//#8c53b2;
 	border-radius: 6%;
-	width: 122vw;//90>128
+	width: 106vw;//90>128>122
 	height: 132vw;//85>100>141
 	color: $chic_style_color;
 	font-size: 1.8rem;//2.4
@@ -34,12 +34,12 @@
 
 //mall要素//
 #mallInfo_wrap{
-	width: 123vw;//88
+	width: 107vw;//88>123
 	height: 54vh;//47
 	overflow: scroll;
 	@include webkit;
 	#mallInfo{
-	width: 120vw;//83
+	width: 104vw;//83>120
 	height: 52vh;
 	padding-left: 1vw;
 	list-style: none;
@@ -52,8 +52,8 @@
 .tenants{
 	position: relative;
 	top: 4vh;
-	height: 10vh;//9>
-	width: 33vw;//26
+	height: 9vh;//9>
+	width: 28vw;//26>33
 	border: 8px solid $chic_accsentA;
 	border-radius: 6vw;
 	@include webkit;
@@ -81,15 +81,13 @@
 }
 
 //shops要素//
-
-
 .shop_category{
 	position: absolute;
 	top: 44vh;//37
 	height: 24vw;//10
-	width: 122vw;//90
-	font-size: 1.5rem;//2.5
-	line-height: 1.7rem;//2.7
+	width: 106vw;//90>122
+	font-size: 1rem;//2.5>1.5
+	line-height: 2rem;//2.7>1.7
 	z-index: 20;
 	color: white;
 	text-shadow: 3px 4px 2px rgba(18,11,11,0.6), -4px -1px 3px rgba(8,8,8,0.7);
@@ -101,7 +99,7 @@
 	position: absolute;
 	top: 9vh;//2>6
 	grid-template-rows: 24vh 8vh 13vh;//19vh 8vh 12vh>23vh 13vh 17vh
-	grid-template-columns: 42vw 38vw 41vw;//25vw 33vw 32vw>40vw 44vw 43vw
+	grid-template-columns: 36vw 33vw 36vw;//25vw 33vw 32vw>40vw 44vw 43vw>42vw 38vw 41vw
 	grid-row-gap: 2px;
 	grid-column-gap: 2px;
 	@include webkit;
@@ -150,19 +148,26 @@
 .shop_floor{
 	position: absolute;
 	bottom: 0%;//-3%
-	left: 85%;
-	height: 9vw;
-	width: 9vw;
-	font-size: 2.5rem;
+	left: 52%;//85%
+	height: 12vw;//9vw
+	width: 45vw;//9
+	line-height: 3rem;
+	text-align: center;
+	font-size: 1rem;
+	border-radius: 1.5vh;
+	border: 2px solid navy;
+	//font-size: 2.5rem;
 	@include webkit;
 }
 .shop_link{
 	position: absolute;
 	bottom: 0%;
-	left: 20%;
+	left: 4%;//20
 	height: 13vw;
-	width: 73vw;
+	width: 46vw;//73
 	text-align: center;
+	line-height: 3rem;
+	font-size: 1rem;
 	background-color: lighten($chic_accsentA, 5%);
 	border-radius: 1vh;
 	@include webkit;
