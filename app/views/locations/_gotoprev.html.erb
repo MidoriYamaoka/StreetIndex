@@ -6,7 +6,7 @@
 			<a data-style="gotoStreet">[Yes]
 				<%= submit_tag "", disabled: true %>
 			<% else %>
-				<%= @renban_prev.street_name %> ?<br>
+				<span class="gotoStName"><%= @renban_prev.street_name %> ?</span><br>
 			<a data-style="gotoStreet">[Yes]
 				<%= submit_tag "#{@renban_prev.id}", data:{style:"gotoStreet"}, disabled: false %>
 			<% end %>

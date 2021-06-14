@@ -183,6 +183,9 @@ input{
 	border-radius: 11px;
 	z-index: 10;
 	@include webkit;
+	span.gotoStName{
+		font-size: 1.3rem;
+	}
 	[data-style="gotoStreet"]{
 		font-size: 1.7rem;
 		display: inline-block;
