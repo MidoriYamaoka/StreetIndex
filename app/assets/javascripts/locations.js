@@ -61,12 +61,12 @@ $(document).ready(function(){
 	//fadeInのアクション
 	$('ul.shops').bind('touchend', function() {//'touchstart'
 		var sw=window.pageXOffset;
-		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 10+sw });
+		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 25+sw });
 	});
 	
 	$('li.tenants').bind('touchend', function() {//'touchstart'
 		var sw=window.pageXOffset;
-		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 10+sw });
+		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 25+sw });
 	});
 	
 	//メニューバー表示。

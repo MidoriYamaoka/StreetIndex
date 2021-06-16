@@ -3,7 +3,7 @@
 .hidei{
 	position: absolute;
 	display: inline-block;
-	border: 9px solid $chic_accsentA;//#8c53b2;
+	border: 3px solid $chic_accsentA;//#8c53b2;
 	border-radius: 6%;
 	width: 106vw;//90>128>122
 	height: 132vw;//85>100>141
@@ -25,6 +25,7 @@
 	top: -7vh;
 	height: 11vw;
 	font-size: 2rem;
+	line-height: 2rem;
 	text-align: center;
 	padding-top: 2vh;
 	text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
