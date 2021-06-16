@@ -121,7 +121,13 @@
 			</div>
 			<!--<div class="shop_campaign">Campaign  >></div>-->
 			<div class="shop_floor"><%= @shop_name.floor %>F</div>
-			<div class="shop_link"><%= link_to'ShopWebSite',@shop_name.url %></div>
+			<div class="shop_link">
+				<% if @shop_name.url %>
+					<%= link_to'ShopWebSite',@shop_name.url %>
+				<% else %>
+					<% link_to'ShopWebSite' %>
+				<% end %>
+			</div>
 
 	<% end %><!--elseのend-->
 	
