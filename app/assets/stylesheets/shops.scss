@@ -83,7 +83,7 @@
 //shops要素//
 .shop_category{
 	position: absolute;
-	top: 44vh;//37
+	top: 47vh;//37>44
 	height: 24vw;//10
 	width: 106vw;//90>122
 	font-size: 1rem;//2.5>1.5
@@ -97,7 +97,7 @@
 #shop_img_grid_contaier{
 	display: grid;
 	position: absolute;
-	top: 9vh;//2>6
+	top: 11vh;//2>6>9>
 	grid-template-rows: 24vh 8vh 13vh;//19vh 8vh 12vh>23vh 13vh 17vh
 	grid-template-columns: 36vw 33vw 36vw;//25vw 33vw 32vw>40vw 44vw 43vw>42vw 38vw 41vw
 	grid-row-gap: 2px;
