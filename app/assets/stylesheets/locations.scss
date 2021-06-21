@@ -36,8 +36,8 @@ a:visited{
 }
 h1{//web title
 	line-height: 0rem;
-	margin: 2.5rem 0rem 0rem 2rem;//4.5>5.3>5
-	font-size: 2.5rem;
+	margin: 2.5rem 0rem 0rem 4rem;//4.5>5.3>5
+	font-size: 2rem;
 	color: $chic_accsentB;
 	@include webkit;
 }
@@ -80,10 +80,10 @@ input{
 	background-color: $chic_style_color;
 	@include webkit;
 	.fas.fa-bars{
-		font-size: 2rem;
+		font-size: 1.5rem;
 		position: absolute;
-		top: 32%;//35>
-		left: 86%;//82>86>79>77
+		top: 37%;//35>32
+		left: 80%;//82>86>79>77
 		color: $chic_accsentB;
 		&:active {//追加。
 			transform:rotateY(100deg);
@@ -144,8 +144,10 @@ input{
 
 #main_space{
 	position: absolute;//relative
-	margin-left: -1vw;//margin:auto 0>left:-1
-	top: -1vh;
+	//margin-left: -1vw;//margin:auto 0>left:-1
+	left: -48vw;
+	top: -9vh;//-1>-9vh
+	transform: scale(0.8,0.8);
 	padding: 0;
 	//overflow-x: auto;スクロール引っかかる
 	white-space: nowrap;
@@ -217,8 +219,8 @@ input{
 	}
 	.streetString{
 		position: fixed;
-		top: 43vh;//45vh;
-		left: 7%;
+		top: 35vh;//45>43
+		left: 3%;//7
 		font-size: 1.1rem;
 		color: $chic_accsentB;
 		@include webkit;
@@ -315,8 +317,8 @@ span.shop_nameMall{
 }
 	#streetConfirm{
 		position: absolute;
-		width: 103vw;//79>121>98
-		height: 50vh;//26
+		width: 88vw;//79>121>98>103
+		height: 42vh;//26>50
 		border: 9px $chic_accsentA solid;
 		border-radius: 7vw;
 		background-color: rgba($chic_base, 0.9);
@@ -335,16 +337,17 @@ span.shop_nameMall{
 	}
 	p#streetCon{
 	margin-top: 2vh;
-	font-size: 2rem;
+	font-size: 1.7rem;
 	text-align: center;
-	padding-top: 2vh;
-	text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
+	border-bottom: solid;
+	border-width: 1px;
+	//text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
 	@include webkit;
 	}
 	.streetOK{
 		color: $chic_accsentB;
 		position: absolute;
-		left: 90%;
+		left: 88%;
 		font-size: 1rem;
 		width: 10vw;
 		background-color: lighten($chic_accsentA, 5%);
@@ -389,10 +392,10 @@ span.shop_nameMall{
 		border-radius: 63%;
 	}
 	input[type="text"]{
-		width: 76vw;//70>76
+		width: 60vw;//70>76>76
 		height: 4.5vh;//7.5>6.5>9.5>6.5
 		margin-top: 1.5vh;//0.5>2.5
-		margin-left: 14%;//5vh>30%
+		margin-left: 10%;//5vh>30%>14
 		font-size: 2rem;
 		border-radius: 1vh;
 	}
@@ -514,12 +517,12 @@ span.shop_nameMall{
 		vertical-align: middle;
 		border: 1px darkslateblue solid;
 		border-radius: 4vh;//1.6>4
-		width: 26vw;//26>34>29
+		width: 22vw;//26>34>29>26
 		height: 11vh;//11>15>16>13
 		text-align: center;
 		//top: 14vh;
 		box-shadow: 0px 0px 20px 20px rgba(247,242,245,0.49) inset;
-		font-size: 1rem;//1.2
+		font-size: 0.8rem;//1.2>1
 	}
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
@@ -531,13 +534,13 @@ span.shop_nameMall{
 		position: relative;
 		left: 1vw;
 		top: 2vw;
-		font-size: 3.2rem;
+		font-size: 2.3rem;
 	}
 	.fas.fa-kiwi-bird.kid1{
 		position: relative;
 		left: -2vw;
 		top: 5vw;
-		font-size: 1.9rem;
+		font-size: 1.5rem;
 	}
 	.fas.fa-kiwi-bird.kid2{
 		position: relative;

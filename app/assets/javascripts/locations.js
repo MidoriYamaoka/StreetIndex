@@ -17,24 +17,6 @@ $(document).ready(function(){
 			swipe.hide();
 			//臨時！$('#thegate').hide();
 
-	//street要素のanimate//
-//	$(function() {
-//  var toLogout = function() {
-  	//$('#street').toggleClass('streetAnime1');
-//		swipe.delay(1000).fadeIn(2000).delay(8000).fadeOut(1000);
-//		$('.fas.fa-angle-double-left').toggleClass('streetAnime2');
-//		$('.fas.fa-angle-double-right').toggleClass('streetAnime3');
-//    console.log("タイム合おうとー");
-//  };
-//  var timerMs = 4000;
-//  var timerId = setTimeout(toLogout, timerMs);
-
-//  $('body').on('touchend',function() {
-//    clearTimeout(timerId);
-//    timerId = setTimeout(toLogout, timerMs);
-//  });
-//});
-
 	//長い店名6文字以上で0.8remよ関数
 	$('#main_space>ul.shops>span.shop_name, li.tenants>span.shop_nameMall').each(function(i, e){
 		let kantei=$(this).text().length;
@@ -60,13 +42,26 @@ $(document).ready(function(){
 	
 	//fadeInのアクション
 	$('ul.shops').bind('touchend', function() {//'touchstart'
-		var sw=window.pageXOffset;
-		$(this).children('li.hidei').fadeIn().offset({ top: 170, left: 25+sw });
+		let sw=$(this).position();
+		//let win=window.pageXOffset;
+		//console.log("windowは"+win);
+		console.log("このpositionのtopは:"+sw.top);
+		console.log("このpositionのleftは:"+sw.left);
+		//sw= (-sw);
+		//console.log("今のswは："+sw);
+		//let left=sw+25;
+		//console.log("今のleftは："+left);
+		$(this).children('li.hidei').fadeIn()
+			.css({'display':'inline-block','color':'red','transform': 'scale(0.8,0.8)'})
+			.offset({ top: 130, left: 30 });
 	});
 	
 	$('li.tenants').bind('touchend', function() {//'touchstart'
-		var sw=window.pageXOffset;
-		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 25+sw });
+		let sw=mainarea.window.pageXOffset;
+		//let sc=$('#main_space').getBoundingClientRect();
+		console.log("今はこの位置拾ってるC"+sw);
+		//console.log("今はこの位置拾ってる2"+sc.left);
+		//$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 100, left: 25+sw });
 	});
 	
 	//メニューバー表示。
