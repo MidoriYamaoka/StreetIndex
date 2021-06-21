@@ -43,16 +43,8 @@ $(document).ready(function(){
 	//fadeInのアクション
 	$('ul.shops').bind('touchend', function() {//'touchstart'
 		let sw=$(this).position();
-		//let win=window.pageXOffset;
-		//console.log("windowは"+win);
-		console.log("このpositionのtopは:"+sw.top);
-		console.log("このpositionのleftは:"+sw.left);
-		//sw= (-sw);
-		//console.log("今のswは："+sw);
-		//let left=sw+25;
-		//console.log("今のleftは："+left);
 		$(this).children('li.hidei').fadeIn()
-			.css({'display':'inline-block','color':'red','transform': 'scale(0.8,0.8)'})
+			.css({'display':'inline-block','transform': 'scale(0.8,0.8)'})
 			.offset({ top: 130, left: 30 });
 	});
 	
