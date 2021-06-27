@@ -20,8 +20,14 @@ $purple: #483d8b;
 //ハッキリ強調textShadow
 @mixin text_shadow{
 	text_shadow: 10px 10px 10px #f9f3cd, -10px -10px 20px #f9f3cd;
-	
 }
+
+@mixin webkit{
+	-webkit-appearance: none;
+	-webkit-text-size-adjust: 100%;
+}
+
+///kawaii
 $kawaii_style: "#menu2";
 $chic_style: "#menu3";
 @mixin change_color{

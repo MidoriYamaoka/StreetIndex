@@ -1,11 +1,14 @@
-@import "kawaii";
+@import "chic";
 
 body{
-	width: 1125px;//iphoneXの画面ピクセル
-	height: 2214px;//-222px
-	font-family: 'ヒラギノ角ゴシック','Hiragino Sans','Superclarendon','Marker Felt',sans-serif;//'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic', fantasy;
-	font-size: 2.9rem;
+	display: inline;
+	width: 375px;//1125px;//iphoneXの画面ピクセル1125>1485??でもおかしい。何かがはみ出てる。
+	height: 812px;//2214px;//-222px
+	font-family: 'Optima-ExtraBlack','ヒラギノ角ゴ ProN',sans-serif;//Baskerville-Bold, Optima-ExtraBlack, Palatino-Bold
+	font-size: 1.5rem;
+	line-height: 1.6rem;
 	color: $chic_style_color;//rgba(140, 83, 178, 1);
+	@include webkit;
 }
 img{
 	object-fit: cover;
@@ -13,154 +16,377 @@ img{
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	@include webkit;
+}
+a.mailto{
+	line-height: 1.5rem;
+	font-weight: normal;
+	font-size: 1.4rem;
+	position: relative;
+	left: 80%;
+	@include webkit;
 }
 a:link{
 	color: snow;
+	@include webkit;
 }
 a:visited{
 	color: azure;
+	@include webkit;
+}
+h1{//web title
+	line-height: 0rem;
+	margin: 2.5rem 0rem 0rem 4rem;//4.5>5.3>5
+	font-size: 2rem;
+	color: $chic_accsentB;
+	@include webkit;
 }
 h5{
+	margin: 3rem 0rem 0rem 1rem;
+	font-size: 2rem;
+	@include webkit;
+}
+h6{
 	line-height: 0rem;
-	margin: 5rem 0rem 0rem 3rem;
-	font-size: 3.5rem;
+	margin: 1.3rem 0rem 0rem 3rem;
+	font-size: 1.3rem;
+	@include webkit;
 }
 p{
-	margin: 2rem 3rem 0rem 5rem;
+	margin: 1rem 1rem 0rem 1rem;
 	white-space: normal;
-	line-height: 3rem;
-	font-size: 2.7rem;
+	line-height: 1.5rem;
+	font-size: 1.2rem;
+	font-weight: normal;
+	@include webkit;
 }
 .mailto{
 	background-color: $chic_style_color;
+	@include webkit;
+}
+input{
+	font-size: 16px;//autofocus止まるらしい
+	transform: scale(0.9);
 }
 
-#drowse_top{
-	position: relative;
-	height: 9vh;
-	width: 100%;
+//タイトル
+#titleandmenu{//aboutus
+	height: 10vh;//8>15>11
+	width: 100vw;//100%?133%>140vw>118>120
+	position: absolute;//fixed;
+	top: 0vh;
+	bottom: 0vh;//iphone
+	z-index: 50;
+	background-color: $chic_style_color;
+	@include webkit;
+	.fas.fa-bars{
+		font-size: 1.5rem;
+		position: absolute;
+		top: 37%;//35>32
+		left: 80%;//82>86>79>77
+		color: $chic_accsentB;
+		&:active {//追加。
+			transform:rotateY(100deg);
+		}
+	}
+}
+.afterdiv{
+	top: 44vw;
+}
+.whatishere_wrap{
+	position: absolute;//relative;
+	width: 100vw;//133%>140vw>118>120
+	height: 93vh;
+	overflow-y: scroll;
+	top: 10vh;
+	bottom: 0;//iphone
+	display: none;
+	//border: red 2px solid;
+	@include webkit;
+	.whatishere{
+	height: 300vh;
+	position: absolute;
+	background-color: rgba($chic_base ,90%);
+	z-index: 30;
+	opacity: 0;}
+}
+.wraptoggle{
+	display: block;
+}
+.whatisthere{//whatshereのanime
+	//top: 10vh;
+	animation  : jumpUp 1.5s ease-in-out forwards;
+		@keyframes jumpUp {
+			0%{ z-index: 0;
+					opacity: 0;
+					display: block;
+					top: 50vh;}
+			100%{ z-index: 40;
+					opacity: 1;
+					display: block;
+					top: 0vh;}}
+		//	0% {transform: translateY(100%);
+		//	}100% {transform: translateY(0%); }	}
+	@include webkit;
+}
+
+//メインスペース
+#main_wrap{
+	position: absolute;//relative;
+	width: 100vw;//133%>140vw>118>120
+	height: 93vh;
+	overflow-x: scroll;
+	top: 9vh;//6>10;
+	bottom: 0;//iphone
+	//-webkit-overflow-scrolling: touch;
+	@include webkit;
 }
 
 #main_space{
-	position: relative;
-	margin: 0 auto;
+	position: absolute;//relative
+	//margin-left: -1vw;//margin:auto 0>left:-1
+	left: 0vw;//-48vw
+	top: -9vh;//-1>-9vh
+	transform: scale(0.8,0.8);
+	transform-origin: left;
 	padding: 0;
-	overflow-x: auto;
+	//overflow-x: auto;スクロール引っかかる
 	white-space: nowrap;
-	height: 100vh; //90=>96=>100
+	height: 93vh; //90>96>100>155>85
 	width: 100%;
 	background: $chic_base;
-}
-	#aboutus{
-		//border: 1px solid red;
-		height: 6vh;
-		width: 6vh;
-		position: fixed;
-		top: 2vh;
-		.fas.fa-comment-dots{
-			font-size: 8rem;
-			&:active {//追加。
-				color: $orange;
-			}
-		}
-		.whatishere{
-			border: 6px solid darken($chic_accsentA ,70%);
-			height: 45vh;
-			width: 50vh;
-			position: relative;
-			left: 13vw;
-			border-radius: 3rem;
-			background-color: darken($chic_base ,10%);
-			display: none;
-		}
-	}
-
-	
-	.streetString{
+	@include webkit;
+	#renban_prev.fas.fa-sort-up{
 		position: absolute;
-		top: 1vh;
-		left: 3vw;
-		color: $chic_accsentB;
+		top: 37.5%;//32vh>37%
+		left: 3.1vw;//1.1
+		font-size: 4rem;
+		transform: rotate(270deg);
 	}
-
+	#renban_next.fas.fa-sort-up{
+		position: absolute;
+		top: 37.5%;//32vh>37%
+		right: 0;
+		font-size: 4rem;
+		transform: rotate(90deg);
+	}
+	
+	#gotoPrev, #gotoNext{
+	position: relative;
+	height: 30vh;
+	width: 97vw;//110
+	top: 21vh;
+	left: 6vh;
+	padding-top: 2rem;
+	line-height: 2.1rem;
+	overflow-wrap: break-word;
+	text-align: center;
+	color: $chic_accsentB;
+	background-color: $chic_accsentA;
+	border-radius: 11px;
+	z-index: 10;
+	@include webkit;
+	span.gotoStName{
+		font-size: 1.3rem;
+	}
+	[data-style="gotoStreet"]{
+		font-size: 1.7rem;
+		display: inline-block;
+		position: initial; }
+	input[type="submit"]{
+		position: relative;
+		left: -20vw;
+		opacity: 0; }
+	}
+}
+.fa-layers{
+	position: absolute;
+	top: 32vh; //onTheStreet
+	font-size: 6rem;
+	z-index: 30;
+	@include webkit;
+	.fas.fa-splotch{
+	color: orangered; }
+	span.fa-layers-text{
+		position: absolute;
+		top: 1.5vh;
+		left: 4vw;
+		font-size: 3rem; }
+}
+	#pcsize{
+		opacity: 0;
+		position: absolute;
+		height: 0vh;
+	}
+	.streetString{
+		position: fixed;
+		top: 35vh;//45>43
+		left: 3%;//7
+		font-size: 1.1rem;
+		color: $chic_accsentB;
+		@include webkit;
+	}
+	.swipeMark{//スワイプマーク今hide();
+		position: fixed;
+		height: 9vh;
+		width: 52vw;
+		left: 32%;//26
+		top: 41%;//34
+	}
+	.fas.fa-angle-double-left, .fas.fa-angle-double-right, .far.fa-grin-alt{
+		color: $chic_accsentB;
+		position: relative;
+		font-size: 3rem;
+	}
+	.grin-alt-base{
+    background-color: navy;
+    width: 11vw;
+    height: 11vw;
+    display: inline-block;
+    border-radius: 50%;
+	}
+	.streetAnime2{//arrow右  faa-passing-reverse animated
+		animation: streetAnime2 3s normal 3 ease-in-out forwards;//infinite>3
+	}
+	.streetAnime3{//arrow左  faa-passing-reverse animated
+		animation: streetAnime3 3s normal 3 ease-in-out forwards;//infinite>3
+	}
+	@keyframes streetAnime2 {
+  0% {left: +2vw;
+			 opacity: 1;
+  }
+  100% {left: -2vw;
+			 opacity: 0;
+  }}
+	@keyframes streetAnime3 {
+  0% {left: -2vw;
+			 opacity: 1;
+  }
+  100% {left: +2vw;
+			 opacity: 0;
+  }}
 	#street{
 		position: absolute;
-		height: 6vh;
-		//left: 5vw;
+		height: 9vh;//6>9
+		left: 9vw;//6
 		background-color: $chic_accsentA;
-		top: 30vh;
+		top: 37%;//32vh>37%
+		@include webkit;
 	}
+	.streetAnime1{
+		animation: streetAnime 3s normal 4 ease-in-out;//infinite>4
+	}
+	@keyframes streetAnime {//つくるーーー！次回！
+  0% {height: 9vh;
+			 top: 37%;
+  }
+  100% {height: 10vh;
+			 top: 36.5%;
+  }	}
+  
 	.shops{
 		position: absolute;
 		display: inline-block;
-		border-radius: 50%;
+		border: 1px dotted $chic_style_color;
+		border-radius: 35%;//50
 		box-shadow: 0px 0px 28px -9px rgba(207,235,249,0.76) inset;//0px 0px 36px 8px rgba(210,184,130,0.6) inset;
-		width: 9vw;
-		height: 10vw;
+		width: 12vw;//9>20>12
+		height: 15vw;//10>18>15
 		font-size: 30px;
+		text-align: center;
 		background-size: 101%;
 		background-position: 50%;
 		background-repeat : no-repeat;
-		//background-color: rgba(255,255,255,0.8);
-		//background-blend-mode: lighten;
+		@include webkit;
 	}
 span.shop_name{
-	top: 1vh;
-	left: 1vw;
+	top: 0.8vh;
+	left: 0.4vw;
 	position: absolute;
 	white-space: break-spaces;
-	font-size: 1.4rem;
-	//letter-spacing: 0rem;
-	line-height: 1.6rem;
+	font-size: 1rem;//1.4>2.6>2.3
+	line-height: 1.1rem;//1.6>2.6
+	margin-top: 1vh;
+	@include webkit;
 }
 span.shop_nameMall{
 	top: 1.7vh;
 	left: 2.7vw;
 	position: absolute;
 	white-space: break-spaces;
-	font-size: 2rem;
+	font-size: 1.2rem;
 	letter-spacing: 0rem;
-	line-height: 2rem;
+	line-height: 1.5rem;
+	@include webkit;
 }
 	#streetConfirm{
 		position: absolute;
-		width: 79vw;
-		height: 26vh;
+		width: 88vw;//79>121>98>103
+		height: 42vh;//26>50
 		border: 9px $chic_accsentA solid;
-		border-radius: 4vw;
+		border-radius: 7vw;
 		background-color: rgba($chic_base, 0.9);
-		z-index: 100;
-		top: 27vh;
-		left: 20vw;
+		z-index: 50;
+		top: 19vh;//27vh
+		left: 2vw;
 		color: $chic_main;
+		@include webkit;
+		ul.streetUl{
+			list-style: none;
+		}
+		li{
+			margin: 4vw 0vw 2vw -9vw;
+			font-size: 1.1rem;
+		}
+
+	}
+	
+	
+	
+	#info_fadeout{
+		position: absolute;
+		font-size: 4rem;
+		top: -6vh;
+		left: 88%;
+		@include webkit;
 	}
 	p#streetCon{
-		text-align: center;
-		margin-top: 1vh;
+	margin-top: 2vh;
+	margin-bottom: 3vh;
+	font-size: 1.7rem;
+	text-align: center;
+	border-bottom: solid;
+	border-width: 1px;
+	//text-shadow: 10px 10px 15px #fdfcf1, -9px 10px 10px #fdfcf1, -6px -10px 10px #fdfcf1;
+	@include webkit;
 	}
 	.streetOK{
 		color: $chic_accsentB;
 		position: absolute;
-		left: 84%;
-		font-size: 3rem;
-		width: 7vw;
+		left: 88%;
+		font-size: 1rem;
+		width: 10vw;
 		background-color: lighten($chic_accsentA, 5%);
 		border-radius: 1vh;
+		@include webkit;
 	}
 
-#bottom_wrap{
-	position: absolute;
-	//border: 1px black solid;
-	height: 33vh;
-	width: 114%;
-	overflow: scroll;
-	top: 67vh; //69=>67。
-}
+//#bottom_wrap{
+//	position: absolute;
+//	//border: 1px black solid;
+//	height: 33vh;
+//	width: 114%;
+//	overflow: scroll;
+//	top: 67vh; //69=>67。 }
+
 #bottom_space{
-	position: relative;
-	width: 100%;
-	height: 33vh;
-	background-color: rgba($chic_base_ex ,0.4);
+	position: fixed;//relative>fixed
+	width: 100vw;//100%>140vw>118>120
+	height: 190vh;//33>160>190
+	top: 74%;//-26>-42>43>70>66>70>73
+	background-color: rgba($chic_base_ex, 80%);//darken($chic_accsentB, 50%);
+	z-index: 50;
+	@include webkit;
 }
 
 #location_button{
@@ -168,31 +394,30 @@ span.shop_nameMall{
 	width: 100%;
 	height: 8vh;
 	display: flex;
-	
+	@include webkit;
 	#kensaku{
 		width: 55vh;
 	}
-
 	#search_button{
-		width: 7.5vh;
-		height: 7.5vh;
-		left: 71%;
-		top: 0.5vh;
+		width: 5.5vh;//7.5
+		height: 5.5vh;//7.5
+		right: 10%;//15>13>6>12>10
+		top: 2vh;//0.5>3>1.5>1>2
 		position: absolute;
 		background-color: $chic_style_color;
 		border-radius: 63%;
 	}
 	input[type="text"]{
-		width: 70vw;
-		height: 6.5vh;//7.5=>6.5
-		margin-top: 0.5vh;
-		margin-left: 5vh;
-		font-size: 5rem;
+		width: 60vw;//70>76>76
+		height: 4.5vh;//7.5>6.5>9.5>6.5
+		margin-top: 1.5vh;//0.5>2.5
+		margin-left: 10%;//5vh>30%>14
+		font-size: 2rem;
 		border-radius: 1vh;
 	}
 	.fa.fa-search{
 		color: $chic_accsentB;
-		font-size: 6rem;
+		font-size: 1.2rem;//2
 	}
 	//モバイルのみの機能
 	#gps_button{
@@ -213,12 +438,13 @@ span.shop_nameMall{
 	}//gps
 }//location_button
 
+
+
 #event_wrap{
 	top: 9vh;
 	height: 11vh;
-	//border: 1px solid pink;
 	position: relative;
-
+	@include webkit;
 	#event_area{
 		height: 11vh;
 		overflow: hidden;
@@ -297,68 +523,63 @@ span.shop_nameMall{
 
 #category_button{
 	position: absolute;
-	height: 12vh;
-	width: 100%;
-	top: 21vh;
+	height: 17vh;//12
+	width: 100vw;//100%>118vw>120
+	top: 8.5vh;//21>10>15>14>16>12>11.5
 	text-align: center;
-
+	@include webkit;
 	.shop_sort{
 		display: inline-block;
 		vertical-align: middle;
-		border: 3px darkslateblue solid;
-		border-radius: 1.6vh;
-		width: 26vw;
-		height: 11vh;
+		border: 1px darkslateblue solid;
+		border-radius: 4vh;//1.6>4
+		width: 22vw;//26>34>29>26
+		height: 11vh;//11>15>16>13
 		text-align: center;
-		box-shadow: 0px 0px 28px 18px rgba(247,242,245,0.49) inset;
-		//background-color: $chic_base;
+		//top: 14vh;
+		box-shadow: 0px 0px 20px 20px rgba(247,242,245,0.49) inset;
+		font-size: 0.8rem;//1.2>1
 	}
 	.fas.fa-shopping-bag, .fas.fa-utensils,.fas.fa-cut{
 		position: relative;
-		top: 1vw;
+		top: 2vw;
 		left: 0.5vw;//ハサミ縦並び対策
-		font-size: 8.2rem;
+		font-size: 2.7rem;//8.2>3.7
 	}
 	.fas.fa-kiwi-bird.parent{
 		position: relative;
 		left: 1vw;
-		top: 1vw;
-		font-size: 8rem;
+		top: 2vw;
+		font-size: 2.3rem;
 	}
 	.fas.fa-kiwi-bird.kid1{
 		position: relative;
-		left: 0vw;
-		top: 2vw;
-		font-size: 4rem;
+		left: -2vw;
+		top: 5vw;
+		font-size: 1.5rem;
 	}
 	.fas.fa-kiwi-bird.kid2{
 		position: relative;
-		left: 6vw;
-		top: -5vw;
-		font-size: 2rem;
+		left: 1vw;
+		top: 0vw;
+		font-size: 1rem;
+	}
+	span.sort_name{//+kids位置
+		position: relative;
+		top: 0.5rem;
+		line-height: 1rem;
 	}
 }//category_button終わり
 
-#footer{
-	position: relative;
-	height: 16vh;
-	width: auto;
-	top: 80%;
-}
-#drowse_bottom{
-	position: absolute;
-	top: 102vh;
-	width: auto;
-	height: 13vh;
-	border: 2px solid red;
-}
 #thegate{
 	position: absolute;
-	width: 115vw;
-	height: 116vh;
+	width: 119%;
+	height: 200%;
 	background-color: gray;
 	top: 0;
 	left: 0;
+	z-index: 100;
+	@include webkit;
 }
 /*
 div.tenants{
@@ -394,3 +615,17 @@ div.tenants{
 	width: 30vw;
 	height: 30vw;
 }*/
+
+@media screen and (min-width: 600px) {
+/* PC用レイアウト 1,025px以上の範囲に収めるデザインはこの中に記述 */
+	#pcsize{
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		background-color: $chic_style_color;
+		color: $chic_accsentB;
+		z-index: 1000;
+		overflow: hidden
+	}
+}

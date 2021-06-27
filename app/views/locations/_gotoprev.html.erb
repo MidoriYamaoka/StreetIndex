@@ -1,0 +1,17 @@
+<div id="gotoPrev">
+		<%= form_with(url: "/", method: :get, local: true) do %>
+	<a>Go to <br>
+			<% if @renban_prev.nil? %>
+				<%= @renban_prev="" %> 
+			<a data-style="gotoStreet">[Yes]
+				<%= submit_tag "", disabled: true %>
+			<% else %>
+				<span class="gotoStName"><%= @renban_prev.street_name %> ?</span><br>
+			<a data-style="gotoStreet">[Yes]
+				<%= submit_tag "#{@renban_prev.id}", data:{style:"gotoStreet"}, disabled: false %>
+			<% end %>
+	</a>
+
+	<a id="renban_no", class="info_fadeout", data-style="gotoStreet">[No]</a>
+		<% end %>
+</div>

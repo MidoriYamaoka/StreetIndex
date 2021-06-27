@@ -1,35 +1,72 @@
 <body>
-	<!--<div id="drowse_top">
-		<p id="">ブラウザのurlなどが表示されるスペース</p>
-	</div>-->
-
-	<div id="main_space">
-		<% @streetLength=@cityscape1.length*13.8%><!--道の長さ13=>16=>14=>13.5=>13.8-->
-		<%= @cityscape0 %>
-		<div id="street" style="width:<%= @streetLength %>vw;">
-			<a class="streetString"><%= @streetSide.street_name %></a>
+		<div id="pcsize">
+			<h1>Street Index</h1>
+			<br>
+			<p>This site is mobile layout design only.</p>
+			<p>Please open your mobile. Thank you.</p>
 		</div>
+	
+	<div id="titleandmenu">
+		<h1>STREET INDEX</h1>
+		<i class="fas fa-bars"></i>
+		<%= render partial: 'locations/intro' %>
+	</div>
+
+	<% @streetLength=@many*24%><!--道の長さ13>16>14>13.5>13.8>15-->
+	<% @divwidth=@streetLength+16%>
+
+	<div id="main_wrap">
+	<!--<div class="scrollbox">-->
+	<div id="main_space" style="width:<%= @divwidth %>vw;">
+
+		<div id="street" style="width:<%=@streetLength%>vw;">
+			<a class="streetString"><%= @streetSide.street_name %></a>
+			<div class="swipeMark">
+				<i class="fas fa-angle-double-left"></i>
+				<span class="grin-alt-base">
+					<i class="far fa-grin-alt faa-horizontal animated faa-slow"></i>
+				</span>
+					<i class="fas fa-angle-double-right"></i>
+			</div>
+		</div>
+		
+		<!--gpsのpin
+		<span class="fa-layers fa-fw">
+			<i class="fas fa-splotch fa-spin"></i>
+			<span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-3">U</span>
+		</span>-->
+
+		<i class="fas fa-sort-up" id="renban_prev" style=
+			<% if @renban_prev %>
+				<%= @renbanAction %>
+			<% else %>
+				"color: rgba(239, 231, 174, 1);"
+			<% end %>
+		></i>
+		<%= render partial: 'locations/gotoprev', locals: {prev: @renban_prev} %>
+
+		<i class="fas fa-sort-up" id="renban_next" style=
+			<% if @renban_next %>
+				<%= @renbanAction %>
+			<% else %>
+				"color: rgba(239, 231, 174, 1);"
+			<% end %>
+		></i>
+		<%= render partial: 'locations/gotonext', locals: {prev: @renban_next} %>
+
 
 		<%= render partial: 'locations/cityscape0', locals: {street: @streetSide0, city: @cityscape0 } %>
 		<%= render partial: 'locations/cityscape1', locals: {street: @streetSide1, city: @cityscape1 } %>
 
-		<div id="aboutus">
-			<i class="fas fa-comment-dots"></i>
-			<div class="whatishere">
-				<h5>StreetIndex?</h5>
-					<p>You can check all shops on the street.<br>
-					通り沿いのお店をマルっとチェック。</p>
-				<h5>News&Update</h5>
-					<p>2021/2/**   テスト版スタート</p>
-				<h5>ContactUs</h5>
-					<p>店舗情報や掲載内容の変更・修正、イベント情報の掲載依頼、ご意見などは、<a href="mailto:moshimoshi.streetindex＠gmail.com" class="mailto">こちら</a></p>
-			</div>
-		</div>
+
 
 	</div><!--#main_space終わり-->
+	<!--</div>scrollbox-->
+	</div><!--<div id="main_wrap">終わり-->
 
-	<div id="bottom_wrap">
+	<!--<div id="bottom_wrap">-->
 	<div id="bottom_space">
+
 		<div id="location_button">
 			<div id="kensaku" class="">
 				<%= form_tag("/", method: :get, :remote => true) do %> 
@@ -40,26 +77,26 @@
 			</div>
 				
 			<div id="gps_button" class="">
-				<i class="fas fa-location-arrow"></i>
+				<i class="fas fa-location-arrow" onclick="javascript:getLocation()"></i>
 			</div>
 		</div>
 		
-		<div id="event_wrap">
+	<!--<div id="event_wrap"> eventは次のページ以降に引っ越し。それまで封印。
 			<div id="event_area">
-				<ul id="event_carousel">
-				<% @events.each_with_index do |event, i| %>
-					<% @random = Random.new %>
-					<% @random = @random.rand(1..3) %>
-					<% @bg="bg#{@random}.png" %>
-						<li class="event_title" data-num="event-<%= i %>"
-							style="animation  : event_titleAnime<%= @random %> 4s linear infinite alternate;
-							background-image: url(<%= asset_path @bg %>);">
-							<a class="e_title" href=<%= event.event_url %>><%= event.event_title %></a>
+				<ul id="event_carousel">-->
+				<%# @events.each_with_index do |event, i| %>
+					<%# @random = Random.new %>
+					<%# @random = @random.rand(1..3) %>
+					<%# @bg="bg#{@random}.png" %>
+						<!--<li class="event_title" data-num="event-<%#= i %>"
+							style="animation  : event_titleAnime<%#= @random %> 4s linear infinite alternate;
+							background-image: url(<%#= asset_path @bg %>);">
+							<a class="e_title" href=<%#= event.event_url %>><%#= event.event_title %></a>
 						</li>
-				<% end %>
+				<%# end %>
 				</ul>
 			</div>
-		</div>
+		</div>-->
 
 		<div id="category_button">
 			<div id="sort1" class="shop_sort">
@@ -71,24 +108,24 @@
 				<span class="sort_name">Eat&Drink</span>
 			</div>
 			<div id="sort3" class="shop_sort">
-				<i class="fas fa-cut"></i>
+				<i class="fas fa-cut"></i><br>
 				<span class="sort_name">Salon</span>
 			</div>
 			<div id="sort4" class="shop_sort">
 				<i class="fas fa-kiwi-bird parent"></i>
 				<i class="fas fa-kiwi-bird kid1"></i>
 				<i class="fas fa-kiwi-bird kid2"></i>
-				<span class="sort_name">kids</span>
+				<span class="sort_name">+kids</span>
 			</div>
 		</div>
 
 	</div><!--buttom_space終わり-->
-	</div>
+	<!--</div>-->
 	
-				<div id="streetConfirm"><!--wrapに巻き込まれないように-->
-				<p id="streetCon">ストリート候補</p>
+			<div id="streetConfirm"><!--wrapに巻き込まれないように-->
+				<div id="info_fadeout" class="info_fadeout">×</div>
+				<p id="streetCon">STREET</p>
 				<%= form_tag("/", method: :get) do %>
-				<% p "ここ通ってまーす！" %>
 				<ul class="streetUl">
 					<% if @streetNames.blank? %>
 						<li></li>
@@ -108,9 +145,12 @@
 	<div id="drowse_bottom">
 		<p>ブラウザの戻る進むボタンなどが表示される</p>
 	</div>
-	--->
+
 	
 	<div id="thegate">
 		<p><input type="button" value="password" id="passwordinput"></p>
 	</div>
+		--->
+
+	
 </body>

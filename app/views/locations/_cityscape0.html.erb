@@ -1,117 +1,81 @@
 		<p id="anchor" class="closeShops<%= @closeShops_0 %>"></p>
-		<% @cityscape0.collect.with_index do |num, index| %>
-		<!--[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]-->
-			<% @crossing = Shop.where(location_id: num).where(shop_name: "cross_street").pluck(:id) %>
-			<% @each_bldgs = Shop.where(location_id: num).pluck(:id) %>
+		<%#= @test.ids %>
+		<% @line0shops.each.with_index do |line0shop, index| %><!--location数-->
+			<% @mmm=line0shop.shop_ids.size() %>
+				<% if @mmm>5 %><%#= "mallの定義" %>
+					<% @mall0=index %>
+				<% end %>
 
-			<% @mall=@each_bldgs.group_by().count() %>
-			<% if @mall>5 %>
-				<% @each_bldgs=[60] %>
+			<% line0shop.shops.each.with_index do |shop, inde| %><!--shop数-->
+
+				<%# Mall %>
+				<% if index==@mall0 %>
+				<% @lef = 9+24*index %>
+					<ul id="bldg<%= index %>" class="shops" style="top:23vh; left:<%= @lef %>vw;
+						<%= @mallCss %>
+					">
+						<span class="shop_name"><%= line0shop.location.split(",", 2)[1] %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: @mall0} %>
+					</ul>
+
+				<%# Street_nameあり %>
+				<% elsif shop.shop_name=="cross_street" && line0shop.location!="Alley-裏通り" %><%#= "cross_st" %>
+				<% @st=9999 %>
+				<% @lef = 9+24*index %>
+					<ul id="bldg<%= index %>" class="shops" style="top:23vh; left:<%= @lef %>vw;
+						<%= @crossingStreet %>
+					">
+						<span class="shop_name"><%= line0shop.location.split("-", 2)[0] %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: @st } %>
+					</ul>
+				
+				<%# 裏通り %>
+				<% elsif line0shop.location=="Alley-裏通り" %>
+				<% @st=1 %>
+				<% @lef = 9+24*index %>
+					<ul id="bldg<%= index %>" class="shops" style="top:23vh; left:<%= @lef %>vw;
+						<%= @crossingStreet %>
+					">
+						<span class="shop_name"><%= "" %></span>
+						<%#= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: @st } %>
+					</ul>
+
+				<%# shop:隣の2階以上 %>
+				<% elsif index > 0 && inde >=1 then %>
+					<% @lef = 9+24*index %><!--動的に要素のtop&leftを変更-->
+					<% @tp = 22.1-7*inde %><!--24.8-4.8>43.2-5>17-5-->
+					<ul id="bldg<%= index %>" class="shops" style="top:<%= @tp %>vh; left:<%= @lef %>vw;
+								background-image: url(<%#= @tenant.logo_url %>);">
+						<span class="shop_name"><%= shop.shop_name %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: index } %>
+					</ul>
+
+				<%# shop:隣の1階 %>
+				<% elsif index > 0 then %>
+					<% @lef = 9+24*index %><!--動的に要素のleftを変更-->
+					<ul id="bldg<%= index %>" class="shops" style="top:23vh; left:<%= @lef %>vw;
+								background-image: url(<%#= @tenant.logo_url %>);">
+						<span class="shop_name"><%= shop.shop_name %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: index } %>
+					</ul>
+
+				<%# shop:最初の2階以上 %>
+				<% elsif index == 0 && inde >= 1 then %>
+					<% @tp = 22.1-7*inde %>
+					<ul id="bldg0" class="shops" style="top:<%= @tp %>vh; left:9vw;
+								background-image: url(<%#= @tenant.logo_url %>);">
+						<span class="shop_name"><%= shop.shop_name %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: index } %>
+					</ul>
+
+				<%# shop:最初の建物 %>
+				<% elsif index == 0 && inde == 0 then %>
+					<ul id="bldg0" class="shops" style="top:23vh; left:9vw;
+								background-image: url(<%#= @tenant.logo_url %>);">
+						<span class="shop_name"><%= shop.shop_name %></span>
+						<%= render partial: "shops/show", locals: { shopInfo: shop, each_bldg: line0shop, status: "最初" } %>
+					</ul>
+
+				<% end %>
 			<% end %>
-			<% if !@crossing.blank? %>
-				<% @each_bldgs=[61] %>
-			<% end %>
-			<% @each_bldgs %>
-			<!--[60]はmall。5店舗以上あるLocation_idレコード群をmallに代入-->
-
-<!--ここから-->
-			<% @each_bldgs.each_with_index do |each_bldg, ind| %>
-				<% @tenant = Shop.find(each_bldg) %><!--各shop情報-->
-
-					<% if index == 0 && ind >= 1 then %><!--最初の2階以上￥-->
-						 	<% @top = 21-4.5*ind %>
-						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
-								style="top:<%= @top %>vh; left:0vw;
-									background-image: url(<%= @tenant.logo_url %>);
-									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
-										<%= @greenAction %>
-									<% else %>
-										<%= @grayAction %>
-									<% end %>
-									">
-							<% if @tenant.logo_url.blank? %>
-								<span class="shop_name"><%= @tenant.shop_name %></span>
-							<% end %>
-
-								<%= render partial: 'shops/show', locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-						</ul>
-
-					<% elsif index >= 0 && ind >=1 then %><!--隣の2階以上￥-->
-						<% @left = 13*index %><!--動的に要素のtop&leftを変更-->
-						<% @top = 21-4.5*ind %>
-						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>" data-shopId="shop_id<%= @tenant.id %>"
-							style="top:<%= @top %>vh; left:<%= @left %>vw; 
-								background-image: url(<%= @tenant.logo_url %>);
-									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
-										<%= @greenAction %>
-									<% else %>
-										<%= @grayAction %>
-									<% end %>
-
-								">
-									<% if @tenant.shop_name=="cross_street" %>
-										<span class="shop_name"><%= "" %></span>
-									<% elsif @tenant.logo_url.blank? %>
-										<span class="shop_name"><%= @tenant.shop_name %></span>
-									<% end %>
-
-								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg  } %>
-						</ul>
-
-					<% elsif index >= 0 then %><!--隣の1階-->
-						<% @left = 13*index %><!--動的に要素のleftを変更-->
-						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
-								data-shopId="<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:22vh; left:<%= @left %>vw; 
-								background-image: url(<%= @tenant.logo_url %>);
-
-									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
-										<%= @greenAction %>
-									<% else %>
-										<%= @grayAction %>
-									<% end %>
-
-									<% if each_bldg==60 then %>
-										<%= @mallCss %>
-									<% elsif each_bldg==61 then%>
-										<%= @crossingStreet %>
-									<% end %>
-									">
-
-										<% if @tenant.shop_name=="cross_street" %>
-											<span class="shop_name"><%= "" %></span>
-										<% elsif @tenant.logo_url.blank? %>
-											<span class="shop_name"><%= @tenant.shop_name %></span>
-										<% end %>
-
-								<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-						</ul>
-						
-					<% elsif index == 0 then %><!--最初の建物1階-->
-						<ul id="bldg<%= index %>" class="shops" data-shop="shop<%= ind %>"
-								data-shopId="shop_id<%= @tenant.id %>" data-status="location_id<%= num %>"
-							style="top:22vh; left:0vw;
-								background-image: url(<%= @tenant.logo_url %>); 
-									<% if !@closeShops_0.find{|n|n == @tenant.id} then %>
-										<%= @greenAction %>
-									<% else %>
-										<%= @grayAction %>
-									<% end %>
-									
-									<% if each_bldg==60 then %>
-										<%= @mallCss %>
-									<% elsif each_bldg==61 then%>
-										<%= @crossingStreet %>
-									<% end %>
-								">
-							<% if @tenant.logo_url.blank? %>
-								<span class="shop_name"><%= @tenant.shop_name %></span>
-							<% end %>
-
-									<%= render partial: "shops/show", locals: { id: @tenant.id, locationId: num, each_bldg: each_bldg } %>
-						</ul>
-						
-					<% end %><!--elsifいっぱいのend-->
-			<% end %><!--each_bldg ifのend-->
-<!--ここまで-->
-<% end %><!--大きなifのend-->
+		<% end %>

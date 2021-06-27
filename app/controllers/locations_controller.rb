@@ -8,6 +8,15 @@ class LocationsController < ApplicationController
 	
 	def cityscape1
 	end
+	
+	def gotoprev
+	end
+	
+	def gotonext
+	end
+	
+	def intro
+	end
 
 	def index
 		p "hellow world again! from location action index"
@@ -16,104 +25,121 @@ class LocationsController < ApplicationController
 		if @street_num.blank?
 			@street_num=1
 		else
-			@street_num=@street_num.to_i
-			p "今@street_numの値は#{@street_num}ですよ"
+			@street_num=@street_num.to_i	#p "@street_numは#{@street_num}"
 		end
 		@streetSide = Street.find(@street_num)#=>プロペラ通り
-		@streetSide.street_name
-		p "次っす。"
-		#p @cityscape0 = Location.where(street_id: @streetSide.id, side:0).pluck(:id)#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-		p @cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-		p @cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+			 @renban=@streetSide.street_name.index("(") #番号の順番。14とか。
+			 @renban_end=@streetSide.street_name.index(")") #最後のカッコ順番
+			if @renban
+				#p "連番発生してます"
+				@renban_next=@streetSide.street_name.next #＠renban="Omotesando-表参道(3)"
+				 @renban_next=Street.find_by(street_name: @renban_next)
+					 @renban_s=@renban+1
+					 @renban_prev=@streetSide.street_name[@renban_s...@renban_end].to_i-1
+					 @name_string=@streetSide.street_name[0...@renban]
+					 @renban_prev=Street.find_by(street_name: "#{@name_string}(#{@renban_prev})")
+			end
+		@renbanAction="color:rgb(1,14,95);"
 
-		closeShops
+		#@cityscape0 = Location.includes(:shops).where(street_id: @streetSide.id, side:0).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		#@cityscape1 = Location.includes(:shops).where(street_id: @streetSide.id, side:1).pluck(:id).uniq#=>[5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+		@line0shops=Location.where(street_id: 2, side:0).includes(:shops)
+		@line1shops=Location.where(street_id: 2, side:1).includes(:shops)
+		@many=[@line0shops.length, @line1shops.length].max
+		#p "多いサイドの店舗数"
+		#p @many
+		
+		#query_diet#
+		##
+
+		#closeShops
 		@grayAction = "border: 6px solid gray;"
 		@greenAction = "border: 6px solid yellowgreen;"
-		@mallCss = "border-radius: 1vh; border: 5px solid navy;"
-		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none ;border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); padding-left: 0.9vh;margin-left: 0.9vh; "
+		@mallCss = "border-radius: 1vh; border: 1px solid navy;"
+		@crossingStreet = "background-color: rgba(2, 15, 100, 0.86); box-shadow:none; border-radius: 0vh; border: 0px; color:rgba(255, 250, 214, 1); height: 8vh;"
 
-		@events = Event.all.limit(5).order('id DESC')#5件制限。降順
-		@random = Random.new
-		@random = @random.rand(1..3)
+		#@events = Event.all.limit(5).order('id DESC')#5件制限。降順
+		#@random = Random.new
+		#@random = @random.rand(1..3)
 		##mall実験##、##表示の実験##、##scraping##、##touchmove実験##=>不要
 	end
 	
-	def closeShops##営業時間反映実験##
-			p "クロー！"
-			@streetSide.id
-			@closeShops_0 = []
-			@closeShops_1 = []
-			@today = Time.zone.now#=>Thu, 24 Dec 2020 12:15:09 JST +09:00
-			@hun = @today.min.to_s
-		  if @hun.length === 1#=>1桁なら0を追加
-		  	@hun = "0"+@hun
-		  end
-		  #p "このtextみれますか？"		
-			p @present = @today.hour.to_s+@hun#=>"2337"
-			
-			#p "ここから@cityscape0"
-			@cityscape0.each do |id| #side0
-				@shopLists = Shop.where(location_id: id).pluck(:id)
-				@shopLists.each do |shopList|
-					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
-					@operationHour = OperationHour.find_by(shop_id: shopList, day: @today.wday)
-					#p "ここまで到達!cross_streetは#{@cross_street}です"
-					p "ここまで到達!shopListは#{shopList}です"
-				end
+#	def closeShops##営業時間反映実験##
+#			p "クロー！"
+#			@streetSide.id
+#			@closeShops_0 = []
+#			@closeShops_1 = []
+#			@today = Time.zone.now#=>Thu, 24 Dec 2020 12:15:09 JST +09:00
+#			@hun = @today.min.to_s
+#		  if @hun.length === 1#=>1桁なら0を追加
+#		  	@hun = "0"+@hun
+#		  end
+#		  #p "このtextみれますか？"		
+#			p @present = @today.hour.to_s+@hun#=>"2337"
+#			
+#			#p "ここから@cityscape0"
+#			@cityscape0.each do |id| #side0
+#				@shopLists = Shop.where(location_id: id).pluck(:id)
+#				@shopLists.each do |shopList|
+#					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
+#					@operationHour = OperationHour.find_by(shop_id: shopList, day: @today.wday)
+#					#p "ここまで到達!cross_streetは#{@cross_street}です"
+#					p "ここまで到達!shopListは#{shopList}です"
+#				end
 
-					if @cross_street
-						p "Alley-裏通りです"
-					elsif @operationHour.blank?
-						p "店舗ありません"
-					elsif @operationHour.close1.blank?
-						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
-							p "営業時間中"
-						else
-							@shop_id = @operationHour.shop_id
-							@closeShops_0.push(@shop_id)
-							p "shop_id#{@shop_id}しまってます。"
-						end
-					else #close1に値がある
-						if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
-							p "close1に値あって営業中"
-						else
-							@shop_id = @operationHour.shop_id
-							@closeShops_0.push(@shop_id)
-						end
-					end #if @operationHour.blank?の終わり
-			end
+#					if @cross_street
+#						p "Alley-裏通りです"
+#					elsif @operationHour.blank?
+#						p "店舗ありません"
+#					elsif @operationHour.close1.blank?
+#						if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+#							p "営業時間中"
+#						else
+#							@shop_id = @operationHour.shop_id
+#							@closeShops_0.push(@shop_id)
+#							p "shop_id#{@shop_id}しまってます。"
+#						end
+#					else #close1に値がある
+#						if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+#							p "close1に値あって営業中"
+#						else
+#							@shop_id = @operationHour.shop_id
+#							@closeShops_0.push(@shop_id)
+#						end
+#					end #if @operationHour.blank?の終わり
+#			end
 
 			#p "ここから@cityscape1"
-			@cityscape1.each do |id| #side1
-				@shopLists = Shop.where(location_id: id).pluck(:id)
-				@shopLists.each do |shopList|
-					#p "shopをshop_idで調べてるOperationHour"
-					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
-					@operationHour = OperationHour.find_by(shop_id: shopList)
-
-				if @cross_street
-					p "Alley-裏通りです"
-				elsif @operationHour.blank?
-					p "店舗ありません"
-				elsif @operationHour.close1.blank?
-					if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
-						p "営業時間中"
-					else
-						@shop_id = @operationHour.shop_id
-						@closeShops_1.push(@shop_id)
-					end
-				else #close1に値がある
-					if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
-						p "close1に値あって営業中"
-					else
-						@shop_id = @operationHour.shop_id
-						@closeShops_1.push(@shop_id)
-					end
-				end
-			end#shopList.each終わり
-			end
-	end#closeShops終わり#
+#			@cityscape1.each do |id| #side1
+#				@shopLists = Shop.where(location_id: id).pluck(:id)
+#				@shopLists.each do |shopList|
+#					#p "shopをshop_idで調べてるOperationHour"
+#					@cross_street = Shop.find_by(id: shopList, shop_name: "cross_street")
+#					@operationHour = OperationHour.find_by(shop_id: shopList)
+#
+#				if @cross_street
+#					p "Alley-裏通りです"
+##				elsif @operationHour.blank?
+#	#				p "店舗ありません"
+#	#			elsif @operationHour.close1.blank?
+#					if @operationHour.open1.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+#						p "営業時間中"
+#					else
+#						@shop_id = @operationHour.shop_id
+#						@closeShops_1.push(@shop_id)
+#					end
+#				else #close1に値がある
+#					if @operationHour.open1.to_i < @present.to_i && @operationHour.close1.to_i > @present.to_i || @operationHour.open2.to_i < @present.to_i && @operationHour.close2.to_i > @present.to_i
+#						p "close1に値あって営業中"
+#					else
+#						@shop_id = @operationHour.shop_id
+#						@closeShops_1.push(@shop_id)
+#					end
+#				end
+#			end#shopList.each終わり
+#			end
+#	end#closeShops終わり#
 	
 	def search##あいまい検索実験=>ストリート表示##
 			params[:search]
@@ -126,21 +152,23 @@ class LocationsController < ApplicationController
 						 @streetNames.push(@streetRec)
 					end
 				else
-					p "ありませーーん！"
+					#p "ありませーーん！"
 				end
 			 @streetNames=@streetNames.compact#nil要素を削除
 			 
 				if params[:commit].blank?
 					@street_num=1
-					p "commit.blankに来てます"
+					#p "commit.blankに来てます"
 				else
-					p @street_num=params[:commit]
+					#p @street_num=params[:commit]
 					@street_num.to_i
-					p "commit受け取ったよー！"
+					#p "commit受け取ったよー！"
 				end
 	end##検索実験終わり##
+	
+
 
 	 helper_method :search
-	 helper_method :closeShops
-	
+	# helper_method :closeShops
+
 end

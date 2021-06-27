@@ -1,22 +1,23 @@
-<% @id=id %>
-<% @shop=Shop.find(@id) %>
+<% @tenant=tanakoInfo %>
+
+
 <ul class="mallShopInfo">
 <li class="mallShop">
 
 <div class="hidei">
 	<div id="info_fadeout" class="mallShop_fadeout">×</div>
 
-<div id="shop_name"><%= @shop.shop_name %></div>
+<div id="shop_name"><%= @tenant.shop_name %></div>
 	<div id="shop_img_grid_contaier">
 				<% @imgSequences=[1,2,3,4,5] %>
 				<% @imgSequences.each do |imgSequence| %>
-					<% if !eval("@shop_name.s_img#{imgSequence}").blank? %>
-						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= eval("@shop.s_img#{imgSequence}" ) %>)"></div>
-					<% elsif @shop.category.to_s.split("-")[0] =="shopping" %>
+					<% if !eval("@tenant.s_img#{imgSequence}").blank? %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= eval("@tenant.s_img#{imgSequence}" ) %>)"></div>
+					<% elsif @tenant.category.to_s.split("-")[0] =="shopping" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sh_img#{imgSequence}.png" %>)"></div>
-					<% elsif @shop.category.to_s.split("-")[0]=="salon" %>
+					<% elsif @tenant.category.to_s.split("-")[0]=="salon" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sa_img#{imgSequence}.png" %>)"></div>
-					<% elsif @shop.category.to_s.split("-")[0]=="eat&drink" %>
+					<% elsif @tenant.category.to_s.split("-")[0]=="eat&drink" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "eat_img#{imgSequence}.png" %>)"></div>
 					<% else %><!--other-->
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "other#{imgSequence}.png" %>)"></div>
@@ -25,14 +26,14 @@
 	</div><!--shop_img_grid_contaier-->
 
 <div class="shop_category">
-	<% @shop.category.to_s.split("-").each do |i| %>
+	<% @tenant.category.to_s.split("-").each do |i| %>
 		<%= "##{i}" %>
 	<% end %>
 </div>
 			<!--<div class="shop_campaign">Campaign  >></div>-->
 
-<div class="shop_floor"><%= @shop.floor %>F</div>
-<div class="shop_link"><%= link_to'ShopWebSite',@shop.url %></div>
+<div class="shop_floor"><%= @tenant.floor %>F</div>
+<div class="shop_link"><%= link_to'ShopWebSite',@tenant.url %></div>
 
 </li>
 </ul>
