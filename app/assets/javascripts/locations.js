@@ -49,11 +49,9 @@ $(document).ready(function(){
 	});
 	
 	$('li.tenants').bind('touchend', function() {//'touchstart'
-		let sw=mainarea.window.pageXOffset;
-		//let sc=$('#main_space').getBoundingClientRect();
-		console.log("今はこの位置拾ってるC"+sw);
-		//console.log("今はこの位置拾ってる2"+sc.left);
-		//$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 100, left: 25+sw });
+		let sw=window.pageXOffset;
+		//console.log("今はこの位置拾ってるC"+sw);
+		$(this).next('ul.mallShopInfo').fadeIn().offset({ top: 170, left: 80+sw });
 	});
 	
 	//メニューバー表示。

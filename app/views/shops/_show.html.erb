@@ -1,70 +1,59 @@
-<% @shop_name=Shop.find(id) %>
-<% @id=id %>
-<% @locationId=locationId %>
-<% @exception=each_bldg%>
+<% shopInfo %>
+<% each_bldg %>
+<% status %>
 <% @imgSequences=[1,2,3,4,5] %>
 
 	<li class="hidei">
 		<div id="info_fadeout" class="info_fadeout">×</div>
 
-		<% if @exception==60 %><!--mall-->
-			<% @bldg_name=Location.find(locationId) %>
+		<!--mall-->
+	<% if status==5 %>
 			<div id="mall_name">
-				<%= @bldg_name.location.split()[1] %>
+				<%= each_bldg.location.split(",", 2)[1] %>
 			</div>
 
 			<div id="mallInfo_wrap">
 			<ul id="mallInfo">
-			<% @tenants=Shop.where(location_id: locationId).order(floor: 'DESC').each do |tenant| %>
+			<% @tenants=Shop.where(location_id: each_bldg.id).order(floor: 'DESC').each do |tenant| %>
 				<li class="tenants" style="background-image: url(<%#= tenant.logo_url %>); 
 				background-size: contain; background-repeat: no-repeat; background-position-x: center;
-					<% if !@closeShops_0.find{|n|n == tenant.id} || !@closeShops_1.find{|n|n == tenant.id} then %>
-						<%= @greenAction %>
-					<% else %>
-						<%= @grayAction %>
-					<% end %>
+					<%# if !@closeShops_0.find{|n|n == tenant.id} || !@closeShops_1.find{|n|n == tenant.id} then %>
+						<%#= @greenAction %>
+					<%# else %>
+						<%#= @grayAction %>
+					<%# end %>
 				">
-
 					<%# if tenant.logo_url.blank? %><!--承諾後-->
 						<span class="shop_nameMall"><%= tenant.shop_name %></span>
-					<%# end %>
-					<!--モール店舗詳細-->
+					<%# end %><!--モール店舗詳細-->
 				</li>
-					<%= render partial: 'shops/mallShop', locals: {id: tenant.id } %>
+				<%= render partial: 'shops/mallShop', locals: {tanakoInfo: tenant } %>
 			<% end %><!--@tenants.eachのend-->
+					
 			</ul>
 			</div>
 
-		<% elsif @exception==61 %><!--streetInfo-->
+		<!--streetInfo-->
+	<% elsif status==9999 %><%# elsif @exception==61 %>
 			<div id="mall_name">
-				<% p "StreetInfoのlocationIdは#{locationId}" %>
-				<% p @locationInfo=Location.find(locationId) %><!--locationレコード-->
-				<% p @streetInfo=Street.find_by(street_name: @locationInfo.location)%><!--streetレコード-->
-				
-				<% if @streetInfo.blank? %>
-					<% @streetInfo=Street.find(10) %>
-					<%= @streetInfo.street_name %>
-					<%# p "@streetInfoありまセーン" %>
-				<% else %>
-					<%# p "@streetInfoあります" %>
-					<%= @streetInfo.street_name %>
-				<% end %>
+				<%= each_bldg.location %>
 			</div>
 
 			<div id="shop_img_grid_contaier">
-				<% @location_ids=Location.where.not(street_id: @streetInfo.id).sample(8).pluck(:id) %>
-				<% @shopImgBag=[] %>
-				<% @location_ids.each do |id| %>
-					<% @shopImg=Shop.find_by(location_id: id) %>
-					<% if @shopImg&.s_img1 %>
-						<% @shopImgBag.push(@shopImg.s_img1) %>
-					<% else %>
+				<%# @location_ids=Location.where.not(street_id: @streetInfo.id).sample(8).pluck(:id) %>
+				<% @stid=Street.find_by(street_name: each_bldg.location) %>
+				<% @along_st=Location.where(id: @stid).includes(:shops).pluck(:s_img1) %>
+				<%# @shopImgBag=[] %>
+				<%# @location_ids.each do |id| %>
+					<%# @shopImg=Shop.find_by(location_id: id) %>
+					<%# if @shopImg&.s_img1 %>
+						<%# @shopImgBag.push(@shopImg.s_img1) %>
+					<%# else %>
 						<%# p "画像ありません" %>
-					<% end %>
-				<% end %>
-				<% @shopImgBag.reject(&:blank?) %>
-
-				<% if @shopImgBag.length<5 || @streetInfo.id == 10 %>
+					<%# end %>
+				<%# end %>
+				<% @along_st.reject(&:blank?) %>
+				<% if @along_st.length<5 %>
 					<div id="shop_img1" style="background-image:url(<%= asset_path 'eat_img1.png' %>)"></div>
 					<div id="shop_img2" style="background-image:url(<%= asset_path 'sa_img2.png' %>)"></div>
 					<div id="shop_img3" style="background-image:url(<%= asset_path 'sh_img3.png' %>)"></div>
@@ -72,7 +61,7 @@
 					<div id="shop_img5" style="background-image:url(<%= asset_path 'eat_img5.png' %>)"></div>
 
 				<% else %>
-					<% @shopImgBag.sample(5).each_with_index do |img, index| %>
+					<% @along_st.sample(5).each_with_index do |img, index| %>
 						<div id="shop_img<%= index+1 %>" style="background-image:url(<%= img %>)"></div>
 					<% end %>
 				<% end %>
@@ -80,33 +69,32 @@
 
 			<div id="enterStreet">
 				<a>Go to <br>
-				<%= @streetInfo.street_name %> ?</a><br>
+				<%= each_bldg.location %> ?</a><br>
 				<%= form_with(url: "/", method: :get, local: true) do %>
-				<%# p "Street.id#{@streetInfo.id}に変遷予定です" %>
 				<a data-style="gotoStreet">[Yes]
-					<% if @streetInfo.id==10 %>
+					<% if status==1 %><%# 裏通り %>
 						<% @keepout=true %>
 					<% else %>
 						<% @keepout=false %>
 					<% end %>
-					<%= submit_tag"#{@streetInfo.id}", data:{style:"gotoStreet"}, disabled: @keepout %>
-				</a>
+					<%= submit_tag"#{@stid.id}", data:{style:"gotoStreet"}, disabled: @keepout %></a>
 				<a class="info_fadeout", data-style="gotoStreet">[No]</a><!--info_fadeout動いてないjs-->
 				<% end %>
 			</div>
 
-		<% else %><!--shopInfo-->
-			<div id="shop_name"><%= @shop_name.shop_name %></div>
+		<!--shopInfo-->
+	<% else %>
+			<div id="shop_name"><%= shopInfo.shop_name %></div>
 			<div id="shop_img_grid_contaier">
 				
 				<% @imgSequences.each do |imgSequence| %>
-					<% if !eval("@shop_name.s_img#{imgSequence}").blank? %>
-						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= eval("@shop_name.s_img#{imgSequence}" ) %>)"></div>
-					<% elsif @shop_name.category.to_s.split("-")[0] =="shopping" %>
+					<% if !eval("shopInfo.s_img#{imgSequence}").blank? %>
+						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= eval("shopInfo.s_img#{imgSequence}" ) %>)"></div>
+					<% elsif shopInfo.category.to_s.split("-")[0] =="shopping" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sh_img#{imgSequence}.png" %>)"></div>
-					<% elsif @shop_name.category.to_s.split("-")[0]=="salon" %>
+					<% elsif shopInfo.category.to_s.split("-")[0]=="salon" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "sa_img#{imgSequence}.png" %>)"></div>
-					<% elsif @shop_name.category.to_s.split("-")[0]=="eat&drink" %>
+					<% elsif shopInfo.category.to_s.split("-")[0]=="eat&drink" %>
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "eat_img#{imgSequence}.png" %>)"></div>
 					<% else %><!--other-->
 						<div id="shop_img<%= imgSequence %>" style="background-image:url(<%= asset_path "other#{imgSequence}.png" %>)"></div>
@@ -115,22 +103,19 @@
 			</div><!--shop_img_grid_contaier-->
 
 			<div class="shop_category">
-				<% @shop_name.category.to_s.split("-").each do |i| %>
+				<% shopInfo.category.to_s.split("-").each do |i| %>
 					<%= "##{i}" %>
 				<% end %>
 			</div>
 			<!--<div class="shop_campaign">Campaign  >></div>-->
-			<div class="shop_floor"><%= @shop_name.floor %>F</div>
+			<div class="shop_floor"><%= shopInfo.floor %>F</div>
 			<div class="shop_link">
-				<% if @shop_name.url %>
-					<%= link_to'ShopWebSite',@shop_name.url %>
+				<% if shopInfo.url %>
+					<%= link_to'ShopWebSite',shopInfo.url %>
 				<% else %>
 					<% link_to'ShopWebSite' %>
 				<% end %>
 			</div>
 
 	<% end %><!--elseのend-->
-	
-	
-
 </li>

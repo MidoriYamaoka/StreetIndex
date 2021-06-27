@@ -287,11 +287,13 @@ input{
 	.shops{
 		position: absolute;
 		display: inline-block;
+		border: 1px dotted $chic_style_color;
 		border-radius: 35%;//50
 		box-shadow: 0px 0px 28px -9px rgba(207,235,249,0.76) inset;//0px 0px 36px 8px rgba(210,184,130,0.6) inset;
 		width: 12vw;//9>20>12
 		height: 15vw;//10>18>15
 		font-size: 30px;
+		text-align: center;
 		background-size: 101%;
 		background-position: 50%;
 		background-repeat : no-repeat;
@@ -304,6 +306,7 @@ span.shop_name{
 	white-space: break-spaces;
 	font-size: 1rem;//1.4>2.6>2.3
 	line-height: 1.1rem;//1.6>2.6
+	margin-top: 1vh;
 	@include webkit;
 }
 span.shop_nameMall{
